@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
+import { Container } from 'reactstrap'
+import Login from './components/Login/Login'
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Container fluid={true}>
+      <Login />
+    </Container>
   );
 }
 
