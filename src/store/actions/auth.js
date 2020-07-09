@@ -40,18 +40,14 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const auth = (email, password, isSignup) => {
+export const auth = (username, password) => {
     return dispatch => {
         dispatch(authStart());
         const authData = {
-            email: email,
+            username: username,
             password: password,
-            returnSecureToken: true
         };
         let url = '';
-        if (!isSignup) {
-            url = '';
-        }
         axios.post(url, authData)
             .then(response => {
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
