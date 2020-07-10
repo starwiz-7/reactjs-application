@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
-import styles from './Login.module.css';
+import styles from './SignUp.module.css';
 import { TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -8,38 +8,22 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
-            margin: theme.spacing(2),
-            width: '50ch',
+            margin: theme.spacing(0.8),
+            width: '98%',
             display: 'block',
         },
+        '& .MuiFormControlLabel-root': {
+            margin: 0
+        }
     },
     label: {
         color: "red"
-    }
+    },
 }));
 
 export default function Login(props) {
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value)
-    }
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value)
-    }
-
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        props.onAuth(username, password);
-    }
     return (
         <Row>
             <Col xs="7" className={styles.left}>
@@ -48,50 +32,45 @@ export default function Login(props) {
                         <img alt='logo' src={process.env.PUBLIC_URL + '/assets/Logo@2x.png'} />
                     </div>
                     <div className={styles.login_text}>
-                        Login Account
+                        Create Account
                     </div>
                     <div className={styles.login_desc}>
-                        <span>This is a secure system and you will need to</span>
-                        <br></br>
-                        <span>provide your login details to access the site.</span>
+                        <span>Please complete to create your account.</span>
                     </div>
-                    <form className={classes.root} noValidate autoComplete="off" style={{ width: "500px", display: 'grid', justifyContent: 'center' }}>
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="Username or phone"
-                            variant="outlined"
-                            fullWidth={true}
-                            value={username}
-                            onChange={handleUsernameChange}
-                        />
-                        <TextField
-                            id="outlined-password-input"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            variant="outlined"
-                            fullWidth={true}
-                            value={password}
-                            onChange={handlePasswordChange}
-                        />
-                        <div style={{ display: 'flex', justifyContent: 'space-between', margin: '15px', alignItems: 'center' }}>
-                            <FormControlLabel
-                                className={classes.label} control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                                label="Remember me"
-                            />
-                            <div style={{ paddingBottom: '10px', paddingRight: '40px' }}>
-                                <a href='#' style={{ color: 'red' }}>Forgot Password?</a>
-                            </div>
+                    <form className={classes.root} noValidate autoComplete="off" style={{ width: "100%", display: 'grid', justifyContent: 'center', padding: '0%' }}>
+                        <div className={styles.row1}>
+                            <TextField id="outlined-basic" label="First Name" variant="outlined" />
+                            <TextField id="outlined-basic" label="Last Name" variant="outlined" />
                         </div>
-                        <div style={{ width: '500px', padding: "15px" }}>
-                            <Button variant="contained" color="secondary" style={{ width: '54ch' }} onClick={handleSubmit}>
-                                Sign In
+                        <div className={styles.row2}>
+                            <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth={true} />
+                        </div>
+                        <div className={styles.row2}>
+                            <TextField id="outlined-basic" label="E-mail Address" variant="outlined" fullWidth={true} />
+                        </div>
+                        <div className={styles.row2}>
+                            <TextField id="outlined-basic" label="Mobile number" variant="outlined" fullWidth={true} />
+                        </div>
+                        <div className={styles.row2}>
+                            <TextField id="outlined-basic" type='Password' label="Password" variant="outlined" fullWidth={true} />
+                        </div>
+                        <div className={styles.row2}>
+                            <TextField id="outlined-basic" type='Password' label="Confirm Password" variant="outlined" fullWidth={true} />
+                        </div>
+                        <div>
+                            <FormControlLabel
+                                className={classes.label} control={<Checkbox checked={checked} onChange={() => { }} name="checkedA" />}
+                                label="I agree with terms and conditions"
+                            />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'center', padding: '5%' }}>
+                            <Button variant="contained" color="secondary" style={{ width: '54ch' }} onClick={() => { }}>
+                                Sign Up
                             </Button>
                         </div>
                     </form>
-                    <div style={{ margin: '20px' }}>
-                        Don't have an account? <a href='#' style={{ color: 'red' }}>SIGN UP</a>
+                    <div>
+                        Already have an account? <a href='#' style={{color:'red'}}>SIGN IN</a>
                     </div>
                 </div>
             </Col>
