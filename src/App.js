@@ -10,10 +10,10 @@ function App() {
   return (
     <Container fluid={true}>
       {/* <Login/> */}
-      {/* <SignUp /> */}
+      <SignUp />
       {/* <ResetPassword /> */}
       {/* <ForgotPassword /> */}
-      <SuccessfulPasswordReset />
+      {/* <SuccessfulPasswordReset /> */}
     </Container>
   );
 }

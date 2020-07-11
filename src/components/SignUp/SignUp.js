@@ -59,7 +59,7 @@ export default function Login(props) {
                         </div>
                         <div>
                             <FormControlLabel
-                                className={classes.label} control={<Checkbox checked={checked} onChange={() => { }} name="checkedA" />}
+                                className={classes.label} control={<Checkbox checked={checked} onChange={() => {setChecked(!checked)}} name="checkedA" />}
                                 label="I agree with terms and conditions"
                             />
                         </div>
