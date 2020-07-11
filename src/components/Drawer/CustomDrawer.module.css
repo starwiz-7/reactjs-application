@@ -1,4 +1,13 @@
-h1, p {
-    font-family: Lato;
-  }
-  body { margin: 0}
+.subMenuItems{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  padding-top: 8px;
+  padding-right: 10%;
+  padding-bottom: 8px;
+  word-wrap: inherit;
+}

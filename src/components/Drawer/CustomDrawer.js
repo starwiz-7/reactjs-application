@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,8 +19,12 @@ import folder from './images/folder@2x.png';
 import press from './images/press@2x.png';
 import organisation from './images/organisation@2x.png';
 import taxation from './images/taxation@2x.png';
+import Logo from './images/Logo.png'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import styles from './CustomDrawer.module.css'
 
-const drawerWidth = 260;
+const drawerWidth = 273;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -136,10 +140,68 @@ export default function MiniDrawer() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
+    const [masterSubMenu, setMasterSubmenu] = useState(false);
+    const [surveySubMenu, setSurveySubmenu] = useState(false);
+    const [propertiesSubMenu, setPropertiesSubmenu] = useState(false);
 
     const toggleDrawer = () => {
         setOpen(!open);
+        setSamadhanSubmenu(false);
+        setMasterSubmenu(false);
+        setPropertiesSubmenu(false);
+        setSurveySubmenu(false)
     };
+    const samadhanSubMenuListItems = samadhanSubMenu ? <List>
+        <ListItem button key='SamadhanSubMenuItem1'>
+            <div className={styles.subMenuItems}><ListItemText primary='Organisation Samadhan ID' /></div>
+        </ListItem>
+        <ListItem button key='SamadhanSubMenuItem1'>
+            <div className={styles.subMenuItems}><ListItemText primary='Blank Samadhan ID' /></div>
+        </ListItem>
+    </List> : null
+    const masterSubMenuListItems = masterSubMenu ? <List>
+        <ListItem button key='MasterSubMenuItem1'>
+            <div className={styles.subMenuItems}><ListItemText primary='Module' /></div>
+        </ListItem>
+        <ListItem button key='MasterSubMenuItem2'>
+            <div className={styles.subMenuItems}><ListItemText primary='Country' /></div>
+        </ListItem>
+        <ListItem button key='MasterSubMenuItem3'>
+            <div className={styles.subMenuItems}><ListItemText primary='State' /></div>
+        </ListItem>
+        <ListItem button key='MasterSubMenuItem4'>
+            <div className={styles.subMenuItems}><ListItemText primary='City' /></div>
+        </ListItem>
+        <ListItem button key='MasterSubMenuItem5'>
+            <div className={styles.subMenuItems}><ListItemText primary='Language' /></div>
+        </ListItem>
+    </List> : null
+    const surveySubMenuListItems = surveySubMenu ? <List>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Survey Builder' /></div>
+        </ListItem>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Survey Scheduling' /></div>
+        </ListItem>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Survey Sharing' /></div>
+        </ListItem>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Survey Data Recording and Analysis' /></div>
+        </ListItem>
+    </List> : null
+    const propertiesSubMenuListItems = propertiesSubMenu ? <List>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Property List' /></div>
+        </ListItem>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Category List' /></div>
+        </ListItem>
+        <ListItem button key='Organisation'>
+            <div className={styles.subMenuItems}><ListItemText primary='Sub Category List' /></div>
+        </ListItem>
+    </List> : null
 
     return (
         <div className={classes.root}>
@@ -151,7 +213,7 @@ export default function MiniDrawer() {
             >
                 <Toolbar style={{ display: 'flex', flexDirection: 'row' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                        <img src={process.env.PUBLIC_URL + '/assets/Logo.png'} alt='logo' style={{ marginRight: '10%' }} />
+                        <img src={Logo} alt='logo' style={{ marginRight: '10%' }} />
                         <IconButton
                             color="black"
                             aria-label="open drawer"
@@ -182,57 +244,73 @@ export default function MiniDrawer() {
                 <List>
                     <ListItem button key='Dashboard'>
                         <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
-                        <ListItemText primary='Dashboard'/>
+                        <ListItemText primary='Dashboard' />
                     </ListItem>
                     <ListItem button key='Samadhan ID'>
-                        <ListItemIcon><img src={press}/></ListItemIcon>
-                        <ListItemText primary='Samadhan ID'/>
+                        <ListItemIcon><img src={press} /></ListItemIcon>
+                        <ListItemText primary='Samadhan ID' />
+                        <IconButton onClick={() => { setSamadhanSubmenu(!samadhanSubMenu) }}>
+                            {samadhanSubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
+                        </IconButton>
                     </ListItem>
+                    {samadhanSubMenuListItems}
                     <ListItem button key='Master'>
                         <ListItemIcon><EqualizerOutlinedIcon /></ListItemIcon>
-                        <ListItemText primary='Master'/>
+                        <ListItemText primary='Master' />
+                        <IconButton onClick={() => { setMasterSubmenu(!masterSubMenu) }}>
+                            {masterSubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
+                        </IconButton>
                     </ListItem>
+                    {masterSubMenuListItems}
                     <ListItem button key='User List'>
-                        <ListItemIcon><img src={folder}/></ListItemIcon>
-                        <ListItemText primary='User List'/>
+                        <ListItemIcon><img src={folder} /></ListItemIcon>
+                        <ListItemText primary='User List' />
                     </ListItem>
                     <ListItem button key='Organisation'>
-                        <ListItemIcon><img src={organisation}/></ListItemIcon>
-                        <ListItemText primary='Organisation'/>
+                        <ListItemIcon><img src={organisation} /></ListItemIcon>
+                        <ListItemText primary='Organisation' />
                     </ListItem>
                     <ListItem button key='Survey'>
                         <ListItemIcon><EqualizerOutlinedIcon /></ListItemIcon>
-                        <ListItemText primary='Survey'/>
+                        <ListItemText primary='Survey' />
+                        <IconButton onClick={() => { setSurveySubmenu(!surveySubMenu) }}>
+                            {surveySubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
+                        </IconButton>
                     </ListItem>
+                    {surveySubMenuListItems}
                     <ListItem button key='Operations'>
-                        <ListItemIcon><img src={folder}/></ListItemIcon>
-                        <ListItemText primary='Operations'/>
+                        <ListItemIcon><img src={folder} /></ListItemIcon>
+                        <ListItemText primary='Operations' />
                     </ListItem>
                     <ListItem button key='Properties'>
-                        <ListItemIcon><img src={press}/></ListItemIcon>
-                        <ListItemText primary='Properties'/>
+                        <ListItemIcon><img src={press} /></ListItemIcon>
+                        <ListItemText primary='Properties' />
+                        <IconButton onClick={() => { setPropertiesSubmenu(!propertiesSubMenu) }}>
+                            {propertiesSubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
+                        </IconButton>
                     </ListItem>
+                    {propertiesSubMenuListItems}
                     <ListItem button key='Visualise'>
-                        <ListItemIcon><img src={taxation}/></ListItemIcon>
-                        <ListItemText primary='Visualise'/>
+                        <ListItemIcon><img src={taxation} /></ListItemIcon>
+                        <ListItemText primary='Visualise' />
                     </ListItem>
                     <ListItem button key='Taxation and Payments'>
-                        <ListItemIcon><img src={taxation}/></ListItemIcon>
-                        <ListItemText primary='Taxation and Payments'/>
+                        <ListItemIcon><img src={taxation} /></ListItemIcon>
+                        <ListItemText primary='Taxation and Payments' />
                     </ListItem>
                     <ListItem button key='Profile'>
                         <ListItemIcon><PersonOutlinedIcon /></ListItemIcon>
-                        <ListItemText primary='Profile'/>
+                        <ListItemText primary='Profile' />
                     </ListItem>
                     <ListItem button key='Logout'>
-                        <ListItemIcon><img src={logout} style={{paddingLeft:'5%'}}/></ListItemIcon>
-                        <ListItemText primary='Logout'/>
+                        <ListItemIcon><img src={logout} style={{ paddingLeft: '5%' }} /></ListItemIcon>
+                        <ListItemText primary='Logout' />
                     </ListItem>
                 </List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
             </main>
-        </div>
+        </div >
     );
 }
