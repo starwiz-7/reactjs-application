@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './ResetPassword.module.css'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button} from '@material-ui/core';
+import unnamed from './images/unnamed@2x.png';
+import Logo from './images/Logo-1@2x.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,10 +23,10 @@ export default function ForgotPassword() {
     const classes = useStyles();
     return (
         <div style={{ width: '100vw', height: '100vh', objectFit: 'fit', overflow: 'hidden', position: 'absolute', top: '0', left: '0' }}>
-            <img src={process.env.PUBLIC_URL + '/assets/unnamed@2x.png'} style={{ width: '100%' }} />
+            <img src={unnamed} style={{ width: '100%' }} />
             <div className={styles.div1}>
                 <div className={styles.logoDiv}>
-                    <img src={process.env.PUBLIC_URL + '/assets/Logo-1@2x.png'} alt='logo'/>
+                    <img src={Logo} alt='logo'/>
                 </div>
                 <div className={styles.div1text}>
                     Reset Your Password

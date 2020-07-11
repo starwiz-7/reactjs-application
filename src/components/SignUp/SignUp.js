@@ -3,13 +3,26 @@ import { Row, Col } from 'reactstrap';
 import styles from './SignUp.module.css';
 import { TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import unnamed from './images/unnamed-6@2x.png';
+import path from './images/Path-361.png';
+import Logo from './images/Logo@2x.png';
+import insta from './images/asset-1@2x.png';
+import fb from './images/asset-2@2x.png';
+import twitter from './images/asset-6@2x.png'
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    root1: {
         '& .MuiTextField-root': {
-            margin: theme.spacing(0.8),
-            width: '98%',
+            margin: theme.spacing(1),
+            width: '100%',
+            display: 'block',
+        }
+    },
+    root2: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '100%',
             display: 'block',
         },
         '& .MuiFormControlLabel-root': {
@@ -29,7 +42,7 @@ export default function Login(props) {
             <Col xs="7" className={styles.left}>
                 <div className={styles.left_main}>
                     <div className={styles.logo}>
-                        <img alt='logo' src={process.env.PUBLIC_URL + '/assets/Logo@2x.png'} />
+                        <img alt='logo' src={Logo} />
                     </div>
                     <div className={styles.login_text}>
                         Create Account
@@ -37,16 +50,18 @@ export default function Login(props) {
                     <div className={styles.login_desc}>
                         <span>Please complete to create your account.</span>
                     </div>
-                    <form className={classes.root} noValidate autoComplete="off" style={{ width: "100%", display: 'grid', justifyContent: 'center', padding: '0%' }}>
+                    <form className={classes.root1} Validate autoComplete="off" style={{ display: 'inline-flex', justifyContent: 'space-around', paddingLeft: '3%' }}>
                         <div className={styles.row1}>
                             <TextField id="outlined-basic" label="First Name" variant="outlined" />
                             <TextField id="outlined-basic" label="Last Name" variant="outlined" />
                         </div>
+                    </form>
+                    <form className={classes.root2} Validate autoComplete="off" style={{ width: "100%", display: 'grid', justifyContent: 'center', padding: '0%' }}>
                         <div className={styles.row2}>
                             <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth={true} />
                         </div>
                         <div className={styles.row2}>
-                            <TextField id="outlined-basic" label="E-mail Address" variant="outlined" fullWidth={true} />
+                            <TextField id="outlined-basic" type='email' label="E-mail Address" variant="outlined" fullWidth={true} />
                         </div>
                         <div className={styles.row2}>
                             <TextField id="outlined-basic" label="Mobile number" variant="outlined" fullWidth={true} />
@@ -59,7 +74,7 @@ export default function Login(props) {
                         </div>
                         <div>
                             <FormControlLabel
-                                className={classes.label} control={<Checkbox checked={checked} onChange={() => {setChecked(!checked)}} name="checkedA" />}
+                                className={classes.label} control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} name="checkedA" />}
                                 label="I agree with terms and conditions"
                             />
                         </div>
@@ -68,33 +83,33 @@ export default function Login(props) {
                                 Sign Up
                             </Button>
                         </div>
+                        <div>
+                            Already have an account? <a href='#' style={{ color: 'red' }}>SIGN IN</a>
+                        </div>
                     </form>
-                    <div>
-                        Already have an account? <a href='#' style={{color:'red'}}>SIGN IN</a>
-                    </div>
+
                 </div>
             </Col>
             <Col xs="5" className={styles.parent}>
-                <img src={process.env.PUBLIC_URL + '/assets/unnamed-6@2x.png'} alt='' className={styles.image1} />
-                <img src={process.env.PUBLIC_URL + '/assets/Path-361.png'} alt='' className={styles.image2} />
+                <img src={unnamed} alt='' className={styles.image1} />
+                <img src={path} alt='' className={styles.image2} />
                 <div className={styles.links}>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link1}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-2@2x.png'} />
-                        </div>
-                    </a>
-                    </div>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link3}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-1@2x.png'} />
-                        </div>
-                    </a>
-                    </div>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link3}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-6@2x.png'} />
-                        </div>
-                    </a>
+                    <div className={styles.innerLinks}>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <img src={fb} />
+                            </div>
+                        </a>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
+                                <img src={insta} />
+                            </div>
+                        </a>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <img src={twitter} />
+                            </div>
+                        </a>
                     </div>
                 </div>
             </Col>

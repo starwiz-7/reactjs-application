@@ -5,6 +5,7 @@ import SignUp from './components/SignUp/SignUp'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import ResetPassword from './components/ResetPassword/ResetPassword'
 import SuccessfulPasswordReset from './components/SuccessfulPasswordReset/SuccessfulPasswordReset'
+import Drawer from './components/Drawer/CustomDrawer'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <ResetPassword /> */}
       {/* <ForgotPassword /> */}
       {/* <SuccessfulPasswordReset /> */}
+      {/* <Drawer /> */}
     </Container>
   );
 }

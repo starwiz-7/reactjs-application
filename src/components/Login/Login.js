@@ -3,13 +3,19 @@ import { Row, Col } from 'reactstrap';
 import styles from './Login.module.css';
 import { TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import unnamed from './images/unnamed-6@2x.png';
+import path from './images/Path-361.png';
+import Logo from './images/Logo@2x.png';
+import insta from './images/asset-1@2x.png';
+import fb from './images/asset-2@2x.png';
+import twitter from './images/asset-6@2x.png'
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(2),
-            width: '50ch',
+            width: '20em',
             display: 'block',
         },
     },
@@ -45,7 +51,7 @@ export default function Login(props) {
             <Col xs="7" className={styles.left}>
                 <div className={styles.left_main}>
                     <div className={styles.logo}>
-                        <img alt='logo' src={process.env.PUBLIC_URL + '/assets/Logo@2x.png'} />
+                        <img alt='logo' src={Logo} />
                     </div>
                     <div className={styles.login_text}>
                         Login Account
@@ -55,7 +61,7 @@ export default function Login(props) {
                         <br></br>
                         <span>provide your login details to access the site.</span>
                     </div>
-                    <form className={classes.root} noValidate autoComplete="off" style={{ width: "500px", display: 'grid', justifyContent: 'center' }}>
+                    <form className={classes.root} noValidate autoComplete="off" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <TextField
                             required
                             id="outlined-required"
@@ -80,15 +86,13 @@ export default function Login(props) {
                                 className={classes.label} control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
                                 label="Remember me"
                             />
-                            <div style={{ paddingBottom: '10px', paddingRight: '40px' }}>
+                            <div style={{ paddingBottom: '10px' }}>
                                 <a href='#' style={{ color: 'red' }}>Forgot Password?</a>
                             </div>
                         </div>
-                        <div style={{ width: '500px', padding: "15px" }}>
-                            <Button variant="contained" color="secondary" style={{ width: '54ch' }} onClick={handleSubmit}>
-                                Sign In
-                            </Button>
-                        </div>
+                        <Button variant="contained" color="secondary" style={{ width: '85%' }} onClick={handleSubmit}>
+                            Sign In
+                        </Button>
                     </form>
                     <div style={{ margin: '20px' }}>
                         Don't have an account? <a href='#' style={{ color: 'red' }}>SIGN UP</a>
@@ -96,26 +100,25 @@ export default function Login(props) {
                 </div>
             </Col>
             <Col xs="5" className={styles.parent}>
-                <img src={process.env.PUBLIC_URL + '/assets/unnamed-6@2x.png'} alt='' className={styles.image1} />
-                <img src={process.env.PUBLIC_URL + '/assets/Path-361.png'} alt='' className={styles.image2} />
+                <img src={unnamed} alt='' className={styles.image1} />
+                <img src={path} alt='' className={styles.image2} />
                 <div className={styles.links}>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link1}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-2@2x.png'} />
-                        </div>
-                    </a>
-                    </div>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link3}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-1@2x.png'} />
-                        </div>
-                    </a>
-                    </div>
-                    <div className={styles.innerlinks}><a href='#' className={styles.link3}>
-                        <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                            <img src={process.env.PUBLIC_URL + '/assets/asset-6@2x.png'} />
-                        </div>
-                    </a>
+                    <div className={styles.innerLinks}>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <img src={fb} />
+                            </div>
+                        </a>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
+                                <img src={insta} />
+                            </div>
+                        </a>
+                        <a href='#'>
+                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <img src={twitter} />
+                            </div>
+                        </a>
                     </div>
                 </div>
             </Col>

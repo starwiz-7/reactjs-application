@@ -4,7 +4,10 @@
   justify-content: center;
 }
 .left_main {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .row1 {
   display: inline-flex;
@@ -29,9 +32,8 @@
   padding-bottom: 5%;
 }
 .parent {
-  position: relative;
-  top: 0;
-  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 .image1 {
   position: relative;
@@ -40,6 +42,7 @@
   left: 0;
   height: 100%;
   width: 102.5%;
+  margin: 0;
   object-fit: fill;
   overflow: hidden;
 }
@@ -54,15 +57,76 @@
 }
 .links {
   position: absolute;
-  height: 100%;
-  display: block;
-  padding-left: 3%;
-  padding-top: 45%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   top: 0;
   left: 0;
-  display: block;
+  padding-left: 1em;
+  padding-right: 1em;
 }
-.innerlinks {
-  width: 100%;
-  margin: 20%;
+.innerLinks {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 2560px) {
+  .image1 {
+    width: 102.5%;
+    height: 101%;
+  }
+  .image2 {
+    width: 101%;
+    height: 101%;
+  }
+  .links {
+    position: absolute;
+    height: 100vh;
+    width: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  .innerLinks {
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .image1 {
+    width: 105.5%;
+    height: 105%;
+  }
+  .image2 {
+    width: 101%;
+    height: 105%;
+  }
+  .links {
+    position: absolute;
+    height: 100vh;
+    width: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding-left: 2.5em;
+    padding-right: 3em;
+  }
+  .innerLinks {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
