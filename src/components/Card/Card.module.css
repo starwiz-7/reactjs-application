@@ -1,0 +1,25 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.title{
+    font-weight: 100;
+}
+.details{
+    height: 50%;
+    display: flex;
+    padding-top:10%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.stats{
+    font-size: larger;
+    font-weight: bolder;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

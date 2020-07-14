@@ -1,0 +1,18 @@
+.title{
+    margin-left: 2%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.grid{
+    display: flex;
+    justify-content: flex-start;
+    align-content: space-between;
+    align-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+}

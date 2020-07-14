@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -24,7 +24,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import styles from './CustomDrawer.module.css'
 
-const drawerWidth = 273;
+import DashBoard from '../../screens/mainApp/DashBoard/DashBoard'
+import BlankSamadhanID from '../../screens/mainApp/SamadhanID/BlankSamadhanID/BlankSamadhanID'
+import OrganisationSamadhanID from '../../screens/mainApp/SamadhanID/OrganisationSamadhanID/OrganisationSamadhanID'
+import SamadhanIDViewAll from '../../screens/mainApp/SamadhanID/SamadhanIDViewAll/SamadhanIDViewAll'
+
+const drawerWidth = 275;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,30 +49,6 @@ const useStyles = makeStyles((theme) => ({
             display: 'block',
         },
     },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     menuButton: {
         marginRight: 36,
     },
@@ -85,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
         }),
+        margin: 0
     },
     drawerClose: {
         transition: theme.transitions.create('width', {
@@ -95,19 +77,6 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(7) + 1,
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9) + 1,
-        },
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
         },
     },
     sectionDesktop: {
@@ -138,11 +107,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDrawer() {
     const classes = useStyles();
-    const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
     const [masterSubMenu, setMasterSubmenu] = useState(false);
-    const [surveySubMenu, setSurveySubmenu] = useState(false);
     const [propertiesSubMenu, setPropertiesSubmenu] = useState(false);
 
     const toggleDrawer = () => {
@@ -150,7 +117,6 @@ export default function MiniDrawer() {
         setSamadhanSubmenu(false);
         setMasterSubmenu(false);
         setPropertiesSubmenu(false);
-        setSurveySubmenu(false)
     };
     const samadhanSubMenuListItems = samadhanSubMenu ? <List>
         <ListItem button key='SamadhanSubMenuItem1'>
@@ -175,20 +141,6 @@ export default function MiniDrawer() {
         </ListItem>
         <ListItem button key='MasterSubMenuItem5'>
             <div className={styles.subMenuItems}><ListItemText primary='Language' /></div>
-        </ListItem>
-    </List> : null
-    const surveySubMenuListItems = surveySubMenu ? <List>
-        <ListItem button key='Organisation'>
-            <div className={styles.subMenuItems}><ListItemText primary='Survey Builder' /></div>
-        </ListItem>
-        <ListItem button key='Organisation'>
-            <div className={styles.subMenuItems}><ListItemText primary='Survey Scheduling' /></div>
-        </ListItem>
-        <ListItem button key='Organisation'>
-            <div className={styles.subMenuItems}><ListItemText primary='Survey Sharing' /></div>
-        </ListItem>
-        <ListItem button key='Organisation'>
-            <div className={styles.subMenuItems}><ListItemText primary='Survey Data Recording and Analysis' /></div>
         </ListItem>
     </List> : null
     const propertiesSubMenuListItems = propertiesSubMenu ? <List>
@@ -247,7 +199,7 @@ export default function MiniDrawer() {
                         <ListItemText primary='Dashboard' />
                     </ListItem>
                     <ListItem button key='Samadhan ID'>
-                        <ListItemIcon><img src={press} /></ListItemIcon>
+                        <ListItemIcon><img src={press} alt='press' /></ListItemIcon>
                         <ListItemText primary='Samadhan ID' />
                         <IconButton onClick={() => { setSamadhanSubmenu(!samadhanSubMenu) }}>
                             {samadhanSubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
@@ -263,27 +215,23 @@ export default function MiniDrawer() {
                     </ListItem>
                     {masterSubMenuListItems}
                     <ListItem button key='User List'>
-                        <ListItemIcon><img src={folder} /></ListItemIcon>
+                        <ListItemIcon><img src={folder} alt='User List' /></ListItemIcon>
                         <ListItemText primary='User List' />
                     </ListItem>
                     <ListItem button key='Organisation'>
-                        <ListItemIcon><img src={organisation} /></ListItemIcon>
+                        <ListItemIcon><img src={organisation} alt='Organisation' /></ListItemIcon>
                         <ListItemText primary='Organisation' />
                     </ListItem>
                     <ListItem button key='Survey'>
                         <ListItemIcon><EqualizerOutlinedIcon /></ListItemIcon>
                         <ListItemText primary='Survey' />
-                        <IconButton onClick={() => { setSurveySubmenu(!surveySubMenu) }}>
-                            {surveySubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
-                        </IconButton>
                     </ListItem>
-                    {surveySubMenuListItems}
                     <ListItem button key='Operations'>
-                        <ListItemIcon><img src={folder} /></ListItemIcon>
+                        <ListItemIcon><img src={folder} alt='Operations' /></ListItemIcon>
                         <ListItemText primary='Operations' />
                     </ListItem>
                     <ListItem button key='Properties'>
-                        <ListItemIcon><img src={press} /></ListItemIcon>
+                        <ListItemIcon><img src={press} alt='Properties' /></ListItemIcon>
                         <ListItemText primary='Properties' />
                         <IconButton onClick={() => { setPropertiesSubmenu(!propertiesSubMenu) }}>
                             {propertiesSubMenu ? <KeyboardArrowDownIcon /> : <ChevronRightIcon />}
@@ -291,11 +239,11 @@ export default function MiniDrawer() {
                     </ListItem>
                     {propertiesSubMenuListItems}
                     <ListItem button key='Visualise'>
-                        <ListItemIcon><img src={taxation} /></ListItemIcon>
+                        <ListItemIcon><img src={taxation} alt='Visualise' /></ListItemIcon>
                         <ListItemText primary='Visualise' />
                     </ListItem>
                     <ListItem button key='Taxation and Payments'>
-                        <ListItemIcon><img src={taxation} /></ListItemIcon>
+                        <ListItemIcon><img src={taxation} alt='Tax' /></ListItemIcon>
                         <ListItemText primary='Taxation and Payments' />
                     </ListItem>
                     <ListItem button key='Profile'>
@@ -303,13 +251,14 @@ export default function MiniDrawer() {
                         <ListItemText primary='Profile' />
                     </ListItem>
                     <ListItem button key='Logout'>
-                        <ListItemIcon><img src={logout} style={{ paddingLeft: '5%' }} /></ListItemIcon>
+                        <ListItemIcon><img src={logout} style={{ paddingLeft: '5%' }} alt='logout' /></ListItemIcon>
                         <ListItemText primary='Logout' />
                     </ListItem>
                 </List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
+                <SamadhanIDViewAll />
             </main>
         </div >
     );
