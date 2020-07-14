@@ -2,34 +2,66 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .left_main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-content: center;
+}
+.signUp_text {
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.signUp_desc {
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 .row1 {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-content: center;
   align-items: center;
+}
+.row2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.termsCondition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.buttonDiv {
+  display: flex;
+  padding: 2% 0;
+  justify-content: center;
+  align-items: center;
+}
+.signInDiv {
+  padding: 3% 0;
+}
+.button {
+  width: 420px;
+  height: 50px;
 }
 .logo {
   display: flex;
   padding: 5%;
   align-items: center;
   justify-content: center;
-}
-.login_text {
-  justify-content: center;
-  display: flex;
-  font-size: xx-large;
-  text-align: center;
-}
-.login_desc {
-  text-align: center;
-  padding-bottom: 5%;
 }
 .parent {
   width: 100vw;
@@ -72,61 +104,192 @@
   flex-direction: column;
   justify-content: space-between;
 }
-@media only screen and (min-width: 2560px) {
-  .image1 {
-    width: 102.5%;
-    height: 101%;
+@media (min-width: 426px) and (max-width: 767px) {
+  .parent {
+    visibility: hidden;
   }
-  .image2 {
-    width: 101%;
-    height: 101%;
+  .left_main {
+    padding-left: 80%;
   }
-  .links {
-    position: absolute;
-    height: 100vh;
-    width: 12%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    top: 0;
-    left: 0;
-    padding-left: 3em;
-    padding-right: 3em;
+  .signUp_text {
+    font-size: larger;
   }
-  .innerLinks {
-    height: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .signUp_desc {
+    font-size: medium;
+  }
+  .termsCondition {
+    justify-content: flex-start;
+  }
+  .buttonDiv {
+    width: 280px;
+  }
+  .signInDiv {
+    padding-right: 25%;
   }
 }
-@media only screen and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 375px) {
+  .parent {
+    visibility: hidden;
+  }
+  .left_main {
+    padding-left: 80%;
+  }
+  .signUp_text {
+    font-size: medium;
+  }
+  .signUp_desc {
+    font-size: small;
+  }
+  .buttonDiv {
+    width: 283.45px;
+    height: 50px;
+  }
+}
+@media (min-width: 376px) and (max-width: 425px) {
+  .parent {
+    visibility: hidden;
+  }
+  .left_main {
+    padding-left: 80%;
+  }
+  .signUp_text {
+    font-size: medium;
+  }
+  .signUp_desc {
+    font-size: small;
+  }
+  .buttonDiv {
+    width: 283.45px;
+    height: 50px;
+  }
+  .signInDiv {
+    padding-right: 25%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
   .image1 {
-    width: 105.5%;
-    height: 105%;
+    width: 105%;
   }
-  .image2 {
-    width: 101%;
-    height: 105%;
+  .buttonDiv {
+    width: 283.45px;
+    height: 50px;
   }
-  .links {
-    position: absolute;
-    height: 100vh;
-    width: 12%;
+  .termsCondition {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+  }
+  .linksDiv1 {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    top: 0;
-    left: 0;
-    padding-left: 2.5em;
-    padding-right: 3em;
+    border-radius: 5px;
+    background-color: white;
   }
-  .innerLinks {
-    height: 30%;
+  .linksDiv2 {
+    width: 44px;
+    height: 44px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .instaImage {
+    width: 60px;
+    height: 60px;
+  }
+  .links{
+    padding-left: 0.6em;
+  }
+  .innerLinks{
+    padding-left: 0em;
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .image1 {
+    width: 104%;
+  }
+  .buttonDiv {
+    width: 283.45px;
+    height: 50px;
+  }
+  .termsCondition {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .linksDiv1 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .linksDiv2 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .instaImage {
+    width: 66px;
+    height: 66px;
+  }
+  .links{
+    padding-left: 0.3em;
+  }
+  .innerLinks{
+    padding-left: 0.5em;
+    justify-content: space-evenly;
+  }
+}
+@media only screen and (min-width: 1440px) and (max-width: 2559px) {
+  .image1 {
+    width: 102.5%;
+  }
+  .buttonDiv {
+    width: 283.45px;
+    height: 50px;
+  }
+  .termsCondition {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .linksDiv1 {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .linksDiv2 {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding-top: 5%;
+  }
+  .instaImage {
+    width: 72px;
+    height: 72px;
+  }
+  .links{
+    padding-left: 0.6em;
+  }
+  .innerLinks{
+    padding-left: 0.5em;
+    justify-content: space-evenly;
   }
 }

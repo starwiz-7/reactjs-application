@@ -5,7 +5,8 @@ import { TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core
 import { makeStyles } from '@material-ui/core/styles';
 import unnamed from './images/unnamed-6@2x.png';
 import path from './images/Path-361.png';
-import Logo from './images/Logo@2x.png';
+import Logo2x from './images/Logo@2x.png';
+import Logo from './images/Logo.png'
 import insta from './images/asset-1@2x.png';
 import fb from './images/asset-2@2x.png';
 import twitter from './images/asset-6@2x.png'
@@ -17,10 +18,19 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(2),
             width: '20em',
             display: 'block',
+            ['@media (max-width:320px)']: {
+                width:'15em',
+            },
+            ['@media (min-width:321px) and (max-width:410px)']: {
+                width:'18em',
+            },
         },
     },
     label: {
-        color: "red"
+        color: "red",
+        ['@media (max-width:320px)']: {
+            
+        },
     }
 }));
 
@@ -50,9 +60,10 @@ export default function Login(props) {
         <Row>
             <Col xs="7" className={styles.left}>
                 <div className={styles.left_main}>
-                    <div className={styles.logo}>
-                        <img alt='logo' src={Logo} />
-                    </div>
+                    <picture>
+                        <source srcSet={Logo} media="(max-width: 767px)" />
+                        <img src={Logo2x} alt="Some picture" />
+                    </picture>
                     <div className={styles.login_text}>
                         Login Account
                     </div>
@@ -65,7 +76,7 @@ export default function Login(props) {
                         <TextField
                             required
                             id="outlined-required"
-                            label="Username or phone"
+                            label={<span className={styles.usernamePassowrdLabel}>Username or Phone</span>}
                             variant="outlined"
                             fullWidth={true}
                             value={username}
@@ -73,7 +84,7 @@ export default function Login(props) {
                         />
                         <TextField
                             id="outlined-password-input"
-                            label="Password"
+                            label={<span className={styles.usernamePassowrdLabel}>Password</span>}
                             type="password"
                             autoComplete="current-password"
                             variant="outlined"
@@ -81,21 +92,21 @@ export default function Login(props) {
                             value={password}
                             onChange={handlePasswordChange}
                         />
-                        <div style={{ display: 'flex', justifyContent: 'space-between', margin: '15px', alignItems: 'center' }}>
+                        <div className={styles.forgotPwdDiv}>
                             <FormControlLabel
-                                className={classes.label} control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                                label="Remember me"
+                                className={classes.label} control={<Checkbox className={styles.checkBox} checked={checked} onChange={handleChange} name="checkedA" />}
+                                label={<span className={styles.checkBoxLabel}>Remember Me</span>}
                             />
                             <div style={{ paddingBottom: '10px' }}>
-                                <a href='#' style={{ color: 'red' }}>Forgot Password?</a>
+                                <a href='#' className={styles.forgotPassword}><span>Forgot Password?</span></a>
                             </div>
                         </div>
-                        <Button variant="contained" color="secondary" style={{ width: '85%' }} onClick={handleSubmit}>
+                        <Button variant="contained" color="secondary" className={styles.button} onClick={handleSubmit}>
                             Sign In
                         </Button>
                     </form>
                     <div style={{ margin: '20px' }}>
-                        Don't have an account? <a href='#' style={{ color: 'red' }}>SIGN UP</a>
+                        <span className={styles.signUpText}>Don't have an account?</span> <a href='#' style={{ color: 'red',fontWeight:'500'}}>SIGN UP</a>
                     </div>
                 </div>
             </Col>
@@ -105,17 +116,17 @@ export default function Login(props) {
                 <div className={styles.links}>
                     <div className={styles.innerLinks}>
                         <a href='#'>
-                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                            <div className={styles.linksDiv1}>
                                 <img src={fb} />
                             </div>
                         </a>
                         <a href='#'>
-                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
-                                <img src={insta} />
+                            <div className={styles.linksDiv2}>
+                                <img src={insta} className={styles.instaImage}/>
                             </div>
                         </a>
                         <a href='#'>
-                            <div style={{ width: '55px', height: '55px', backgroundColor: 'white', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                            <div className={styles.linksDiv1}>
                                 <img src={twitter} />
                             </div>
                         </a>

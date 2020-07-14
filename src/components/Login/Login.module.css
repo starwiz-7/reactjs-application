@@ -10,15 +10,24 @@
   align-items: center;
   flex-direction: column;
 }
+.button{
+  width: 320px;
+  height: 50px;
+}
+.forgotPassword {
+  color: red;
+}
 .logo {
   display: flex;
-  padding: 15%;
+  padding: 5%;
   align-items: center;
 }
 .login_text {
-  padding-bottom: 5%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 5%;
   font-size: xx-large;
-  text-align: center;
 }
 .login_desc {
   text-align: center;
@@ -94,32 +103,258 @@
     justify-content: space-between;
   }
 }
-@media only screen and (max-width: 768px) {
-  .image1 {
-    width: 105.5%;
-    height: 101%;
+@media only screen and (max-width: 320px) {
+  .left_main {
+    padding-left: 80%;
   }
-  .image2 {
-    width: 101%;
-    height: 101%;
+  .button{
+    width: 240px;
+    height: 50px;
   }
-  .links {
-    position: absolute;
-    height: 100vh;
-    width: 12%;
+  .parent {
+    visibility: hidden;
+  }
+  .login_text {
+    width: 320px;
+    font-size: medium;
+  }
+  .signUpText {
+    font-size: small;
+  }
+  .forgotPassword {
+    font-size: small;
+    font-weight: 500;
+  }
+  .login_desc {
+    font-size: small;
+  }
+  .usernamePassowrdLabel {
+    font-size: smaller;
+  }
+  .checkBoxLabel {
+    font-size: smaller;
+    font-weight: 500;
+  }
+  .checkBox {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    top: 0;
-    left: 0;
-    padding-left: 2.5em;
-    padding-right: 3em;
   }
-  .innerLinks {
-    height: 30%;
+  .forgotPwdDiv {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+  }
+}
+@media only screen and (min-width:376px) and (max-width:425px) {
+  .button{
+    width: 320px;
+    height: 50px;
+  }
+}
+@media only screen and (min-width:321px) and (max-width:375px){
+  .button{
+    width: 288px;
+    height:50px;
+  }
+}
+@media only screen and (min-width: 321px) and (max-width: 767px) {
+  .left_main {
+    padding-left: 75%;
+  }
+  .parent {
+    visibility: hidden;
+  }
+  .forgotPassword {
+    font-size: small;
+    font-weight: 500;
+  }
+  .checkBoxLabel {
+    font-size: smaller;
+    font-weight: 500;
+  }
+  .forgotPwdDiv {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .login_text {
+    width: 320px;
+    font-size: large;
+  }
+  .signUpText {
+    font-size: small;
+  }
+  .forgotPassword {
+    font-size: medium;
+  }
+  .login_desc {
+    font-size: small;
+  }
+  .usernamePassowrdLabel {
+    font-size: smaller;
+  }
+  .checkBoxLabel {
+    font-size: small;
+  }
+  .forgotPwdDiv {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .checkBox {
+    display: flex;
+  }
+}
+@media only screen and (min-width:768px){
+  .image1{
+    width: 105.5%;
+    height: 100vh;
+  }
+  .image2{
+    height: 100vh;
+  }
+  .forgotPwdDiv {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media only screen and (min-width:1024px){
+  .image1{
+    width: 104%;
+    height: 100vh;
+  }
+  .image2{
+    height: 100vh;
+  }
+  .forgotPwdDiv {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media only screen and (min-width:1440px){
+  .image1{
+    width: 103%;
+    height: 100vh;
+  }
+  .image2{
+    height: 100vh;
+  }
+  .forgotPwdDiv {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .linksDiv1 {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .linksDiv2 {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .instaImage {
+    width: 60px;
+    height: 60px;
+  }
+  .links{
+    padding-left: 0.6em;
+  }
+  .innerLinks{
+    padding-left: 0em;
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .linksDiv1 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .linksDiv2 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .instaImage {
+    width: 66px;
+    height: 66px;
+  }
+  .links{
+    padding-left: 0.3em;
+  }
+  .innerLinks{
+    padding-left: 0.5em;
+    justify-content: space-evenly;
+  }
+}
+@media only screen and (min-width: 1440px) and (max-width: 2559px) {
+  .linksDiv1 {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .linksDiv2 {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding-top: 5%;
+  }
+  .instaImage {
+    width: 72px;
+    height: 72px;
+  }
+  .links{
+    padding-left: 0.6em;
+  }
+  .innerLinks{
+    padding-left: 0.5em;
+    justify-content: space-evenly;
   }
 }
