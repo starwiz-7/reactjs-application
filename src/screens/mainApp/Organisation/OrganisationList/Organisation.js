@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import styles from './OrganisationSamadhanID.module.css'
+import styles from './Organisation.module.css'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
 
 
 import Table from '../../../../components/Table/Table'
@@ -30,8 +29,7 @@ export default function OrganisationSamadhanID() {
     return (
         <div className={styles.main}>
             <div className={styles.title}>
-                <span style={{ fontWeight: 'bolder' }}>Samadhan ID /</span>
-                <span style={{ fontWeight: 'lighter', color: 'gray' }}>Organisation Samadhan ID</span>
+                <span style={{ fontWeight: 'bolder' }}>Organisation List</span>
             </div>
             <div className={styles.tableDiv}>
                 <div className={styles.searchBarDiv}>
@@ -63,7 +61,7 @@ export default function OrganisationSamadhanID() {
                     </div>
                     <div>
                         <Button variant="contained" color="secondary">
-                            Add
+                            Add new Organisation
                         </Button>
                     </div>
                 </div>

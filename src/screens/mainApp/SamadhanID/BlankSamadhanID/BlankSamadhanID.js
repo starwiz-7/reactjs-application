@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         },
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            width: '25ch',
+            width: '25ch'
         },
     },
 }));
@@ -40,27 +40,9 @@ export default function OrganisationSamadhanID() {
                             <TextField id="standard-search" label="Search..." type="search" />
                         </div>
                     </div>
-                    <div className={styles.dropDownDiv}>
-                        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                            <DropdownToggle caret style={{ backgroundColor: 'white', color: 'grey' }}>
-                                Organisation
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem header>Actions</DropdownItem>
-                                <DropdownItem>Some Action</DropdownItem>
-                                <DropdownItem>Action</DropdownItem>
-                                <DropdownItem>Foo Action</DropdownItem>
-                                <DropdownItem>Bar Action</DropdownItem>
-                                <DropdownItem>Quo Action</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                        <Button variant="contained" style={{ backgroundColor: '#21034B', color: 'white', borderRadius: '20px' }}>
-                            Search
-                        </Button>
-                    </div>
                     <div>
                         <Button variant="contained" color="secondary">
-                            Secondary
+                            Add
                         </Button>
                     </div>
                 </div>

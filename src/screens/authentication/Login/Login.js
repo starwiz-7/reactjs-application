@@ -69,7 +69,7 @@ export default function Login(props) {
                             </picture>
                             <div className={styles.login_text}>
                                 Login Account
-                    </div>
+                            </div>
                             <div className={styles.login_desc}>
                                 <span>This is a secure system and you will need to</span>
                                 <br></br>

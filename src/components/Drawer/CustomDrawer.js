@@ -8,6 +8,7 @@ import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -24,10 +25,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import styles from './CustomDrawer.module.css'
 
+import Stepper from '../../components/Stepper/Stepper'
 import DashBoard from '../../screens/mainApp/DashBoard/DashBoard'
 import BlankSamadhanID from '../../screens/mainApp/SamadhanID/BlankSamadhanID/BlankSamadhanID'
 import OrganisationSamadhanID from '../../screens/mainApp/SamadhanID/OrganisationSamadhanID/OrganisationSamadhanID'
 import SamadhanIDViewAll from '../../screens/mainApp/SamadhanID/SamadhanIDViewAll/SamadhanIDViewAll'
+import UserList from '../../screens/mainApp/UserList/UserList'
+import Organisation from '../../screens/mainApp/Organisation/OrganisationList/Organisation'
+import AddOrganisation from '../../screens/mainApp/Organisation/AddOrganisation/AddOrganisation'
+import TreeView from '../../components/TreeView/Treeview'
 
 const drawerWidth = 275;
 
@@ -118,6 +124,7 @@ export default function MiniDrawer() {
         setMasterSubmenu(false);
         setPropertiesSubmenu(false);
     };
+    const toggleIcon = open ? <CancelOutlinedIcon /> : <MenuIcon />
     const samadhanSubMenuListItems = samadhanSubMenu ? <List>
         <ListItem button key='SamadhanSubMenuItem1'>
             <div className={styles.subMenuItems}><ListItemText primary='Organisation Samadhan ID' /></div>
@@ -173,7 +180,7 @@ export default function MiniDrawer() {
                             edge="start"
                             className={clsx(classes.menuButton)}
                         >
-                            <MenuIcon />
+                            {toggleIcon}
                         </IconButton>
                     </div>
                 </Toolbar>
@@ -258,7 +265,11 @@ export default function MiniDrawer() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <SamadhanIDViewAll />
+                {/* <AddOrganisation /> */}
+                {/* <Stepper /> */}
+                {/* <TreeView /> */}
+                {/* <UserList /> */}
+                <Organisation />
             </main>
         </div >
     );

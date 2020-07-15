@@ -1,0 +1,18 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.detailsDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.switchDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
