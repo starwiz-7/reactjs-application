@@ -4,8 +4,26 @@
     height: 100%;
     padding: 2%;
   }
+.avatarDiv{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    margin: 1% 0;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.avatarContainer {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px;
+}
+.avatar{
+    margin-right: 3%;
+}
 .container{
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -19,7 +37,6 @@
   align-content: center;
 }
 .title {
-  padding-bottom:3% ;
   display: flex;
   justify-content: flex-start;
   align-items: center;

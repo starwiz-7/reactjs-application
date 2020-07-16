@@ -34,8 +34,11 @@ import UserList from '../../screens/mainApp/UserList/UserList'
 import Organisation from '../../screens/mainApp/Organisation/OrganisationList/Organisation'
 import AddOrganisation from '../../screens/mainApp/Organisation/AddOrganisation/AddOrganisation'
 import TreeView from '../../components/TreeView/Treeview'
+import ProfileStepper from '../../components/ProfileStepper/Stepper'
+import Attendance from '../../screens/mainApp/Attendance/Attendance'
+import Language from '../../screens/mainApp/Master/Language/Language'
 
-const drawerWidth = 275;
+const drawerWidth = 270;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -245,6 +248,18 @@ export default function MiniDrawer() {
                         </IconButton>
                     </ListItem>
                     {propertiesSubMenuListItems}
+                    <ListItem button key='Inventory'>
+                        <ListItemIcon><img src={taxation} alt='Inventory' /></ListItemIcon>
+                        <ListItemText primary='Inventory' />
+                    </ListItem>
+                    <ListItem button key='Package'>
+                        <ListItemIcon><img src={taxation} alt='Package' /></ListItemIcon>
+                        <ListItemText primary='Package' />
+                    </ListItem>
+                    <ListItem button key='Attendance'>
+                        <ListItemIcon><img src={taxation} alt='Attendance' /></ListItemIcon>
+                        <ListItemText primary='Attendance' />
+                    </ListItem>
                     <ListItem button key='Visualise'>
                         <ListItemIcon><img src={taxation} alt='Visualise' /></ListItemIcon>
                         <ListItemText primary='Visualise' />
@@ -269,7 +284,10 @@ export default function MiniDrawer() {
                 {/* <Stepper /> */}
                 {/* <TreeView /> */}
                 {/* <UserList /> */}
-                <Organisation />
+                {/* <Organisation /> */}
+                {/* <ProfileStepper /> */}
+                {/* <Attendance /> */}
+                <Language />
             </main>
         </div >
     );
