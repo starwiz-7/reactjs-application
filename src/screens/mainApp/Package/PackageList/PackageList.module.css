@@ -13,7 +13,7 @@
   }
   .tableDiv {
     background-color: white;
-    margin-top: 5%;
+    margin-top: 2%;
     padding: 0 1.5%;
     height: 80%;
     display: flex;
@@ -52,12 +52,6 @@
     justify-content: space-between;
     width: 60%;
   }
-.buttonAndFilter{
-    display: flex;
-    width: 22%;
-    flex-direction: row;
-    justify-content: space-between;
-}
   @media (min-width: 1441px) and (max-width: 2560px) {
     .searchAndDrop {
       width: 40%;

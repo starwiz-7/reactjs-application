@@ -37,6 +37,18 @@ import TreeView from '../../components/TreeView/Treeview'
 import ProfileStepper from '../../components/ProfileStepper/Stepper'
 import Attendance from '../../screens/mainApp/Attendance/Attendance'
 import Language from '../../screens/mainApp/Master/Language/Language'
+import Module from '../../screens/mainApp/Master/Module/Module'
+import Country from '../../screens/mainApp/Master/Country/Country'
+import State from '../../screens/mainApp/Master/State/State'
+import Inventory from '../../screens/mainApp/Inventory/InventoryList/Inventory'
+import AddInventory from '../../screens/mainApp/Inventory/AddInventory/AddInventory'
+import Package from '../../screens/mainApp/Package/PackageList/PackageList'
+import AddPackage from '../../screens/mainApp/Package/AddPackage/AddPackage'
+import Properties from '../../screens/mainApp/Properties/PropertyList/AllProperties/AllProperties'
+import AddProperty from '../../screens/mainApp/Properties/PropertyList/AddProperty/AddProperty'
+import AddJob from '../../screens/mainApp/Properties/JobList/AddJob/AddJob'
+
+
 
 const drawerWidth = 270;
 
@@ -110,7 +122,6 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
     },
 }));
 
@@ -287,7 +298,16 @@ export default function MiniDrawer() {
                 {/* <Organisation /> */}
                 {/* <ProfileStepper /> */}
                 {/* <Attendance /> */}
-                <Language />
+                {/* <Language /> */}
+                {/* <Module /> */}
+                {/* <Country /> */}
+                {/* <State /> */}
+                {/* <Inventory /> */}
+                {/* <AddInventory /> */}
+                {/* <Package /> */}
+                {/* <Properties /> */}
+                {/* <AddProperty /> */}
+                <AddJob />
             </main>
         </div >
     );

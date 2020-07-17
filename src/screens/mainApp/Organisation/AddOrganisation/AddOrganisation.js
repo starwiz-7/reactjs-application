@@ -31,7 +31,7 @@ export default function AddOrganisation(props) {
     const [checkState, setCheckState] = React.useState({
         checkedA: true,
         checkedB: true,
-        checkedC:true
+        checkedC: true
     });
 
     const handleChange = (event) => {
