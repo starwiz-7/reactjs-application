@@ -54,7 +54,7 @@ export default function OrganisationSamadhanID() {
                                     <DropdownItem>Quo Action</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                            <Button variant="contained" style={{ backgroundColor: '#21034B', color: 'white', borderRadius: '20px' }}>
+                            <Button variant="contained" style={{ backgroundColor: '#43435d', color: 'white', borderRadius: '20px' }}>
                                 Search
                         </Button>
                         </div>

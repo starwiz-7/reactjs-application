@@ -294,7 +294,7 @@ export default function MiniDrawer() {
                 {/* <AddOrganisation /> */}
                 {/* <Stepper /> */}
                 {/* <TreeView /> */}
-                {/* <UserList /> */}
+                <UserList />
                 {/* <Organisation /> */}
                 {/* <ProfileStepper /> */}
                 {/* <Attendance /> */}
@@ -307,7 +307,7 @@ export default function MiniDrawer() {
                 {/* <Package /> */}
                 {/* <Properties /> */}
                 {/* <AddProperty /> */}
-                <AddJob />
+                {/* <AddJob /> */}
             </main>
         </div >
     );

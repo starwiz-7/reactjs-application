@@ -1,0 +1,6 @@
+export const TABLE_HEADER = '#F5F6FA'
+export const BACKGROUND = '#F9F9F9'
+export const SEARCH_BUTTON = '#43425D'
+export const INVITE_USER = '#0CD241'
+export const SIGN_IN = '#F2134F'
+export const PAGINATION_COLOR = '#3B86FF'
