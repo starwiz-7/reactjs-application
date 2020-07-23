@@ -1,8 +1,9 @@
-.main{
+.main {
     display: flex;
     flex-direction: column;
 }
-.title{
+
+.title {
     margin-left: 2%;
     display: flex;
     justify-content: flex-start;
@@ -10,7 +11,8 @@
     font-size: xx-large;
     font-weight: 500;
 }
-.grid{
+
+.grid {
     display: flex;
     justify-content: flex-start;
     align-content: space-between;
@@ -19,20 +21,23 @@
     flex-wrap: wrap;
     flex: 1;
 }
-.titleAndSearch{
+
+.titleAndSearch {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
     padding-right: 5%;
 }
-.searchAndButton{
+
+.searchAndButton {
     display: flex;
     width: 50%;
     flex-direction: row;
     align-items: flex-end;
 }
-.searchBar{
+
+.searchBar {
     background-color: white;
     width: 60%;
     display: flex;

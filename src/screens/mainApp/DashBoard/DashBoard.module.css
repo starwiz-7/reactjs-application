@@ -1,13 +1,15 @@
-.title{
+.title {
+    margin-top: 3%;
     margin-left: 2%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-size: xx-large;
-    font-weight: 500;
+    font-family: Sans-Pro;
+    color: #43425D;
 }
 
-.grid{
+.grid {
     display: flex;
     justify-content: flex-start;
     align-content: space-between;
