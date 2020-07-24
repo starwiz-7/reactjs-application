@@ -16,10 +16,15 @@ import {
 	DropdownMenu,
 	DropdownItem,
 } from "reactstrap";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
@@ -58,19 +63,28 @@ const GreenCheckbox = withStyles({
 
 export default function Language() {
 	const classes = useStyles();
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
-
+	const [state, setState] = React.useState({
+		value: "",
+	});
+	const handleChange = (event) => {
+		const name = event.target.name;
+		setState({
+			...state,
+			[name]: event.target.value,
+		});
+	};
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
 	const [check, setCheck] = useState(false);
-	const handleChange = () => setCheck(!check);
+	const [text_disabled, text_enabled] = useState(true);
+
+	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "light" }}>Master /</span>
-				<span style={{ fontWeight: "light", color: "#43425D" }}>
+				<span style={{ fontWeight: "lighter" }}>Master /</span>
+				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
 					State
 				</span>
 			</div>
@@ -79,15 +93,22 @@ export default function Language() {
 					<div className={styles.searchAndDrop}>
 						<div>
 							<div className={styles.searchBar}>
-								<SearchIcon />
 								<TextField
 									id="standard-search"
-									label="Search..."
+									size="small"
 									type="search"
-									InputProps={{ disableUnderline: true }}
+									variant="outlined"
 									style={{
 										borderColor: "#F5F6FA",
-										borderRadius: "1px",
+										borderRadius: "4px",
+										marginBottom: "5%",
+									}}
+									InputProps={{
+										startAdornment: icon,
+										placeholder: "Search..",
+										classes: { input: classes.input },
+										color: "#4D4F5C",
+										focused: classes.focused,
 									}}
 								/>
 							</div>
@@ -96,11 +117,14 @@ export default function Language() {
 							<Button
 								variant="contained"
 								style={{
-									backgroundColor: "#4d4f5c",
+									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "20px",
 									textTransform: "none",
-									width: "35%",
+									width: "45%",
+									fontWeight: "lighter",
+									marginBottom: "3%",
+									height: "90%",
 								}}
 							>
 								Search
@@ -108,28 +132,34 @@ export default function Language() {
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
-						<Dropdown isOpen={dropdownOpen} toggle={toggle}>
-							<DropdownToggle
-								caret
-								style={{
-									backgroundColor: "white",
-									color: "#4D4F5C",
-									borderColor: "#D7DAE2",
-									textAlign: "left",
-									width: "130%",
-								}}
+						<FormControl variant="outlined">
+							<InputLabel
+								htmlFor="outlined-age-native-simple"
+								style={{ alignText: "center" }}
 							>
 								Filter
-							</DropdownToggle>
-							<DropdownMenu>
-								<DropdownItem header>Actions</DropdownItem>
-								<DropdownItem>Some Action</DropdownItem>
-								<DropdownItem>Action</DropdownItem>
-								<DropdownItem>Foo Action</DropdownItem>
-								<DropdownItem>Bar Action</DropdownItem>
-								<DropdownItem>Quo Action</DropdownItem>
-							</DropdownMenu>
-						</Dropdown>
+							</InputLabel>
+							<Select
+								native
+								value={state.age}
+								onChange={handleChange}
+								style={{
+									width: "120%",
+									maxHeight: "80%",
+									marginBottom: "5%",
+								}}
+								label="Filter"
+								inputProps={{
+									name: "Filter",
+									id: "outlined-age-native-simple",
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value={10}>Ten</option>
+								<option value={20}>Twenty</option>
+								<option value={30}>Thirty</option>
+							</Select>
+						</FormControl>
 						<Button
 							variant="contained"
 							color="secondary"
@@ -137,7 +167,9 @@ export default function Language() {
 							style={{
 								textTransform: "none",
 								textAlign: "center",
-								// width: "10%",
+								width: "45%",
+								// height: "95%",
+								marginBottom: "3.2%",
 							}}
 						>
 							Add new state
@@ -151,7 +183,18 @@ export default function Language() {
 							<TextField
 								className={classes.root}
 								variant="outlined"
+								label="Country Name"
+								style={{ width: "80%" }}
+								onChange={(text) =>
+									text_enabled(!text.target.value)
+								}
+							/>
+							<TextField
+								className={classes.root}
+								variant="outlined"
 								label="State Name"
+								disabled={text_disabled}
+								InputProps={{ readOnly: { text_disabled } }}
 								style={{ width: "80%" }}
 							/>
 						</form>

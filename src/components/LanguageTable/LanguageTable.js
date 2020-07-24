@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import EditIcon from "@material-ui/icons/Edit";
+import edit from "./edit.png";
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -20,7 +20,13 @@ function createData(name, calories, fat, carbs, protein) {
 	return { name, calories, fat, carbs, protein };
 }
 
-const rows = [createData("Frozen yoghurt", 159, 6.0, 24, 4.0)];
+const rows = [
+	createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+	createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+	createData("Eclair", 262, 16.0, 24, 6.0),
+	createData("Cupcake", 305, 3.7, 67, 4.3),
+	createData("Gingerbread", 356, 16.0, 49, 3.9),
+];
 
 export default function SimpleTable1() {
 	const classes = useStyles();
@@ -33,46 +39,28 @@ export default function SimpleTable1() {
 				<TableHead style={{ backgroundColor: "#F5F6FA" }}>
 					<TableRow>
 						<TableCell
+							align="left"
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
-							JOB TITLE
+							LANGUAGE NAME
 						</TableCell>
+						<TableCell
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							LANGUAGE CODE
+						</TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
-							ASSOCIATE
+							STATUS
 						</TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							START DATE
-						</TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							END DATE
-						</TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							NFC TAGS(ASSIGNED)
-						</TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							NFC TAGS(PROCESSED)
-						</TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							JOB STATUS
-						</TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -80,7 +68,6 @@ export default function SimpleTable1() {
 						<TableRow key={row.name}>
 							<TableCell
 								align="left"
-								component="th"
 								scope="row"
 								style={{
 									color: "#4D4F5C",
@@ -88,7 +75,7 @@ export default function SimpleTable1() {
 										"Regular 13px/20px Source Sans Pro",
 								}}
 							>
-								Demo Title
+								English
 							</TableCell>
 							<TableCell
 								align="center"
@@ -98,57 +85,33 @@ export default function SimpleTable1() {
 										"Regular 13px/20px Source Sans Pro",
 								}}
 							>
-								Demo Associate
+								EN
 							</TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
 							<TableCell
 								align="center"
 								style={{
-									color: "#4D4F5C",
+									color: "#707070",
 									fontFamily:
 										"Regular 13px/20px Source Sans Pro",
 								}}
 							>
-								00/00/0000
+								INACTIVE
 							</TableCell>
-							<TableCell
-								align="center"
-								style={{
-									color: "#4D4F5C",
-									fontFamily:
-										"Regular 13px/20px Source Sans Pro",
-								}}
-							>
-								00/00/0000
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="justify" padding="checkbox">
+								<DeleteForeverIcon
+									style={{
+										padding: "none",
+										cursor: "pointer",
+										color: "#43425D",
+									}}
+								/>
 							</TableCell>
-							<TableCell
-								align="center"
-								style={{
-									color: "#4D4F5C",
-									fontFamily:
-										"Regular 13px/20px Source Sans Pro",
-								}}
-							>
-								Assigned
-							</TableCell>
-							<TableCell
-								align="center"
-								style={{
-									color: "#4D4F5C",
-									fontFamily:
-										"Regular 13px/20px Source Sans Pro",
-								}}
-							>
-								processed
-							</TableCell>
-							<TableCell
-								align="center"
-								style={{
-									color: "#03C903",
-									font: "Semibold 13px/20px Source Sans Pro",
-									fontWeight: "bold",
-								}}
-							>
-								ACTIVE
+							<TableCell align="left" padding="checkbox">
+								<img src={edit} alt="Edit" />
 							</TableCell>
 						</TableRow>
 					))}

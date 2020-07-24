@@ -445,7 +445,7 @@ export default function MiniDrawer() {
 				{/* <Attendance /> */}
 				{/* <Language /> */}
 				{/* <Module /> */}
-				{/* {<Country />} */}
+				{<Country />}
 				{/* <State /> */}
 				{/* <City /> */}
 				{/* <Inventory /> */}
@@ -462,7 +462,7 @@ export default function MiniDrawer() {
 				{/* <CustomizedInputs /> */}
 				{/* <BlankSamadhanID /> */}
 				{/* <JobCreation /> */}
-				<Initialisation />
+				{/* <Initialisation /> */}
 			</main>
 		</div>
 	);

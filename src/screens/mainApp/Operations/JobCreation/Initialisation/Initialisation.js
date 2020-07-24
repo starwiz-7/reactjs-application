@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
 		"& > *": {
 			margin: theme.spacing(1),
 		},
+		"& .Mui-focused": {
+			borderColor: "#F5F6FA",
+		},
 		"& .MuiTextField-root": {
 			margin: theme.spacing(1),
 			width: "30ch",
@@ -38,6 +41,14 @@ const useStyles = makeStyles((theme) => ({
 		"& .MuiPagination-root": {
 			margin: theme.spacing(3),
 			color: "standard",
+		},
+		focused: {
+			borderColor: "#F5F6FA",
+		},
+		input: {
+			"&::placeholder": {
+				color: "#4D4F5C",
+			},
 		},
 		display: "flex",
 		flexDirection: "column",
@@ -64,7 +75,7 @@ export default function Language() {
 	const toggleModal = () => setModal(!modal);
 	const [check, setCheck] = useState(false);
 	const handleChange = () => setCheck(!check);
-
+	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
@@ -72,7 +83,7 @@ export default function Language() {
 					Operations / Job Creation /
 				</span>
 				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
-					Initialisation
+					&nbsp;Initialisation
 				</span>
 			</div>
 			<div className={styles.tableDiv}>
@@ -80,15 +91,21 @@ export default function Language() {
 					<div className={styles.searchAndDrop}>
 						<div>
 							<div className={styles.searchBar}>
-								<SearchIcon style={{ color: "#BCBCCB" }} />
 								<TextField
 									id="standard-search"
-									label="Search..."
+									size="small"
 									type="search"
-									InputProps={{ disableUnderline: true }}
+									variant="outlined"
 									style={{
 										borderColor: "#F5F6FA",
-										borderRadius: "1px",
+										borderRadius: "4px",
+									}}
+									InputProps={{
+										startAdornment: icon,
+										placeholder: "Search..",
+										classes: { input: classes.input },
+										color: "#4D4F5C",
+										focused: classes.focused,
 									}}
 								/>
 							</div>
@@ -118,9 +135,7 @@ export default function Language() {
 								textAlign: "center",
 								// width: "60%",
 								alignSelf: "right",
-								marginLeft: "55%",
-								position: "relative",
-								right: "0px",
+								marginLeft: "48%",
 							}}
 						>
 							Create new job

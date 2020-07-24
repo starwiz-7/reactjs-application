@@ -11,18 +11,17 @@
     justify-content: flex-start;
     align-items: center;
     font-size: xx-large;
-    margin-bottom: 0px;
 }
 
 .tableDiv {
     background-color: white;
-    margin-top: 5%;
+    margin-left: 2%;
+    margin-top: 1.5%;
     padding: 0 1.5%;
-    height: 80%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 2%;
 }
 
 .searchBar {
@@ -63,14 +62,14 @@
 
 .buttonAndFilter {
     display: flex;
-    width: 22%;
+    width: 30%;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 }
 
 @media (min-width: 1441px) and (max-width: 2560px) {
     .searchAndDrop {
-        width: 25%;
+        width: 40%;
     }
     .dropDownDiv {
         width: 60%;
@@ -79,7 +78,7 @@
 
 @media (min-width: 1025px) and (max-width: 1440px) {
     .searchAndDrop {
-        width: 30%;
+        width: 50%;
     }
     .dropDownDiv {
         width: 50%;
@@ -88,7 +87,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .searchAndDrop {
-        width: 50%;
+        width: 70%;
     }
     .dropDownDiv {
         width: 60%;
@@ -97,7 +96,7 @@
 
 @media (min-width: 426px) and (max-width: 768px) {
     .searchAndDrop {
-        width: 50%;
+        width: 70%;
     }
     .dropDownDiv {
         width: 60%;

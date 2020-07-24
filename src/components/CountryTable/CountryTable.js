@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import {
+	Modal,
+	ModalHeader,
+	ModalBody,
+	ModalFooter,
+	Input,
+	Label,
+	Form,
+	FormGroup,
+} from "reactstrap";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,6 +18,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import EditIcon from "@material-ui/icons/Edit";
 import edit from "./edit.png";
 const useStyles = makeStyles({
@@ -43,18 +55,30 @@ export default function SimpleTable1() {
 							align="left"
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
-							CITY NAME
+							COUNTRY NAME
 						</TableCell>
 						<TableCell
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
 							CODE
 						</TableCell>
+						<TableCell
+							align="center"
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							STATE
+						</TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
-						<TableCell align="center"></TableCell>
+						<TableCell
+							align="center"
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							CITY
+						</TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
@@ -74,14 +98,42 @@ export default function SimpleTable1() {
 										"Regular 13px/20px Source Sans Pro",
 								}}
 							>
-								California
+								India
+							</TableCell>
+							<TableCell
+								align="left"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								+91
+							</TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								UP
 							</TableCell>
 							<TableCell align="center"></TableCell>
 							<TableCell align="center"></TableCell>
 							<TableCell align="center"></TableCell>
 							<TableCell align="center"></TableCell>
-							<TableCell align="center"></TableCell>
-							<TableCell align="center"></TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								Prayagraj
+							</TableCell>
 							<TableCell align="center"></TableCell>
 							<TableCell align="center"></TableCell>
 							<TableCell align="justify" padding="checkbox">
@@ -94,8 +146,51 @@ export default function SimpleTable1() {
 								/>
 							</TableCell>
 							<TableCell align="left" padding="checkbox">
-								<img src={edit} alt="Edit" />
+								<img
+									src={edit}
+									alt="Edit"
+									style={{
+										cursor: "pointer",
+									}}
+									onClick={toggleModal}
+								/>
 							</TableCell>
+							<Modal
+								isOpen={modal}
+								toggle={toggleModal}
+								centered={true}
+							>
+								<ModalHeader toggle={toggleModal}>
+									Add Country
+								</ModalHeader>
+								<ModalBody>
+									<form className={classes.root}>
+										<TextField
+											className={classes.root}
+											variant="outlined"
+											label="Country Name"
+											style={{ width: "80%" }}
+										/>
+									</form>
+								</ModalBody>
+								<ModalFooter>
+									<Button
+										variant="contained"
+										color="primary"
+										onClick={toggleModal}
+										style={{ marginRight: "2%" }}
+									>
+										Cancel
+									</Button>
+									<Button
+										variant="contained"
+										color="secondary"
+										onClick={toggleModal}
+									>
+										Save
+									</Button>
+								</ModalFooter>
+							</Modal>
 						</TableRow>
 					))}
 				</TableBody>

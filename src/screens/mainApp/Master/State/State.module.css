@@ -62,9 +62,9 @@
 
 .buttonAndFilter {
     display: flex;
-    width: 22%;
+    width: 30%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 @media (min-width: 1441px) and (max-width: 2560px) {
