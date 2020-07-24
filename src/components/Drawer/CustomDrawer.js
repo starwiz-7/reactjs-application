@@ -312,8 +312,8 @@ export default function MiniDrawer() {
 							{samadhanSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-								<ChevronRightIcon />
-							)}
+									<ChevronRightIcon />
+								)}
 						</IconButton>
 					</ListItem>
 					{samadhanSubMenuListItems}
@@ -330,8 +330,8 @@ export default function MiniDrawer() {
 							{masterSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-								<ChevronRightIcon />
-							)}
+									<ChevronRightIcon />
+								)}
 						</IconButton>
 					</ListItem>
 					{masterSubMenuListItems}
@@ -372,8 +372,8 @@ export default function MiniDrawer() {
 							{propertiesSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-								<ChevronRightIcon />
-							)}
+									<ChevronRightIcon />
+								)}
 						</IconButton>
 					</ListItem>
 					{propertiesSubMenuListItems}
@@ -428,7 +428,7 @@ export default function MiniDrawer() {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				{/* <AddOrganisation /> */}
-				{/* <Stepper /> */}
+				<Stepper />
 				{/* <TreeView /> */}
 				{/* <UserList /> */}
 				{/* <Organisation /> */}
@@ -438,7 +438,7 @@ export default function MiniDrawer() {
 				{/* <Language /> */}
 				{/* <Module /> */}
 				{/* {<Country />} */}
-				<State />
+				{/* <State /> */}
 				{/* <City /> */}
 				{/* <Inventory /> */}
 				{/* <AddInventory /> */}

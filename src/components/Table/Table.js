@@ -35,20 +35,20 @@ export default function SimpleTable() {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead style={{ backgroundColor: '#d3d3d3' }}>
                     <TableRow>
-                        <TableCell align="center" style={{textAlign:'center'}}>NUMBER OF CARDS</TableCell>
-                        <TableCell align="center">ORGANISATION</TableCell>
-                        <TableCell align="center">DATE</TableCell>
+                        <TableCell align="left">NUMBER OF CARDS</TableCell>
+                        <TableCell align="left">ORGANISATION</TableCell>
+                        <TableCell align="left">DATE</TableCell>
                         <TableCell align="center"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.name}>
-                            <TableCell align="center" component="th" scope="row">
+                            <TableCell align="left" component="th" scope="row">
                                 100
                             </TableCell>
-                            <TableCell align="center">ICIL</TableCell>
-                            <TableCell align="center">12-02-2020</TableCell>
+                            <TableCell align="left">ICIL</TableCell>
+                            <TableCell align="left">12-02-2020</TableCell>
                             <TableCell align="center"><a href='#' style={{textAlign:'center'}}>View All</a></TableCell>
                         </TableRow>
                     ))}

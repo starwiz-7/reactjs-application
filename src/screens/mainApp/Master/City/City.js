@@ -9,13 +9,13 @@ import {
 	Form,
 	FormGroup,
 } from "reactstrap";
-import styles from "../State/State.module.css";
 import {
 	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
 	DropdownItem,
 } from "reactstrap";
+import styles from './City.module.css'
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -80,21 +80,19 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "bolder" }}>Master /</span>
-				<span style={{ fontWeight: "lighter", color: "gray" }}>
-					City
-				</span>
+				<span>Master/City</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
 						<div>
 							<div className={styles.searchBar}>
-								<SearchIcon />
+								<SearchIcon style={{color:'gray'}}/>
 								<TextField
 									id="standard-search"
 									label="Search..."
 									type="search"
+									size='small'
 									InputProps={{ disableUnderline: true }}
 								/>
 							</div>
@@ -106,6 +104,7 @@ export default function Language() {
 									backgroundColor: "#4d4f5c",
 									color: "white",
 									borderRadius: "20px",
+									textTransform:'none'
 								}}
 							>
 								Search
@@ -115,12 +114,13 @@ export default function Language() {
 					<div className={styles.buttonAndFilter}>
 						<Dropdown isOpen={dropdownOpen} toggle={toggle}>
 							<DropdownToggle
+							className={styles.caret}
 								caret
 								style={{
 									backgroundColor: "white",
 									color: "grey",
-									width: "120%",
-									textAlign: "center",
+									width: "150%",
+									textAlign: "left",
 								}}
 							>
 								Filter
@@ -141,6 +141,7 @@ export default function Language() {
 							style={{
 								fontSize: "12px",
 								width: "50%",
+								textTransform:'none'
 							}}
 						>
 							Add new city
@@ -148,13 +149,13 @@ export default function Language() {
 					</div>
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
-					<ModalHeader toggle={toggleModal}>Add State</ModalHeader>
+					<ModalHeader toggle={toggleModal}>Add City</ModalHeader>
 					<ModalBody className={styles.modalContainer}>
 						<form className={classes.root}>
 							<TextField
 								className={classes.root}
 								variant="outlined"
-								label="State Name"
+								label="City Name"
 								style={{ width: "80%" }}
 							/>
 						</form>

@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import history from './history'
 
 import authReducer from './store/reducers/auth';
 
@@ -22,11 +24,13 @@ const store = createStore(rootReducer, composeEnhancers(
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+      <BrowserRouter history={history}>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
