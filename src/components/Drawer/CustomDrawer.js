@@ -52,6 +52,8 @@ import Properties from "../../screens/mainApp/Properties/PropertyList/AllPropert
 import AddProperty from "../../screens/mainApp/Properties/PropertyList/AddProperty/AddProperty";
 import AddJob from "../../screens/mainApp/Properties/JobList/AddJob/AddJob";
 import City from "../../screens/mainApp/Master/City/City";
+import JobCreation from "../../screens/mainApp/Operations/JobCreation/JobCreation";
+import Initialisation from "../../screens/mainApp/Operations/JobCreation/Initialisation/Initialisation";
 
 import Login from "../../screens/authentication/Login/Login";
 import ResPassword from "../../screens/authentication/ResetPassword/ResetPassword";
@@ -91,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
 		flexShrink: 0,
 		whiteSpace: "nowrap",
 		overflow: "hidden",
+		boxShadow: "2px 2px 2px 2px #000",
 	},
 	drawerOpen: {
 		width: drawerWidth,
@@ -245,6 +248,7 @@ export default function MiniDrawer() {
 							onClick={toggleDrawer}
 							edge="start"
 							className={clsx(classes.menuButton)}
+							style={{ outline: "none" }}
 						>
 							{toggleIcon}
 						</IconButton>
@@ -260,6 +264,7 @@ export default function MiniDrawer() {
 								style={{
 									color: "#BCBCCB",
 									cursor: "pointer",
+									outline: "none",
 								}}
 							/>
 						</Badge>
@@ -286,16 +291,12 @@ export default function MiniDrawer() {
 						[classes.drawerClose]: !open,
 					}),
 				}}
-				style={{
-					overflowY: "scroll",
-					overflowX: "hidden",
-				}}
 			>
 				<div className={classes.toolbar}></div>
 				<List>
 					<ListItem button key="Dashboard">
 						<ListItemIcon>
-							<HomeOutlinedIcon />
+							<HomeOutlinedIcon style={{ color: "#43425D" }} />
 						</ListItemIcon>
 						<ListItemText primary="Dashboard" />
 					</ListItem>
@@ -305,6 +306,7 @@ export default function MiniDrawer() {
 						</ListItemIcon>
 						<ListItemText primary="Samadhan ID" />
 						<IconButton
+							style={{ outline: "none" }}
 							onClick={() => {
 								setSamadhanSubmenu(!samadhanSubMenu);
 							}}
@@ -319,10 +321,13 @@ export default function MiniDrawer() {
 					{samadhanSubMenuListItems}
 					<ListItem button key="Master">
 						<ListItemIcon>
-							<EqualizerOutlinedIcon />
+							<EqualizerOutlinedIcon
+								style={{ color: "#43425D" }}
+							/>
 						</ListItemIcon>
 						<ListItemText primary="Master" />
 						<IconButton
+							style={{ outline: "none" }}
 							onClick={() => {
 								setMasterSubmenu(!masterSubMenu);
 							}}
@@ -349,7 +354,9 @@ export default function MiniDrawer() {
 					</ListItem>
 					<ListItem button key="Survey">
 						<ListItemIcon>
-							<EqualizerOutlinedIcon />
+							<EqualizerOutlinedIcon
+								style={{ color: "#43425D" }}
+							/>
 						</ListItemIcon>
 						<ListItemText primary="Survey" />
 					</ListItem>
@@ -365,6 +372,7 @@ export default function MiniDrawer() {
 						</ListItemIcon>
 						<ListItemText primary="Properties" />
 						<IconButton
+							style={{ outline: "none" }}
 							onClick={() => {
 								setPropertiesSubmenu(!propertiesSubMenu);
 							}}
@@ -453,6 +461,8 @@ export default function MiniDrawer() {
 				{/* <SuccPassword /> */}
 				{/* <CustomizedInputs /> */}
 				{/* <BlankSamadhanID /> */}
+				{/* <JobCreation /> */}
+				{/* <Initialisation /> */}
 			</main>
 		</div>
 	);

@@ -8,7 +8,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import EditIcon from "@material-ui/icons/Edit";
 import edit from "./edit.png";
 const useStyles = makeStyles({
 	table: {
@@ -43,20 +42,23 @@ export default function SimpleTable1() {
 							align="left"
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
-							STATE NAME
-                        </TableCell>
+							LANGUAGE NAME
+						</TableCell>
+						<TableCell
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							LANGUAGE CODE
+						</TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
-							CODE
-                        </TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							CITY
-                        </TableCell>
+							STATUS
+						</TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 					</TableRow>
@@ -66,7 +68,6 @@ export default function SimpleTable1() {
 						<TableRow key={row.name}>
 							<TableCell
 								align="left"
-								component="th"
 								scope="row"
 								style={{
 									color: "#4D4F5C",
@@ -74,15 +75,38 @@ export default function SimpleTable1() {
 										"Regular 13px/20px Source Sans Pro",
 								}}
 							>
-								California
-                            </TableCell>
-							<TableCell align="center">401101</TableCell>
-							<TableCell align="center">Los Angeles</TableCell>
+								English
+							</TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								EN
+							</TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#707070",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								INACTIVE
+							</TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
 							<TableCell align="justify" padding="checkbox">
 								<DeleteForeverIcon
 									style={{
 										padding: "none",
 										cursor: "pointer",
+										color: "#43425D",
 									}}
 								/>
 							</TableCell>

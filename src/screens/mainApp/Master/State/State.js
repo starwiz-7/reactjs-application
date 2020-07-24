@@ -64,8 +64,7 @@ const GreenCheckbox = withStyles({
 export default function Language() {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
-		age: "",
-		name: "hai",
+
 	});
 	const handleChange = (event) => {
 		const name = event.target.name;
@@ -77,6 +76,9 @@ export default function Language() {
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
 	const [check, setCheck] = useState(false);
+
+	const [text_disabled, text_enabled] = useState(true);
+
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (
@@ -137,7 +139,9 @@ export default function Language() {
 								style={{ alignText: "center" }}
 							>
 								Filter
-                            </InputLabel>
+
+							</InputLabel>
+
 							<Select
 								native
 								value={state.age}
@@ -182,7 +186,18 @@ export default function Language() {
 							<TextField
 								className={classes.root}
 								variant="outlined"
+								label="Country Name"
+								style={{ width: "80%" }}
+								onChange={(text) =>
+									text_enabled(!text.target.value)
+								}
+							/>
+							<TextField
+								className={classes.root}
+								variant="outlined"
 								label="State Name"
+								disabled={text_disabled}
+								InputProps={{ readOnly: { text_disabled } }}
 								style={{ width: "80%" }}
 							/>
 						</form>

@@ -43,20 +43,20 @@ export default function SimpleTable1() {
 							align="left"
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
-							STATE NAME
-                        </TableCell>
+							CITY NAME
+						</TableCell>
 						<TableCell
-							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
 							CODE
-                        </TableCell>
-						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
-						>
-							CITY
-                        </TableCell>
+						</TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
+						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 					</TableRow>
@@ -75,14 +75,21 @@ export default function SimpleTable1() {
 								}}
 							>
 								California
-                            </TableCell>
-							<TableCell align="center">401101</TableCell>
-							<TableCell align="center">Los Angeles</TableCell>
+							</TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
+							<TableCell align="center"></TableCell>
 							<TableCell align="justify" padding="checkbox">
 								<DeleteForeverIcon
 									style={{
 										padding: "none",
 										cursor: "pointer",
+										color: "#43425D",
 									}}
 								/>
 							</TableCell>

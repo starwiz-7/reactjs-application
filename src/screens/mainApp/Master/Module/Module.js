@@ -17,18 +17,17 @@ import {
 	DropdownItem,
 } from "reactstrap";
 import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
-import classNames from "classnames";
-import PropTypes from "prop-types";
+
 import ModuleTable from "../../../../components/ModuleTable/ModuleTable";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,23 +61,18 @@ const GreenCheckbox = withStyles({
 
 export default function Language() {
 	const classes = useStyles();
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-	const [state, setState] = React.useState({
-		age: "",
-	});
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
 	const [check, setCheck] = useState(false);
-	const handleChange = () => setCheck(!check);
+	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "bolder" }}>Master /</span>
-				<span style={{ fontWeight: "lighter", color: "gray" }}>
-					Module List
+				<span style={{ fontWeight: "lighter" }}>Master /</span>
+				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
+					&nbsp;Module List
 				</span>
 			</div>
 			<div className={styles.tableDiv}>
@@ -86,12 +80,23 @@ export default function Language() {
 					<div className={styles.searchAndDrop}>
 						<div>
 							<div className={styles.searchBar}>
-								<SearchIcon />
 								<TextField
 									id="standard-search"
-									label="Search..."
+									size="small"
 									type="search"
-									InputProps={{ disableUnderline: true }}
+									variant="outlined"
+									style={{
+										borderColor: "#F5F6FA",
+										borderRadius: "4px",
+										marginBottom: "5%",
+									}}
+									InputProps={{
+										startAdornment: icon,
+										placeholder: "Search..",
+										classes: { input: classes.input },
+										color: "#4D4F5C",
+										focused: classes.focused,
+									}}
 								/>
 							</div>
 						</div>
@@ -99,10 +104,14 @@ export default function Language() {
 							<Button
 								variant="contained"
 								style={{
-									backgroundColor: "#43425d",
+									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "20px",
-									opacity: "1",
+									textTransform: "none",
+									width: "45%",
+									fontWeight: "lighter",
+									marginBottom: "3%",
+									height: "90%",
 								}}
 							>
 								Search
@@ -112,65 +121,30 @@ export default function Language() {
 					<div className={styles.buttonAndFilter}>
 						<Button
 							variant="contained"
-							// color="secondary"
-							style={{
-								backgroundColor: "#f2134f",
-								color: "white",
-								width: "30%",
-							}}
+							color="secondary"
 							onClick={toggleModal}
+							style={{
+								textTransform: "none",
+								textAlign: "center",
+								width: "25%",
+								// height: "95%",
+								marginBottom: "3.2%",
+								marginLeft: "75%",
+							}}
 						>
 							Add
 						</Button>
 					</div>
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
-					<ModalHeader toggle={toggleModal}>Add Module</ModalHeader>
+					<ModalHeader toggle={toggleModal}>Add State</ModalHeader>
 					<ModalBody className={styles.modalContainer}>
 						<form className={classes.root}>
-							<FormControl
-								variant="outlined"
-								className={classes.root}
-								style={{ width: "80%" }}
-							>
-								<InputLabel htmlFor="outlined-age-native-simple">
-									{
-										<span className={styles.label}>
-											Module
-										</span>
-									}
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									label="Module"
-									inputProps={{
-										name: "age",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
 							<TextField
 								className={classes.root}
 								variant="outlined"
-								label="Module name"
+								label="State Name"
 								style={{ width: "80%" }}
-							/>
-							<FormControlLabel
-								control={
-									<GreenCheckbox
-										checked={check}
-										onChange={handleChange}
-										name="checkedG"
-									/>
-								}
-								label="is Active"
 							/>
 						</form>
 					</ModalBody>
@@ -195,19 +169,19 @@ export default function Language() {
 				<div className={styles.table}>
 					<ModuleTable />
 				</div>
-				<div className={classes.root}>
-					<Pagination
-						count={5}
-						shape="rounded"
-						color="primary"
-						variant="outlined"
-						style={{
-							color: "blue",
-							marginLeft: "75%",
-						}}
-					/>
-				</div>
+
+				<div className={classes.root}></div>
 			</div>
+			<Pagination
+				count={5}
+				shape="rounded"
+				color="primary"
+				variant="outlined"
+				style={{
+					marginTop: "2%",
+					marginLeft: "78%",
+				}}
+			/>
 		</div>
 	);
 }

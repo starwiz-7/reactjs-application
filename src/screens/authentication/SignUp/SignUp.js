@@ -78,9 +78,63 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const validEmailRegex = RegExp(
+	/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+const validateForm = (errors) => {
+	let valid = true;
+	Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+	return valid;
+};
+
 export default function Login(props) {
 	const classes = useStyles();
 	const [checked, setChecked] = useState(false);
+	const errors = useState([
+		{
+			fullName: "",
+			email: "",
+			password: "",
+		},
+	]);
+	const handleChange = (event) => {
+		event.preventDefault();
+		const { name, value } = event.target;
+		let errors = this.state.errors;
+
+		switch (name) {
+			case "fullName":
+				errors.fullName =
+					value.length < 5
+						? "Full Name must be at least 5 characters long!"
+						: "";
+				break;
+			case "email":
+				errors.email = validEmailRegex.test(value)
+					? ""
+					: "Email is not valid!";
+				break;
+			case "password":
+				errors.password =
+					value.length < 8
+						? "Password must be at least 8 characters long!"
+						: "";
+				break;
+			default:
+				break;
+		}
+
+		this.setState({ errors, [name]: value });
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (validateForm(this.state.errors)) {
+			console.info("Valid Form");
+		} else {
+			console.error("Invalid Form");
+		}
+	};
 	return (
 		<div>
 			<Container fluid={true}>
@@ -106,6 +160,7 @@ export default function Login(props) {
 								className={classes.root1}
 								Validate
 								autoComplete="off"
+								id="form1"
 							>
 								<div className={styles.row1}>
 									<TextField
@@ -124,6 +179,7 @@ export default function Login(props) {
 								className={classes.root2}
 								Validate
 								autoComplete="off"
+								id="form2"
 								style={{
 									width: "100%",
 									display: "grid",
@@ -143,10 +199,20 @@ export default function Login(props) {
 									<TextField
 										id="outlined-basic"
 										type="email"
+										name="email"
 										label="E-mail Address"
 										variant="outlined"
 										fullWidth={true}
+										onChange={this.handleChange}
 									/>
+									{errors.email.length > 0 && (
+										<span
+											className="error"
+											style={{ color: "black" }}
+										>
+											{errors.email}
+										</span>
+									)}
 								</div>
 								<div className={styles.row2}>
 									<TextField
@@ -160,10 +226,17 @@ export default function Login(props) {
 									<TextField
 										id="outlined-basic"
 										type="Password"
+										name="password"
 										label="Password"
 										variant="outlined"
 										fullWidth={true}
+										onChange={this.handleChange}
 									/>
+									{errors.password.length > 0 && (
+										<span className="error">
+											{errors.password}
+										</span>
+									)}
 								</div>
 								<div className={styles.row2}>
 									<TextField
@@ -196,6 +269,7 @@ export default function Login(props) {
 									color="secondary"
 									style={{ width: "54ch" }}
 									onClick={() => { }}
+
 								>
 									Sign Up
 								</Button>
