@@ -44,19 +44,19 @@ export default function SimpleTable1() {
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
 							STATE NAME
-						</TableCell>
+                        </TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
 							CODE
-						</TableCell>
+                        </TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
 							CITY
-						</TableCell>
+                        </TableCell>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
 					</TableRow>
@@ -75,7 +75,7 @@ export default function SimpleTable1() {
 								}}
 							>
 								California
-							</TableCell>
+                            </TableCell>
 							<TableCell align="center">401101</TableCell>
 							<TableCell align="center">Los Angeles</TableCell>
 							<TableCell align="justify" padding="checkbox">
@@ -87,13 +87,6 @@ export default function SimpleTable1() {
 								/>
 							</TableCell>
 							<TableCell align="left" padding="checkbox">
-								{/* <EditIcon
-									style={{
-										color: "#f2134f",
-										cursor: "pointer",
-									}}
-									onClick={toggleModal}
-								/> */}
 								<img src={edit} alt="Edit" />
 							</TableCell>
 						</TableRow>

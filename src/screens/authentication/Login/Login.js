@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Link, Redirect } from 'react-router-dom';
 import { Container } from "reactstrap";
 import { Row, Col } from "reactstrap";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import styles from "./Login.module.css";
 import {
 	TextField,
@@ -16,6 +19,9 @@ import Logo from "./images/Logo.png";
 import insta from "./images/asset-1@2x.png";
 import fb from "./images/asset-2@2x.png";
 import twitter from "./images/asset-6@2x.png";
+import { connect } from 'react-redux';
+
+import * as actions from '../../../store/actions/index';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -37,11 +43,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Login(props) {
+export function Login(props) {
 	const classes = useStyles();
 	const [checked, setChecked] = useState(false);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [isSignUp, setIsSignUp] = useState(false);
+	const [isLoading,setIsLoading] = useState(false)
 
 	const handleUsernameChange = (event) => {
 		setUsername(event.target.value);
@@ -57,10 +65,27 @@ export default function Login(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setIsLoading(true);
+		console.log(username,password,checked);
 		props.onAuth(username, password);
 	};
+
+	let authRedirect = null;
+	if (props.isAuthenticated) {
+		setIsLoading(false);
+		authRedirect = <Redirect to={props.authRedirectPath} />;
+	}
+
+	const backDrop = isLoading ? (
+		<Backdrop className={classes.backdrop} open={isLoading}>
+			<CircularProgress color="inherit" />
+		</Backdrop>
+	):null
+
 	return (
 		<div>
+			{authRedirect}
+			{backDrop}
 			<Container fluid={true}>
 				<Row>
 					<Col xs="7" className={styles.left}>
@@ -98,7 +123,7 @@ export default function Login(props) {
 							>
 								<TextField
 									required
-									id="outlined-required"
+									id="username"
 									label={
 										<span
 											className={
@@ -114,7 +139,7 @@ export default function Login(props) {
 									onChange={handleUsernameChange}
 								/>
 								<TextField
-									id="outlined-password-input"
+									id="password"
 									label={
 										<span
 											className={
@@ -139,7 +164,7 @@ export default function Login(props) {
 												className={styles.checkBox}
 												checked={checked}
 												onChange={handleChange}
-												name="checkedA"
+												name="remember me"
 											/>
 										}
 										label={
@@ -155,7 +180,9 @@ export default function Login(props) {
 											href="#"
 											className={styles.forgotPassword}
 										>
-											<span>Forgot Password?</span>
+											<Link to='/forgot-password' style={{ color: 'red' }}>
+												<span>Forgot Password?</span>
+											</Link>
 										</a>
 									</div>
 								</div>
@@ -176,7 +203,7 @@ export default function Login(props) {
 									href="#"
 									style={{ color: "red", fontWeight: "500" }}
 								>
-									SIGN UP
+									<Link to='/signup' style={{ color: 'red' }}>SIGN UP</Link>
 								</a>
 							</div>
 						</div>
@@ -212,3 +239,26 @@ export default function Login(props) {
 		</div>
 	);
 }
+
+
+const mapStateToProps = state => {
+	return {
+		loading: state.auth.loading,
+		error: state.auth.error,
+		isAuthenticated: state.auth.token !== null,
+		authRedirectPath: state.auth.authRedirectPath
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onAuth: (username, password) =>
+			dispatch(actions.auth(username, password)),
+		onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Login);

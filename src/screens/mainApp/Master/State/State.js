@@ -64,7 +64,7 @@ const GreenCheckbox = withStyles({
 export default function Language() {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
-		value: "",
+
 	});
 	const handleChange = (event) => {
 		const name = event.target.name;
@@ -76,6 +76,7 @@ export default function Language() {
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
 	const [check, setCheck] = useState(false);
+
 	const [text_disabled, text_enabled] = useState(true);
 
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
@@ -86,7 +87,7 @@ export default function Language() {
 				<span style={{ fontWeight: "lighter" }}>Master /</span>
 				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
 					State
-				</span>
+                </span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
@@ -128,7 +129,7 @@ export default function Language() {
 								}}
 							>
 								Search
-							</Button>
+                            </Button>
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
@@ -138,7 +139,9 @@ export default function Language() {
 								style={{ alignText: "center" }}
 							>
 								Filter
+
 							</InputLabel>
+
 							<Select
 								native
 								value={state.age}
@@ -173,7 +176,7 @@ export default function Language() {
 							}}
 						>
 							Add new state
-						</Button>
+                        </Button>
 					</div>
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
@@ -207,14 +210,14 @@ export default function Language() {
 							style={{ marginRight: "2%" }}
 						>
 							Cancel
-						</Button>
+                        </Button>
 						<Button
 							variant="contained"
 							color="secondary"
 							onClick={toggleModal}
 						>
 							Save
-						</Button>
+                        </Button>
 					</ModalFooter>
 				</Modal>
 				<div className={styles.table}>

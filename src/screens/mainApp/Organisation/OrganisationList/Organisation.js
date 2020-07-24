@@ -10,8 +10,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import Pagination from '@material-ui/lab/Pagination';
 
-import Table from "../../../../components/Table/Table";
+import Table from "../../../../components/OrganisationTable/OrganizationTable";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,7 +34,7 @@ export default function OrganisationSamadhanID() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "bolder" }}>Organisation List</span>
+				<span>Organisation List</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
@@ -62,7 +63,7 @@ export default function OrganisationSamadhanID() {
 										color: "#A4AFB7",
 									}}
 								>
-									Organisation
+									Status
 								</DropdownToggle>
 								<DropdownMenu>
 									<DropdownItem header>Actions</DropdownItem>
@@ -79,6 +80,7 @@ export default function OrganisationSamadhanID() {
 									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "17px",
+									textTransform: 'none'
 								}}
 							>
 								Search
@@ -93,14 +95,18 @@ export default function OrganisationSamadhanID() {
 								color: "white",
 								borderRadius: "5px",
 								fontSize: "15px",
+								textTransform: 'none'
 							}}
 						>
-							Add new Organisation
+							Add new organisation
 						</Button>
 					</div>
 				</div>
 				<div className={styles.table}>
 					<Table />
+				</div>
+				<div style={{ paddingTop:'2%',display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+					<Pagination count={10} variant="outlined" shape="rounded" color='primary'/>
 				</div>
 			</div>
 		</div>

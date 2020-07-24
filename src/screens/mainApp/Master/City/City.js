@@ -9,17 +9,21 @@ import {
 	Form,
 	FormGroup,
 } from "reactstrap";
+
 import styles from "./City.module.css";
+
 import {
 	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
 	DropdownItem,
 } from "reactstrap";
+
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -83,20 +87,26 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
+
 				<span style={{ fontWeight: "lighter" }}>Master /</span>
 				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
 					City
 				</span>
+
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
 						<div>
 							<div className={styles.searchBar}>
+
+								<SearchIcon style={{color:'gray'}}/>
+
 								<TextField
 									id="standard-search"
 									size="small"
 									type="search"
+
 									variant="outlined"
 									style={{
 										borderColor: "#F5F6FA",
@@ -110,6 +120,7 @@ export default function Language() {
 										color: "#4D4F5C",
 										focused: classes.focused,
 									}}
+
 								/>
 							</div>
 						</div>
@@ -120,11 +131,13 @@ export default function Language() {
 									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "20px",
+
 									textTransform: "none",
 									width: "45%",
 									fontWeight: "lighter",
 									marginBottom: "3%",
 									height: "90%",
+
 								}}
 							>
 								Search
@@ -132,6 +145,7 @@ export default function Language() {
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
+
 						<FormControl variant="outlined">
 							<InputLabel
 								htmlFor="outlined-age-native-simple"
@@ -152,6 +166,7 @@ export default function Language() {
 								inputProps={{
 									name: "Filter",
 									id: "outlined-age-native-simple",
+
 								}}
 							>
 								<option aria-label="None" value="" />
@@ -165,11 +180,13 @@ export default function Language() {
 							color="secondary"
 							onClick={toggleModal}
 							style={{
+
 								textTransform: "none",
 								textAlign: "center",
 								width: "45%",
 								// height: "95%",
 								marginBottom: "3.2%",
+
 							}}
 						>
 							Add new city
@@ -183,6 +200,7 @@ export default function Language() {
 							<TextField
 								className={classes.root}
 								variant="outlined"
+
 								label="Country Name"
 								style={{ width: "80%" }}
 								onChange={(text) =>
@@ -193,6 +211,7 @@ export default function Language() {
 								className={classes.root}
 								variant="outlined"
 								label="State Name"
+
 								style={{ width: "80%" }}
 								disabled={text_disabled}
 								onChange={(text) =>

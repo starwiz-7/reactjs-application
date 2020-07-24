@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import { Container } from "reactstrap";
 import { Row, Col } from "reactstrap";
 import styles from "./SignUp.module.css";
@@ -267,7 +268,8 @@ export default function Login(props) {
 									variant="contained"
 									color="secondary"
 									style={{ width: "54ch" }}
-									onClick="submitForms()"
+									onClick={() => { }}
+
 								>
 									Sign Up
 								</Button>
@@ -275,9 +277,11 @@ export default function Login(props) {
 							<div className={styles.signInDiv}>
 								Already have an account?{" "}
 								<a href="#" style={{ color: "red" }}>
-									<span style={{ fontWeight: "500" }}>
-										SIGN IN
+									<Link to='/login' style={{color:'red'}}>
+										<span style={{ fontWeight: "500" }}>
+											SIGN IN
 									</span>
+									</Link>
 								</a>
 							</div>
 						</div>
