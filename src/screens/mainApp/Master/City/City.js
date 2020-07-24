@@ -25,7 +25,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
 
-import StateTable from "../../../../components/StateTable/StateTable";
+import CityTable from "../../../../components/CityTable/CityTable";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -80,8 +80,8 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "bolder" }}>Master /</span>
-				<span style={{ fontWeight: "lighter", color: "gray" }}>
+				<span style={{ fontWeight: "light" }}>Master /</span>
+				<span style={{ fontWeight: "light", color: "#43425D" }}>
 					City
 				</span>
 			</div>
@@ -106,6 +106,8 @@ export default function Language() {
 									backgroundColor: "#4d4f5c",
 									color: "white",
 									borderRadius: "20px",
+									textTransform: "none",
+									width: "35%",
 								}}
 							>
 								Search
@@ -118,9 +120,10 @@ export default function Language() {
 								caret
 								style={{
 									backgroundColor: "white",
-									color: "grey",
-									width: "120%",
-									textAlign: "center",
+									color: "#4D4F5C",
+									borderColor: "#D7DAE2",
+									textAlign: "left",
+									width: "130%",
 								}}
 							>
 								Filter
@@ -139,8 +142,10 @@ export default function Language() {
 							color="secondary"
 							onClick={toggleModal}
 							style={{
-								fontSize: "12px",
+								fontSize: "14px",
 								width: "50%",
+								textTransform: "none",
+								textAlign: "center",
 							}}
 						>
 							Add new city
@@ -178,22 +183,22 @@ export default function Language() {
 					</ModalFooter>
 				</Modal>
 				<div className={styles.table}>
-					<StateTable />
+					<CityTable />
 				</div>
 
-				<div className={classes.root}>
-					<Pagination
-						count={5}
-						shape="rounded"
-						color="primary"
-						variant="outlined"
-						style={{
-							color: "blue",
-							marginLeft: "65%",
-						}}
-					/>
-				</div>
+				<div className={classes.root}></div>
 			</div>
+			<Pagination
+				count={5}
+				shape="rounded"
+				color="primary"
+				variant="outlined"
+				style={{
+					color: "blue",
+					marginLeft: "78%",
+					marginTop: "2%",
+				}}
+			/>
 		</div>
 	);
 }

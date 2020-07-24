@@ -9,7 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
-import edit from "./edit.png";
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -40,25 +39,34 @@ export default function SimpleTable1() {
 				<TableHead style={{ backgroundColor: "#F5F6FA" }}>
 					<TableRow>
 						<TableCell
-							align="left"
 							style={{ textAlign: "justify", color: "#A3A6B4" }}
 						>
-							STATE NAME
+							JOB TITLE
 						</TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
-							CODE
+							ASSOCIATE
 						</TableCell>
 						<TableCell
 							align="center"
 							style={{ textAlign: "center", color: "#A3A6B4" }}
 						>
-							CITY
+							START DATE
 						</TableCell>
-						<TableCell align="center"></TableCell>
-						<TableCell align="center"></TableCell>
+						<TableCell
+							align="center"
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							END DATE
+						</TableCell>
+						<TableCell
+							align="center"
+							style={{ textAlign: "center", color: "#A3A6B4" }}
+						>
+							NFC TAGS(ASSIGNED)
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -78,24 +86,6 @@ export default function SimpleTable1() {
 							</TableCell>
 							<TableCell align="center">401101</TableCell>
 							<TableCell align="center">Los Angeles</TableCell>
-							<TableCell align="justify" padding="checkbox">
-								<DeleteForeverIcon
-									style={{
-										padding: "none",
-										cursor: "pointer",
-									}}
-								/>
-							</TableCell>
-							<TableCell align="left" padding="checkbox">
-								{/* <EditIcon
-									style={{
-										color: "#f2134f",
-										cursor: "pointer",
-									}}
-									onClick={toggleModal}
-								/> */}
-								<img src={edit} alt="Edit" />
-							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

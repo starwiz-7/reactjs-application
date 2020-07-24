@@ -69,8 +69,8 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "bolder" }}>Master /</span>
-				<span style={{ fontWeight: "lighter", color: "gray" }}>
+				<span style={{ fontWeight: "light" }}>Master /</span>
+				<span style={{ fontWeight: "light", color: "#43425D" }}>
 					State
 				</span>
 			</div>
@@ -85,6 +85,10 @@ export default function Language() {
 									label="Search..."
 									type="search"
 									InputProps={{ disableUnderline: true }}
+									style={{
+										borderColor: "#F5F6FA",
+										borderRadius: "1px",
+									}}
 								/>
 							</div>
 						</div>
@@ -95,6 +99,8 @@ export default function Language() {
 									backgroundColor: "#4d4f5c",
 									color: "white",
 									borderRadius: "20px",
+									textTransform: "none",
+									width: "35%",
 								}}
 							>
 								Search
@@ -107,7 +113,10 @@ export default function Language() {
 								caret
 								style={{
 									backgroundColor: "white",
-									color: "grey",
+									color: "#4D4F5C",
+									borderColor: "#D7DAE2",
+									textAlign: "left",
+									width: "130%",
 								}}
 							>
 								Filter
@@ -125,6 +134,11 @@ export default function Language() {
 							variant="contained"
 							color="secondary"
 							onClick={toggleModal}
+							style={{
+								textTransform: "none",
+								textAlign: "center",
+								// width: "10%",
+							}}
 						>
 							Add new state
 						</Button>

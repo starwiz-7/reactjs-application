@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import EditIcon from "@material-ui/icons/Edit";
+import edit from "./edit.png";
 
 const useStyles = makeStyles({
 	table: {
@@ -80,7 +80,7 @@ export default function SimpleTable1() {
 								align="center"
 								style={{ color: "#3BB209" }}
 							>
-								Active
+								ACTIVE
 							</TableCell>
 							<TableCell align="justify" padding="checkbox">
 								<VisibilityIcon
@@ -97,12 +97,7 @@ export default function SimpleTable1() {
 								/>
 							</TableCell>
 							<TableCell align="left" padding="checkbox">
-								<EditIcon
-									style={{
-										color: "#f2134f",
-									}}
-									onClick={toggleModal}
-								/>
+								<img src={edit} alt="Edit" />
 							</TableCell>
 						</TableRow>
 					))}
