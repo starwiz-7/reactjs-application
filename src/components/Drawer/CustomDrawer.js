@@ -54,7 +54,10 @@ import AddJob from "../../screens/mainApp/Properties/JobList/AddJob/AddJob";
 import City from "../../screens/mainApp/Master/City/City";
 import JobCreation from "../../screens/mainApp/Operations/JobCreation/JobCreation";
 import Initialisation from "../../screens/mainApp/Operations/JobCreation/Initialisation/Initialisation";
-
+import CreateJob from "../../screens/mainApp/Operations/JobCreation/Initialisation/CreateJob/CreateJob";
+import Installation from "../../screens/mainApp/Operations/JobCreation/Installation/Installation";
+import QC from "../../screens/mainApp/Operations/JobCreation/QC/QC";
+import JobReporting from "../../screens/mainApp/Operations/JobReporting/JobReporting";
 import Login from "../../screens/authentication/Login/Login";
 import ResPassword from "../../screens/authentication/ResetPassword/ResetPassword";
 import SignUp from "../../screens/authentication/SignUp/SignUp";
@@ -314,8 +317,8 @@ export default function MiniDrawer() {
 							{samadhanSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-									<ChevronRightIcon />
-								)}
+								<ChevronRightIcon />
+							)}
 						</IconButton>
 					</ListItem>
 					{samadhanSubMenuListItems}
@@ -335,8 +338,8 @@ export default function MiniDrawer() {
 							{masterSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-									<ChevronRightIcon />
-								)}
+								<ChevronRightIcon />
+							)}
 						</IconButton>
 					</ListItem>
 					{masterSubMenuListItems}
@@ -380,8 +383,8 @@ export default function MiniDrawer() {
 							{propertiesSubMenu ? (
 								<KeyboardArrowDownIcon />
 							) : (
-									<ChevronRightIcon />
-								)}
+								<ChevronRightIcon />
+							)}
 						</IconButton>
 					</ListItem>
 					{propertiesSubMenuListItems}
@@ -436,7 +439,7 @@ export default function MiniDrawer() {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				{/* <AddOrganisation /> */}
-				<Stepper />
+				{/* <Stepper /> */}
 				{/* <TreeView /> */}
 				{/* <UserList /> */}
 				{/* <Organisation /> */}
@@ -454,7 +457,7 @@ export default function MiniDrawer() {
 				{/* <Properties /> */}
 				{/* <AddProperty /> */}
 				{/* <AddJob /> */}
-				{/* <Login /> */}
+				<Login />
 				{/* <SignUp /> */}
 				{/* <ForPassword />a */}
 				{/* <ResPassword /> */}
@@ -463,6 +466,10 @@ export default function MiniDrawer() {
 				{/* <BlankSamadhanID /> */}
 				{/* <JobCreation /> */}
 				{/* <Initialisation /> */}
+				{/* <CreateJob /> */}
+				{/* <Installation /> */}
+				{/* <QC /> */}
+				{/* <JobReporting /> */}
 			</main>
 		</div>
 	);

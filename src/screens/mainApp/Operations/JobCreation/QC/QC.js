@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Initialisation.module.css";
+import styles from "./QC.module.css";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
@@ -57,11 +57,11 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "light", color: "#43425D" }}>
+				<span style={{ fontWeight: "light" }}>
 					Operations / Job Creation /
 				</span>
 				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
-					&nbsp;Initialisation
+					&nbsp;QC
 				</span>
 			</div>
 			<div className={styles.tableDiv}>

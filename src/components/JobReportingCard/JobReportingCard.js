@@ -4,7 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 
-import styles from "./JobCreationCard.module.css";
+import styles from "./JobReportingCard.module.css";
+import { CardHeader } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,20 +34,11 @@ const JobCard = (props) => {
 
 	return (
 		<Card className={classes.root}>
+			<CardHeader>1234</CardHeader>
 			<CardContent className={styles.card}>
 				<div className={styles.detailsDiv}>
 					<div className={styles.avatarDiv}>
-						<div className={classes.root1}>
-							<Avatar
-								style={{
-									backgroundColor: props.color,
-									marginTop: "9%",
-								}}
-								className={classes.medium}
-							>
-								<img src={props.img} />
-							</Avatar>
-						</div>
+						<div className={classes.root1}></div>
 					</div>
 					<div style={{ marginTop: "-4%" }}>{props.details}</div>
 				</div>

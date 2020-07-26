@@ -9,6 +9,7 @@ export const authStart = () => {
 };
 
 export const authSuccess = (token, userId) => {
+    console.log("actions wala success")
     return {
         type: actionTypes.AUTH_SUCCESS,
         idToken: token,
@@ -17,6 +18,7 @@ export const authSuccess = (token, userId) => {
 };
 
 export const authFail = (error) => {
+    console.log(error);
     return {
         type: actionTypes.AUTH_FAIL,
         error: error
@@ -47,24 +49,26 @@ export const auth = (username, password) => {
             value: username,
             password: password,
         };
-        let url = 'http://34.229.234.234:8080/user/login';
+        let url = 'http://13.126.89.240:8080/user/login';
         axios.post(url, authData, {
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
             .then(response => {
                 console.log(response.data);
                 // const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 10000000);
                 localStorage.setItem('token', response.data.token);
                 // localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', response.data.data._id);
-                dispatch(authSuccess(response.data.token, response.data.data._id));
+                // dispatch(authSuccess(response.data.token, response.data.data._id));
                 // dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(err => {
                 console.log(err);
-                dispatch(authFail(err.response.data.error));
+                dispatch(authFail({
+                    error: err.response ? err.response.data : null
+                }));
             });
     };
 };

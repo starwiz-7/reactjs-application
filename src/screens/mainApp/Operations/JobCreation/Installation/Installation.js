@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import styles from "./Initialisation.module.css";
+// import styles from "../../JobCreation/Initialisation/Initialisation.module.css";
+import styles from "./Installation.module.css";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import Pagination from "@material-ui/lab/Pagination";
-import InitialisationTable from "../../../../../components/JobCreationTables/InitialisationTable/InitialisationTable";
+import InitialisationTable from "../../../../../components/JobCreationTables/InstallationTable/InstallationTable";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -57,11 +58,11 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "light", color: "#43425D" }}>
+				<span style={{ fontWeight: "light" }}>
 					Operations / Job Creation /
 				</span>
 				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
-					&nbsp;Initialisation
+					&nbsp;Installation
 				</span>
 			</div>
 			<div className={styles.tableDiv}>
@@ -98,6 +99,7 @@ export default function Language() {
 									textTransform: "none",
 									width: "35%",
 									outline: "none",
+									// height: "110%",
 								}}
 							>
 								Search

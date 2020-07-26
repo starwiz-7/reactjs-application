@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { Container } from "reactstrap";
 import { Row, Col } from "reactstrap";
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import styles from "./Login.module.css";
 import {
 	TextField,
@@ -19,9 +19,9 @@ import Logo from "./images/Logo.png";
 import insta from "./images/asset-1@2x.png";
 import fb from "./images/asset-2@2x.png";
 import twitter from "./images/asset-6@2x.png";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import * as actions from '../../../store/actions/index';
+import * as actions from "../../../store/actions/index";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -49,7 +49,7 @@ export function Login(props) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [isSignUp, setIsSignUp] = useState(false);
-	const [isLoading,setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleUsernameChange = (event) => {
 		setUsername(event.target.value);
@@ -66,13 +66,15 @@ export function Login(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setIsLoading(true);
-		console.log(username,password,checked);
+		console.log(username, password, checked);
 		props.onAuth(username, password);
 	};
 
 	let authRedirect = null;
 	if (props.isAuthenticated) {
+		console.log("redirected");
 		setIsLoading(false);
+
 		authRedirect = <Redirect to={props.authRedirectPath} />;
 	}
 
@@ -80,8 +82,17 @@ export function Login(props) {
 		<Backdrop className={classes.backdrop} open={isLoading}>
 			<CircularProgress color="inherit" />
 		</Backdrop>
-	):null
+	) : null;
 
+	// useEffect(() => {
+	// 	if (props.isAuthenticated) {
+	// 		console.log("redirected");
+	// 		setIsLoading(false);
+	// 		authRedirect = "Hello";
+	// 	} else {
+	// 		console.log("cannot redirect");
+	// 	}
+	// });
 	return (
 		<div>
 			{authRedirect}
@@ -180,7 +191,10 @@ export function Login(props) {
 											href="#"
 											className={styles.forgotPassword}
 										>
-											<Link to='/forgot-password' style={{ color: 'red' }}>
+											<Link
+												to="/forgot-password"
+												style={{ color: "red" }}
+											>
 												<span>Forgot Password?</span>
 											</Link>
 										</a>
@@ -203,7 +217,9 @@ export function Login(props) {
 									href="#"
 									style={{ color: "red", fontWeight: "500" }}
 								>
-									<Link to='/signup' style={{ color: 'red' }}>SIGN UP</Link>
+									<Link to="/signup" style={{ color: "red" }}>
+										SIGN UP
+									</Link>
 								</a>
 							</div>
 						</div>
@@ -240,25 +256,21 @@ export function Login(props) {
 	);
 }
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		loading: state.auth.loading,
 		error: state.auth.error,
 		isAuthenticated: state.auth.token !== null,
-		authRedirectPath: state.auth.authRedirectPath
+		authRedirectPath: state.auth.authRedirectPath,
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
 		onAuth: (username, password) =>
 			dispatch(actions.auth(username, password)),
-		onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+		onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath("/")),
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
