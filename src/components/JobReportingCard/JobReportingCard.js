@@ -1,17 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+// import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Avatar from "@material-ui/core/Avatar";
+import { Card, Button, CardTitle, CardText } from "reactstrap";
 
 import styles from "./JobReportingCard.module.css";
-import { CardHeader } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		minWidth: 255,
+		minWidth: "21%",
+		maxWidth: "21%",
 		margin: "2%",
-		maxHeight: 90,
+		// minHeight: 90,
+		borderColor: "black",
 	},
 	root1: {
 		display: "flex",
@@ -33,16 +34,88 @@ const JobCard = (props) => {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root}>
-			<CardHeader>1234</CardHeader>
-			<CardContent className={styles.card}>
-				<div className={styles.detailsDiv}>
-					<div className={styles.avatarDiv}>
-						<div className={classes.root1}></div>
-					</div>
-					<div style={{ marginTop: "-4%" }}>{props.details}</div>
+		// <Card
+		// 	className={classes.root}
+		// 	style={{ borderColor: props.color, color: props.color }}
+		// >
+		// 	<CardContent
+		// 		className={styles.card}
+		// 		classes={{ root: classes.card }}
+		// 		style={{ borderColor: props.color }}
+		// 	>
+		// 		<div style={{ borderColor: props.color }}>
+		// 			<div className={styles.detailsDiv}>
+		// 				<div
+		// 					style={{
+		// 						marginTop: "0%",
+		// 						color: props.color,
+		// 						top: "0",
+		// 						left: "0",
+		// 						position: "relative",
+		// 						fontSize: "xx-large",
+		// 					}}
+		// 				>
+		// 					{props.number}
+		// 				</div>
+		// 				<div
+		// 					style={{
+		// 						color: "#BBBBBB",
+		// 						fontSize: "small",
+		// 						bottom: "0",
+		// 						left: "0",
+		// 						marginTop: "2%",
+		// 						fontSize: "medium",
+		// 					}}
+		// 				>
+		// 					{props.details}
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// 	</CardContent>
+		// </Card>
+		<Card
+			body
+			outline
+			color="black"
+			className={classes.root}
+			style={{ borderColor: props.color }}
+		>
+			<CardText>
+				<div
+					className={styles.header}
+					style={{
+						marginTop: "0%",
+						color: props.color,
+						top: "0",
+						left: "0",
+						fontSize: "xx-large",
+					}}
+				>
+					{props.number}
 				</div>
-			</CardContent>
+				<div
+					style={{
+						color: "#BBBBBB",
+						fontSize: "medium",
+						bottom: "0",
+						left: "0",
+						marginTop: "2%",
+					}}
+				>
+					{props.details}
+				</div>
+				<div
+					style={{
+						width: "0",
+						height: "0",
+						bottom: "0",
+						// marginLeft: "100%",
+
+						borderBottom: " 1000% solid red",
+						borderLeft: "1000% solid transparent",
+					}}
+				></div>
+			</CardText>
 		</Card>
 	);
 };

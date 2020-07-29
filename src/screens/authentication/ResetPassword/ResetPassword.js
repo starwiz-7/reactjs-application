@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core";
 import unnamed from "./images/unnamed@2x.png";
 import Logo from "./images/Logo-1@2x.png";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,6 +34,7 @@ export default function ForgotPassword() {
 				top: "0",
 				left: "0",
 			}}
+			className={styles.background}
 		>
 			<img src={unnamed} style={{ width: "100%" }} />
 			<div className={styles.div1}>
@@ -41,8 +42,8 @@ export default function ForgotPassword() {
 					style={{
 						color: "#F2134F",
 						position: "absolute",
-						top: "-26",
-						right: "-30",
+						top: "-18",
+						right: "-22",
 						height: "10%",
 						width: "10%",
 						cursor: "pointer",
@@ -80,7 +81,7 @@ export default function ForgotPassword() {
 						padding: "5%",
 					}}
 				>
-					<Link to='/password-reset-successful'>
+					<Link to="/password-reset-successful">
 						<Button
 							variant="contained"
 							color="secondary"
@@ -88,11 +89,12 @@ export default function ForgotPassword() {
 								width: "43ch",
 								height: "50px",
 								outline: "none",
+								textTransform: "none",
 							}}
-							onClick={() => { }}
+							onClick={() => {}}
 						>
 							Reset My Password
-					</Button>
+						</Button>
 					</Link>
 				</div>
 			</div>

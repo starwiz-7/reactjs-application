@@ -1,22 +1,26 @@
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    cursor: pointer;
-    box-shadow: 0px 2px 6px #0000000A;
-    border-radius: 4px;
+.main {
+    background-color: #f7f7f5;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
 }
 
-.detailsDiv {
+.title {
+    margin-left: 2%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: xx-large;
+    margin-top: 2%;
+}
+
+.grid {
+    margin-top: 2%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-content: space-around;
+    align-items: flex-start;
     flex-wrap: wrap;
-    font-size: x-large;
-    font-weight: bold;
-    color: #4D4F5C;
-    margin-left: 2%;
-    font: Semibold 22px/28px Source Sans Pro;
-    margin-top: 0px;
+    flex: 1;
 }

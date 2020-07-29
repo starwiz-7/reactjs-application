@@ -19,6 +19,13 @@ import Logo from "./images/Logo.png";
 import insta from "./images/asset-1@2x.png";
 import fb from "./images/asset-2@2x.png";
 import twitter from "./images/asset-6@2x.png";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { connect } from "react-redux";
 
 import * as actions from "../../../store/actions/index";
@@ -50,7 +57,19 @@ export function Login(props) {
 	const [password, setPassword] = useState("");
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [values, setValues] = React.useState({
+		password: "",
+		showPassword: false,
+	});
 
+	const handleClickShowPassword = () => {
+		console.log(values.password);
+		setValues({ ...values, showPassword: !values.showPassword });
+	};
+
+	const handleMouseDownPassword = (event) => {
+		event.preventDefault();
+	};
 	const handleUsernameChange = (event) => {
 		setUsername(event.target.value);
 	};
@@ -61,6 +80,9 @@ export function Login(props) {
 
 	const handleChange = (event) => {
 		setChecked(event.target.checked);
+	};
+	const handleChange1 = (prop) => (event) => {
+		setValues({ ...values, [prop]: event.target.value });
 	};
 
 	const handleSubmit = (event) => {
@@ -150,6 +172,7 @@ export function Login(props) {
 									onChange={handleUsernameChange}
 								/>
 								<TextField
+									required
 									id="password"
 									label={
 										<span
@@ -160,13 +183,40 @@ export function Login(props) {
 											Password
 										</span>
 									}
-									type="password"
+									type={
+										values.showPassword
+											? "text"
+											: "password"
+									}
 									autoComplete="current-password"
 									variant="outlined"
 									fullWidth={true}
-									value={password}
-									onChange={handlePasswordChange}
+									onChange={handleChange1("password")}
+									value={values.password}
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<IconButton
+													aria-label="toggle password visibility"
+													onClick={
+														handleClickShowPassword
+													}
+													onMouseDown={
+														handleMouseDownPassword
+													}
+													edge="end"
+												>
+													{values.showPassword ? (
+														<Visibility />
+													) : (
+														<VisibilityOff />
+													)}
+												</IconButton>
+											</InputAdornment>
+										),
+									}}
 								/>
+
 								<div className={styles.forgotPwdDiv}>
 									<FormControlLabel
 										className={classes.label}
@@ -205,11 +255,22 @@ export function Login(props) {
 									color="secondary"
 									className={styles.button}
 									onClick={handleSubmit}
+									style={{
+										textTransform: "none",
+										fontWeight: "lighhter",
+									}}
 								>
 									Sign In
 								</Button>
 							</form>
-							<div style={{ margin: "20px" }}>
+							<div
+								style={{
+									margin: "10%",
+									marginLeft: "0%",
+									left: "0",
+									marginRight: "25%",
+								}}
+							>
 								<span className={styles.signUpText}>
 									Don't have an account?
 								</span>{" "}

@@ -32,15 +32,9 @@ export default function ForgotPassword() {
 				top: "0",
 				left: "0",
 			}}
+			className={styles.background}
 		>
-			<img
-				src={unnamed}
-				style={{
-					width: "100vw",
-					height: "100vh",
-				}}
-				alt="background"
-			/>
+			<div className={styles.layer}></div>
 			<div className={styles.div1}>
 				<CancelIcon
 					style={{
@@ -81,19 +75,23 @@ export default function ForgotPassword() {
 					style={{
 						display: "flex",
 						justifyContent: "center",
-						padding: "5%",
+						padding: "3%",
 					}}
 				>
 					<Button
 						variant="contained"
 						color="secondary"
-						style={{ width: "43ch" }}
+						style={{
+							width: "43ch",
+							textTransform: "none",
+							height: "4em",
+						}}
 						onClick={() => {}}
 					>
 						Send
 					</Button>
 				</div>
-				<div style={{ paddingLeft: "20%", paddingTop: "5%" }}>
+				<div style={{ paddingLeft: "14%", paddingTop: "5%" }}>
 					Don't have an account?
 					<a href="#" style={{ color: "red" }}>
 						SIGN UP

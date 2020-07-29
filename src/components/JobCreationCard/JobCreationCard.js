@@ -48,7 +48,16 @@ const JobCard = (props) => {
 							</Avatar>
 						</div>
 					</div>
-					<div style={{ marginTop: "-4%" }}>{props.details}</div>
+					<div
+						style={{
+							marginTop: "-4%",
+							font: "Semibold Source Sans Pro",
+							marginLeft: "4%",
+							fontSize: "large",
+						}}
+					>
+						{props.details}
+					</div>
 				</div>
 			</CardContent>
 		</Card>

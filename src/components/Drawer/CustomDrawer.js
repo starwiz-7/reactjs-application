@@ -28,6 +28,12 @@ import styles from "./CustomDrawer.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import { deepOrange } from "@material-ui/core/colors";
 import Badge from "@material-ui/core/Badge";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 import Stepper from "../../components/Stepper/Stepper";
 import DashBoard from "../../screens/mainApp/DashBoard/DashBoard";
@@ -50,6 +56,13 @@ import Package from "../../screens/mainApp/Package/PackageList/PackageList";
 import AddPackage from "../../screens/mainApp/Package/AddPackage/AddPackage";
 import Properties from "../../screens/mainApp/Properties/PropertyList/AllProperties/AllProperties";
 import AddProperty from "../../screens/mainApp/Properties/PropertyList/AddProperty/AddProperty";
+import UploadProperty from "../../screens/mainApp/Properties/PropertyList/UploadProperty/UploadProperty";
+import CategoryList from "../../screens/mainApp/Properties/CategoryList/Category/CategoryList";
+import SubCategory from "../../screens/mainApp/Properties/SubCategory/SubCategory";
+import JobList from "../../screens/mainApp/Properties/JobList/JobList/JobList";
+import AddCategory from "../../screens/mainApp/Properties/CategoryList/AddCategory/AddCategory";
+import VerifyDocument from "../../screens/mainApp/Properties/VerifyDocument/VerifyDocument";
+import RequestAccess from "../../screens/mainApp/Properties/RequestAccess/RequestAccess";
 import AddJob from "../../screens/mainApp/Properties/JobList/AddJob/AddJob";
 import City from "../../screens/mainApp/Master/City/City";
 import JobCreation from "../../screens/mainApp/Operations/JobCreation/JobCreation";
@@ -58,6 +71,7 @@ import CreateJob from "../../screens/mainApp/Operations/JobCreation/Initialisati
 import Installation from "../../screens/mainApp/Operations/JobCreation/Installation/Installation";
 import QC from "../../screens/mainApp/Operations/JobCreation/QC/QC";
 import JobReporting from "../../screens/mainApp/Operations/JobReporting/JobReporting";
+
 import Login from "../../screens/authentication/Login/Login";
 import ResPassword from "../../screens/authentication/ResetPassword/ResetPassword";
 import SignUp from "../../screens/authentication/SignUp/SignUp";
@@ -144,6 +158,14 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.getContrastText(deepOrange[500]),
 		backgroundColor: deepOrange[500],
 	},
+	tabs: {
+		flexGrow: 1,
+		alignSelf: "center",
+		marginLeft: "15%",
+		borderColor: "white",
+		bottom: "0",
+		paddingBottom: "0%",
+	},
 }));
 
 export default function MiniDrawer() {
@@ -152,7 +174,22 @@ export default function MiniDrawer() {
 	const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
 	const [masterSubMenu, setMasterSubmenu] = useState(false);
 	const [propertiesSubMenu, setPropertiesSubmenu] = useState(false);
+	const [value, setValue] = React.useState(0);
+	const [state, setState] = React.useState({
+		age: "",
+		name: "hai",
+	});
 
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
+	const handleChange1 = (event) => {
+		const name = event.target.name;
+		setState({
+			...state,
+			[name]: event.target.value,
+		});
+	};
 	const toggleDrawer = () => {
 		setOpen(!open);
 		setSamadhanSubmenu(false);
@@ -256,6 +293,18 @@ export default function MiniDrawer() {
 							{toggleIcon}
 						</IconButton>
 					</div>
+					{/* <Paper className={classes.tabs} style={{ border: "none" }}>
+						<Tabs value={value} onChange={handleChange} centered>
+							<Tab
+								label="Item One"
+								style={{ color: "#BBBBBB" }}
+							/>
+							<Tab
+								label="Item Two"
+								style={{ color: "#BBBBBB" }}
+							/>
+						</Tabs>
+					</Paper> */}
 					<div style={{ marginLeft: "60%" }}>
 						<Badge
 							variant="dot"
@@ -271,6 +320,33 @@ export default function MiniDrawer() {
 								}}
 							/>
 						</Badge>
+					</div>
+					<div>
+						<FormControl>
+							<InputLabel style={{ alignText: "center" }}>
+								Filter
+							</InputLabel>
+							<Select
+								native
+								value={state.age}
+								onChange={handleChange1}
+								style={{
+									width: "120%",
+									maxHeight: "80%",
+									marginBottom: "5%",
+								}}
+								label="Filter"
+								inputProps={{
+									name: "Filter",
+									id: "outlined-age-native-simple",
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value={10}>Ten</option>
+								<option value={20}>Twenty</option>
+								<option value={30}>Thirty</option>
+							</Select>
+						</FormControl>
 					</div>
 					<div>
 						<Avatar
@@ -448,7 +524,7 @@ export default function MiniDrawer() {
 				{/* <Attendance /> */}
 				{/* <Language /> */}
 				{/* <Module /> */}
-				{/* {<Country />} */}
+				{/* <Country /> */}
 				{/* <State /> */}
 				{/* <City /> */}
 				{/* <Inventory /> */}
@@ -457,10 +533,10 @@ export default function MiniDrawer() {
 				{/* <Properties /> */}
 				{/* <AddProperty /> */}
 				{/* <AddJob /> */}
-				<Login />
+				{/* <Login /> */}
 				{/* <SignUp /> */}
-				{/* <ForPassword />a */}
-				{/* <ResPassword /> */}
+				{/* <ForPassword /> */}
+				<ResPassword />
 				{/* <SuccPassword /> */}
 				{/* <CustomizedInputs /> */}
 				{/* <BlankSamadhanID /> */}
@@ -470,6 +546,13 @@ export default function MiniDrawer() {
 				{/* <Installation /> */}
 				{/* <QC /> */}
 				{/* <JobReporting /> */}
+				{/* <UploadProperty /> */}
+				{/* <CategoryList /> */}
+				{/* <AddCategory /> */}
+				{/* <SubCategory /> */}
+				{/* <JobList /> */}
+				{/* <VerifyDocument /> */}
+				{/* <RequestAccess /> */}
 			</main>
 		</div>
 	);

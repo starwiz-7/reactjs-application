@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
 import { Row, Col } from "reactstrap";
 import styles from "./SignUp.module.css";
@@ -17,6 +17,11 @@ import Logo from "./images/Logo.png";
 import insta from "./images/asset-1@2x.png";
 import fb from "./images/asset-2@2x.png";
 import twitter from "./images/asset-6@2x.png";
+import InputAdornment from "@material-ui/core/InputAdornment";
+
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const useStyles = makeStyles((theme) => ({
 	root1: {
@@ -78,62 +83,34 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const validEmailRegex = RegExp(
-	/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-);
-const validateForm = (errors) => {
-	let valid = true;
-	Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
-	return valid;
-};
-
 export default function Login(props) {
 	const classes = useStyles();
 	const [checked, setChecked] = useState(false);
-	const errors = useState([
-		{
-			fullName: "",
-			email: "",
-			password: "",
-		},
-	]);
-	const handleChange = (event) => {
-		event.preventDefault();
-		const { name, value } = event.target;
-		let errors = this.state.errors;
-
-		switch (name) {
-			case "fullName":
-				errors.fullName =
-					value.length < 5
-						? "Full Name must be at least 5 characters long!"
-						: "";
-				break;
-			case "email":
-				errors.email = validEmailRegex.test(value)
-					? ""
-					: "Email is not valid!";
-				break;
-			case "password":
-				errors.password =
-					value.length < 8
-						? "Password must be at least 8 characters long!"
-						: "";
-				break;
-			default:
-				break;
-		}
-
-		this.setState({ errors, [name]: value });
+	const [values, setValues] = React.useState({
+		password: "",
+		showPassword: false,
+	});
+	const [values1, setValues1] = useState({
+		confirmPassword: "",
+		showConfirmPassword: false,
+	});
+	const handleChange1 = (prop) => (event) => {
+		setValues({ ...values, [prop]: event.target.value });
+	};
+	const handleClickShowPassword = () => {
+		console.log(values.password);
+		setValues({ ...values, showPassword: !values.showPassword });
 	};
 
-	const handleSubmit = (event) => {
+	const handleClickShowConfirmPassword = () => {
+		setValues1({
+			...values1,
+			showConfirmPassword: !values1.showConfirmPassword,
+		});
+	};
+
+	const handleMouseDownPassword = (event) => {
 		event.preventDefault();
-		if (validateForm(this.state.errors)) {
-			console.info("Valid Form");
-		} else {
-			console.error("Invalid Form");
-		}
 	};
 	return (
 		<div>
@@ -203,16 +180,7 @@ export default function Login(props) {
 										label="E-mail Address"
 										variant="outlined"
 										fullWidth={true}
-										onChange={this.handleChange}
 									/>
-									{errors.email.length > 0 && (
-										<span
-											className="error"
-											style={{ color: "black" }}
-										>
-											{errors.email}
-										</span>
-									)}
 								</div>
 								<div className={styles.row2}>
 									<TextField
@@ -220,31 +188,100 @@ export default function Login(props) {
 										label="Mobile number"
 										variant="outlined"
 										fullWidth={true}
+										InputProps={{
+											endAdornment: (
+												<div>
+													<span
+														style={{
+															color: "#F2134F",
+															textTransform:
+																"none",
+															fontWeight: "bold",
+															cursor: "pointer",
+														}}
+													>
+														Verify
+													</span>
+												</div>
+											),
+										}}
 									/>
 								</div>
 								<div className={styles.row2}>
 									<TextField
 										id="outlined-basic"
-										type="Password"
+										type={
+											values.showPassword
+												? "text"
+												: "password"
+										}
 										name="password"
 										label="Password"
 										variant="outlined"
 										fullWidth={true}
-										onChange={this.handleChange}
+										onChange={handleChange1("password")}
+										value={values.password}
+										InputProps={{
+											endAdornment: (
+												<InputAdornment position="end">
+													<IconButton
+														aria-label="toggle password visibility"
+														onClick={
+															handleClickShowPassword
+														}
+														onMouseDown={
+															handleMouseDownPassword
+														}
+														edge="end"
+													>
+														{values.showPassword ? (
+															<VisibilityOff />
+														) : (
+															<Visibility />
+														)}
+													</IconButton>
+												</InputAdornment>
+											),
+										}}
 									/>
-									{errors.password.length > 0 && (
-										<span className="error">
-											{errors.password}
-										</span>
-									)}
 								</div>
 								<div className={styles.row2}>
 									<TextField
 										id="outlined-basic"
-										type="Password"
+										type={
+											values1.showConfirmPassword
+												? "text"
+												: "confirmPassword"
+										}
 										label="Confirm Password"
 										variant="outlined"
 										fullWidth={true}
+										onChange={handleChange1(
+											"confirmPassword"
+										)}
+										value={values1.confirmPassword}
+										InputProps={{
+											endAdornment: (
+												<InputAdornment position="end">
+													<IconButton
+														aria-label="toggle password visibility"
+														onClick={
+															handleClickShowConfirmPassword
+														}
+														onMouseDown={
+															handleMouseDownPassword
+														}
+														edge="end"
+													>
+														{values1.showConfirmPassword ? (
+															<VisibilityOff />
+														) : (
+															<Visibility />
+														)}
+													</IconButton>
+												</InputAdornment>
+											),
+										}}
 									/>
 								</div>
 								<div className={styles.termsCondition}>
@@ -267,20 +304,26 @@ export default function Login(props) {
 								<Button
 									variant="contained"
 									color="secondary"
-									style={{ width: "54ch" }}
-									onClick={() => { }}
-
+									style={{
+										width: "200%",
+										height: "160%",
+										textTransform: "none",
+									}}
+									onClick={() => {}}
 								>
 									Sign Up
 								</Button>
 							</div>
-							<div className={styles.signInDiv}>
+							<div
+								className={styles.signInDiv}
+								style={{ marginRight: "50%" }}
+							>
 								Already have an account?{" "}
 								<a href="#" style={{ color: "red" }}>
-									<Link to='/login' style={{color:'red'}}>
+									<Link to="/login" style={{ color: "red" }}>
 										<span style={{ fontWeight: "500" }}>
 											SIGN IN
-									</span>
+										</span>
 									</Link>
 								</a>
 							</div>

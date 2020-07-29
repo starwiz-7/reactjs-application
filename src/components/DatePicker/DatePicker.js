@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-
 const useStyles = makeStyles((theme) => ({
 	container: {
 		display: "flex",
@@ -10,11 +9,10 @@ const useStyles = makeStyles((theme) => ({
 	textField: {
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
-		width: 170,
 	},
 }));
 
-export default function DatePickers() {
+export default function DatePickers(props) {
 	const classes = useStyles();
 
 	return (
@@ -29,6 +27,7 @@ export default function DatePickers() {
 				InputLabelProps={{
 					shrink: true,
 				}}
+				style={{ width: props.width }}
 			/>
 		</form>
 	);
