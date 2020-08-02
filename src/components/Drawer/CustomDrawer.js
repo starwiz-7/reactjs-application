@@ -718,10 +718,3 @@ export default function MiniDrawer(props) {
 		</div>
 	);
 }
-
-/*
-Today's update:
-1. Added routes in the side navbar
-2. Started routing in the buttons and various elements 
-3. Created Organisation Page.
-*/
