@@ -35,6 +35,8 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
+import InstZoom from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/InstallationZoom/InstZoom.js";
+import DropDown from "../../components/DropDown/DropDown";
 import Stepper from "../../components/Stepper/Stepper";
 import DashBoard from "../../screens/mainApp/DashBoard/DashBoard";
 import BlankSamadhanID from "../../screens/mainApp/SamadhanID/BlankSamadhanID/BlankSamadhanID";
@@ -70,8 +72,17 @@ import Initialisation from "../../screens/mainApp/Operations/JobCreation/Initial
 import CreateJob from "../../screens/mainApp/Operations/JobCreation/Initialisation/CreateJob/CreateJob";
 import Installation from "../../screens/mainApp/Operations/JobCreation/Installation/Installation";
 import QC from "../../screens/mainApp/Operations/JobCreation/QC/QC";
-import JobReporting from "../../screens/mainApp/Operations/JobReporting/JobReporting";
+import JobReporting from "../../screens/mainApp/Operations/JobReporting/JobReporting/JobReporting";
+import Initialisation1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/Initialisation/Initialisation";
+import QC1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/QC/QC";
+import QCTable from "../../screens/mainApp/Operations/JobReporting/JobReporting/QC/QCTable/QCTable";
+import InitialisationTable from "../../screens/mainApp/Operations/JobReporting/JobReporting/Initialisation/InitialisationTable/InitialisationTable";
+import AuditJob1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/AuditJob/AuditJob";
+import InstallationTable from "../../screens/mainApp/Operations/JobReporting/JobReporting/AuditJob/AuditTable/AuditTable";
+import Installation1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/Installation";
+import OrganisationMain from "../../screens/mainApp/Organisation/OrganisationMain/OrganisationMain";
 
+import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
 import ResPassword from "../../screens/authentication/ResetPassword/ResetPassword";
 import SignUp from "../../screens/authentication/SignUp/SignUp";
@@ -110,7 +121,6 @@ const useStyles = makeStyles((theme) => ({
 		flexShrink: 0,
 		whiteSpace: "nowrap",
 		overflow: "hidden",
-		boxShadow: "2px 2px 2px 2px #000",
 	},
 	drawerOpen: {
 		width: drawerWidth,
@@ -166,9 +176,17 @@ const useStyles = makeStyles((theme) => ({
 		bottom: "0",
 		paddingBottom: "0%",
 	},
+	link: {
+		textDecoration: "none",
+		color: "#43425D",
+	},
 }));
 
-export default function MiniDrawer() {
+const style = {
+	notClick: { color: "#43425D" },
+	onClicked: { color: "red" },
+};
+export default function MiniDrawer(props) {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
@@ -178,8 +196,11 @@ export default function MiniDrawer() {
 	const [state, setState] = React.useState({
 		age: "",
 		name: "hai",
+		clicked: "false",
 	});
-
+	const handleClick = () => {
+		this.setState({ clicked: true });
+	};
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
@@ -199,16 +220,26 @@ export default function MiniDrawer() {
 	const toggleIcon = open ? <CancelOutlinedIcon /> : <MenuIcon />;
 	const samadhanSubMenuListItems = samadhanSubMenu ? (
 		<List>
-			<ListItem button key="SamadhanSubMenuItem1">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Organisation Samadhan ID" />
-				</div>
-			</ListItem>
-			<ListItem button key="SamadhanSubMenuItem1">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Blank Samadhan ID" />
-				</div>
-			</ListItem>
+			<a
+				href="/samadhanID/organisation"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="SamadhanSubMenuItem1">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Organisation Samadhan ID" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/samadhanID/blank"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="SamadhanSubMenuItem1">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Blank Samadhan ID" />
+					</div>
+				</ListItem>
+			</a>
 		</List>
 	) : null;
 	const masterSubMenuListItems = masterSubMenu ? (
@@ -218,45 +249,80 @@ export default function MiniDrawer() {
 					<ListItemText primary="Module" />
 				</div>
 			</ListItem>
-			<ListItem button key="MasterSubMenuItem2">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Country" />
-				</div>
-			</ListItem>
-			<ListItem button key="MasterSubMenuItem3">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="State" />
-				</div>
-			</ListItem>
-			<ListItem button key="MasterSubMenuItem4">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="City" />
-				</div>
-			</ListItem>
-			<ListItem button key="MasterSubMenuItem5">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Language" />
-				</div>
-			</ListItem>
+			<a
+				href="/master/country"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="MasterSubMenuItem2">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Country" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/master/state"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="MasterSubMenuItem3">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="State" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/master/city"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="MasterSubMenuItem4">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="City" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/master/language"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="MasterSubMenuItem5">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Language" />
+					</div>
+				</ListItem>
+			</a>
 		</List>
 	) : null;
 	const propertiesSubMenuListItems = propertiesSubMenu ? (
 		<List>
-			<ListItem button key="Organisation">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Property List" />
-				</div>
-			</ListItem>
-			<ListItem button key="Organisation">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Category List" />
-				</div>
-			</ListItem>
-			<ListItem button key="Organisation">
-				<div className={styles.subMenuItems}>
-					<ListItemText primary="Sub Category List" />
-				</div>
-			</ListItem>
+			<a
+				href="/properties/propertylist"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Property List" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/properties/categorylist"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Category List" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/properties/subcategorylist"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Sub Category List" />
+					</div>
+				</ListItem>
+			</a>
 		</List>
 	) : null;
 
@@ -305,7 +371,7 @@ export default function MiniDrawer() {
 							/>
 						</Tabs>
 					</Paper> */}
-					<div style={{ marginLeft: "60%" }}>
+					<div style={{ marginLeft: "50%", paddingRight: "1%" }}>
 						<Badge
 							variant="dot"
 							style={{
@@ -323,8 +389,13 @@ export default function MiniDrawer() {
 					</div>
 					<div>
 						<FormControl>
-							<InputLabel style={{ alignText: "center" }}>
-								Filter
+							<InputLabel
+								style={{
+									alignText: "center",
+									fontSize: "smaller",
+								}}
+							>
+								Dhule&nbsp;ORG
 							</InputLabel>
 							<Select
 								native
@@ -335,10 +406,10 @@ export default function MiniDrawer() {
 									maxHeight: "80%",
 									marginBottom: "5%",
 								}}
-								label="Filter"
-								inputProps={{
+								label="DHULE ORG"
+								disableUnderline={true}
+								InputProps={{
 									name: "Filter",
-									id: "outlined-age-native-simple",
 								}}
 							>
 								<option aria-label="None" value="" />
@@ -348,13 +419,48 @@ export default function MiniDrawer() {
 							</Select>
 						</FormControl>
 					</div>
-					<div>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							justifyContent: "flex-start",
+							alignItems: "baseline",
+						}}
+					>
 						<Avatar
 							className={classes.orange}
-							style={{ marginLeft: "90%" }}
+							style={{ marginLeft: "15%", marginRight: "5%" }}
 						>
 							JD
 						</Avatar>
+						<FormControl>
+							<InputLabel
+								style={{
+									alignText: "center",
+									fontSize: "smaller",
+								}}
+							>
+								John&nbsp;Doe
+							</InputLabel>
+							<Select
+								native
+								value={state.age}
+								onChange={handleChange1}
+								style={{
+									maxHeight: "80%",
+								}}
+								label="DHULE ORG"
+								disableUnderline={true}
+								InputProps={{
+									name: "Filter",
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value={10}>Ten</option>
+								<option value={20}>Twenty</option>
+								<option value={30}>Thirty</option>
+							</Select>
+						</FormControl>
 					</div>
 				</Toolbar>
 			</AppBar>
@@ -373,12 +479,19 @@ export default function MiniDrawer() {
 			>
 				<div className={classes.toolbar}></div>
 				<List>
-					<ListItem button key="Dashboard">
-						<ListItemIcon>
-							<HomeOutlinedIcon style={{ color: "#43425D" }} />
-						</ListItemIcon>
-						<ListItemText primary="Dashboard" />
-					</ListItem>
+					<a
+						href="/dashboard"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem button key="Dashboard">
+							<ListItemIcon>
+								<HomeOutlinedIcon
+									style={{ color: "#43425D" }}
+								/>
+							</ListItemIcon>
+							<ListItemText primary="Dashboard" />
+						</ListItem>
+					</a>
 					<ListItem button key="Samadhan ID">
 						<ListItemIcon>
 							<img src={press} alt="press" />
@@ -419,18 +532,32 @@ export default function MiniDrawer() {
 						</IconButton>
 					</ListItem>
 					{masterSubMenuListItems}
-					<ListItem button key="User List">
-						<ListItemIcon>
-							<img src={folder} alt="User List" />
-						</ListItemIcon>
-						<ListItemText primary="User List" />
-					</ListItem>
-					<ListItem button key="Organisation">
-						<ListItemIcon>
-							<img src={organisation} alt="Organisation" />
-						</ListItemIcon>
-						<ListItemText primary="Organisation" />
-					</ListItem>
+					<a
+						href="/userlist"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem
+							button
+							key="User List"
+							style={{ color: "#43425D" }}
+						>
+							<ListItemIcon>
+								<img src={folder} alt="User List" />
+							</ListItemIcon>
+							<ListItemText primary="User List" />
+						</ListItem>
+					</a>
+					<a
+						href="/organisation"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem button key="Organisation">
+							<ListItemIcon>
+								<img src={organisation} alt="Organisation" />
+							</ListItemIcon>
+							<ListItemText primary="Organisation" />
+						</ListItem>
+					</a>
 					<ListItem button key="Survey">
 						<ListItemIcon>
 							<EqualizerOutlinedIcon
@@ -439,12 +566,24 @@ export default function MiniDrawer() {
 						</ListItemIcon>
 						<ListItemText primary="Survey" />
 					</ListItem>
-					<ListItem button key="Operations">
-						<ListItemIcon>
-							<img src={folder} alt="Operations" />
-						</ListItemIcon>
-						<ListItemText primary="Operations" />
-					</ListItem>
+					<a
+						href="/operations/jobcreation"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem
+							button
+							key="Operations"
+							style={
+								state.clicked ? style.notClick : style.onClicked
+							}
+							onClick={handleClick}
+						>
+							<ListItemIcon>
+								<img src={folder} alt="Operations" />
+							</ListItemIcon>
+							<ListItemText primary="Operations" />
+						</ListItem>
+					</a>
 					<ListItem button key="Properties">
 						<ListItemIcon>
 							<img src={press} alt="Properties" />
@@ -464,18 +603,28 @@ export default function MiniDrawer() {
 						</IconButton>
 					</ListItem>
 					{propertiesSubMenuListItems}
-					<ListItem button key="Inventory">
-						<ListItemIcon>
-							<img src={taxation} alt="Inventory" />
-						</ListItemIcon>
-						<ListItemText primary="Inventory" />
-					</ListItem>
-					<ListItem button key="Package">
-						<ListItemIcon>
-							<img src={taxation} alt="Package" />
-						</ListItemIcon>
-						<ListItemText primary="Package" />
-					</ListItem>
+					<a
+						href="/inventory"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem button key="Inventory">
+							<ListItemIcon>
+								<img src={taxation} alt="Inventory" />
+							</ListItemIcon>
+							<ListItemText primary="Inventory" />
+						</ListItem>
+					</a>
+					<a
+						href="/package"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem button key="Package">
+							<ListItemIcon>
+								<img src={taxation} alt="Package" />
+							</ListItemIcon>
+							<ListItemText primary="Package" />
+						</ListItem>
+					</a>
 					<ListItem button key="Attendance">
 						<ListItemIcon>
 							<img src={taxation} alt="Attendance" />
@@ -514,6 +663,7 @@ export default function MiniDrawer() {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
+				{props.page}
 				{/* <AddOrganisation /> */}
 				{/* <Stepper /> */}
 				{/* <TreeView /> */}
@@ -536,7 +686,7 @@ export default function MiniDrawer() {
 				{/* <Login /> */}
 				{/* <SignUp /> */}
 				{/* <ForPassword /> */}
-				<ResPassword />
+				{/* <ResPassword /> */}
 				{/* <SuccPassword /> */}
 				{/* <CustomizedInputs /> */}
 				{/* <BlankSamadhanID /> */}
@@ -553,7 +703,25 @@ export default function MiniDrawer() {
 				{/* <JobList /> */}
 				{/* <VerifyDocument /> */}
 				{/* <RequestAccess /> */}
+				{/* <Initialisation1 /> */}
+				{/* <QC1 /> */}
+				{/* <AuditJob1 /> */}
+				{/* <DropDown /> */}
+				{/* <InitialisationTable /> */}
+				{/* <InstallationTable /> */}
+				{/* <Installation1 /> */}
+				{/* <InstZoom /> */}
+				{/* <QCTable /> */}
+				{/* <OTP /> */}
+				<OrganisationMain />
 			</main>
 		</div>
 	);
 }
+
+/*
+Today's update:
+1. Added routes in the side navbar
+2. Started routing in the buttons and various elements 
+3. Created Organisation Page.
+*/

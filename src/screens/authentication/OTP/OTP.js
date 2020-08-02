@@ -1,18 +1,16 @@
 import React from "react";
-import styles from "./ResetPassword.module.css";
+import styles from "./OTP.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 import unnamed from "./images/unnamed@2x.png";
-import Logo from "./images/Logo-1@2x.png";
+import Logo from "../../../Assets/Logo.png";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
-			margin: theme.spacing(3),
+			margin: theme.spacing(1),
 			width: "40ch",
-			display: "grid",
 		},
 		"& .MuiIcon-colorSecondary": {
 			width: "2em",
@@ -36,14 +34,14 @@ export default function ForgotPassword() {
 			}}
 			className={styles.background}
 		>
-			<img src={unnamed} style={{ width: "100%" }} />
+			<div className={styles.layer}></div>
 			<div className={styles.div1}>
 				<CancelIcon
 					style={{
 						color: "#F2134F",
 						position: "absolute",
-						top: "-18",
-						right: "-22",
+						top: "-13",
+						right: "-18",
 						height: "10%",
 						width: "10%",
 						cursor: "pointer",
@@ -52,25 +50,49 @@ export default function ForgotPassword() {
 				<div className={styles.logoDiv}>
 					<img src={Logo} alt="logo" />
 				</div>
-				<div className={styles.div1text}>Reset Your Password</div>
+				<div className={styles.div1text}>OTP Verification</div>
 				<div className={styles.textField}>
 					<form
 						className={classes.root}
 						noValidate
 						autoComplete="off"
 					>
-						<TextField
-							id="outlined-basic"
-							type="Password"
-							label="New password"
-							variant="outlined"
+						<input
+							style={{
+								width: "10%",
+								height: "100%",
+								border: "2px solid #1A73E8",
+								borderRadius: "5px",
+								marginRight: "5%",
+								marginLeft: "20%",
+							}}
 						/>
-						<TextField
-							id="outlined-basic"
-							type="Password"
-							label="Confirm your new password"
-							variant="outlined"
-							fullWidth={true}
+						<input
+							style={{
+								width: "10%",
+								height: "100%",
+								border: "2px solid #1A73E8",
+								borderRadius: "5px",
+								marginRight: "5%",
+							}}
+						/>
+						<input
+							style={{
+								width: "10%",
+								height: "100%",
+								border: "2px solid #1A73E8",
+								borderRadius: "5px",
+								marginRight: "5%",
+							}}
+						/>
+						<input
+							style={{
+								width: "10%",
+								height: "100%",
+								border: "2px solid #1A73E8",
+								borderRadius: "5px",
+								marginRight: "5%",
+							}}
 						/>
 					</form>
 				</div>
@@ -78,23 +100,20 @@ export default function ForgotPassword() {
 					style={{
 						display: "flex",
 						justifyContent: "center",
-						padding: "5%",
+						padding: "3%",
 					}}
 				>
 					<Button
 						variant="contained"
+						color="secondary"
 						style={{
 							width: "43ch",
-							height: "50px",
-							outline: "none",
 							textTransform: "none",
-							backgroundColor: "#F2134F",
-							color: "white",
+							height: "4em",
 						}}
-						href="/password-reset-successful"
 						onClick={() => {}}
 					>
-						Reset My Password
+						Verify
 					</Button>
 				</div>
 			</div>

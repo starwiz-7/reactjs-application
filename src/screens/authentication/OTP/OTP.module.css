@@ -1,0 +1,50 @@
+.background {
+    background: linear-gradient(rgba(242, 19, 79, 0.17), rgba(242, 19, 79, 0.17)), url(./images/unnamed@2x.png);
+    position: relative;
+}
+
+.div1 {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    width: 35%;
+    height: 70%;
+    background-color: white;
+    padding: 2%;
+}
+
+.logoDiv {
+    display: flex;
+    padding: 5%;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+.div1text {
+    text-align: center;
+    padding: 5%;
+    font-size: x-large;
+    color: "black";
+}
+
+.description {
+    font-size: smaller;
+    text-align: center;
+    padding-bottom: 5%;
+    color: #64686D;
+}
+
+.textField {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
+
+.cancelIcon {
+    position: absolute;
+    top: -25px;
+    left: 96%;
+}

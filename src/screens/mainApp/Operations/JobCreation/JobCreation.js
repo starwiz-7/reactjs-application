@@ -29,11 +29,16 @@ export default function JobCreation() {
 				</span>
 			</div>
 			<div className={styles.grid}>
-				<JobCreationCard
-					img={first}
-					color={"#58D8FE"}
-					details={"Initialisation"}
-				/>
+				<a
+					href="/operations/jobcreation/initialisation"
+					style={{ textDecoration: "none" }}
+				>
+					<JobCreationCard
+						img={first}
+						color={"#58D8FE"}
+						details={"Initialisation"}
+					/>
+				</a>
 				<JobCreationCard
 					img={second}
 					color={"#6BE4A7"}

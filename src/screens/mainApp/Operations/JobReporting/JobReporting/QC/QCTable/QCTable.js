@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-import styles from "./City.module.css";
+import styles from "./QCTable.module.css";
 
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -12,15 +12,17 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import DatePicker from "../../../../../../../components/DatePicker/DatePicker";
 import Pagination from "@material-ui/lab/Pagination";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import edit from "./edit.png";
-import CustomDrawer from "../../../../components/Drawer/CustomDrawer";
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -52,17 +54,6 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "flex-start",
 	},
 }));
-
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
-	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 function createData(name, calories, fat, carbs, protein) {
 	return { name, calories, fat, carbs, protein };
 }
@@ -79,6 +70,16 @@ const rows = [
 	createData("Cupcake", 305, 3.7, 67, 4.3),
 	createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
+
+const GreenCheckbox = withStyles({
+	root: {
+		color: "green",
+		"&$checked": {
+			color: "green",
+		},
+	},
+	checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 export default function Language() {
 	const classes = useStyles();
@@ -102,16 +103,18 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "lighter" }}>Master /</span>
-				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
-					City
+				<span style={{ fontWeight: "lighter" }}>
+					Operations/ Job Reporting /
+				</span>
+				<span style={{ fontWeight: "lighter", color: "#BBBBBB" }}>
+					QC
 				</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
 						<div>
-							<div className={styles.searchBar}>
+							<div className={styles.searchBarDiv}>
 								<TextField
 									id="standard-search"
 									size="small"
@@ -121,6 +124,7 @@ export default function Language() {
 										borderColor: "#F5F6FA",
 										borderRadius: "4px",
 										marginBottom: "5%",
+										width: "60%",
 									}}
 									InputProps={{
 										startAdornment: icon,
@@ -130,6 +134,38 @@ export default function Language() {
 										focused: classes.focused,
 									}}
 								/>
+								<FormControl
+									variant="outlined"
+									style={{ marginLeft: "1%", height: "30%" }}
+								>
+									<InputLabel
+										htmlFor="outlined-age-native-simple"
+										style={{
+											alignText: "center",
+										}}
+									>
+										Filter
+									</InputLabel>
+									<Select
+										native
+										value={state.age}
+										onChange={handleChange}
+										style={{
+											maxHeight: "40%",
+											marginBottom: "5%",
+										}}
+										label="Filter"
+										inputProps={{
+											name: "Filter",
+											id: "outlined-age-native-simple",
+										}}
+									>
+										<option aria-label="None" value="" />
+										<option value={10}>Ten</option>
+										<option value={20}>Twenty</option>
+										<option value={30}>Thirty</option>
+									</Select>
+								</FormControl>
 							</div>
 						</div>
 						<div className={styles.dropDownDiv}>
@@ -143,56 +179,77 @@ export default function Language() {
 									textTransform: "none",
 									width: "45%",
 									fontWeight: "lighter",
+									height: "70%",
 									marginBottom: "3%",
-									height: "90%",
+									marginLeft: "5%",
+									marginRight: "5%",
 								}}
 							>
 								Search
 							</Button>
+							<FormControl variant="outlined">
+								<InputLabel
+									htmlFor="outlined-age-native-simple"
+									style={{ alignText: "center" }}
+								>
+									Week
+								</InputLabel>
+								<Select
+									native
+									value={state.age}
+									onChange={handleChange}
+									style={{
+										maxHeight: "80%",
+										marginBottom: "5%",
+									}}
+									label="Filter"
+									inputProps={{
+										name: "Filter",
+										id: "outlined-age-native-simple",
+									}}
+								>
+									<option aria-label="None" value="" />
+									<option value={10}>Ten</option>
+									<option value={20}>Twenty</option>
+									<option value={30}>Thirty</option>
+								</Select>
+							</FormControl>
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
-						<FormControl variant="outlined">
-							<InputLabel
-								htmlFor="outlined-age-native-simple"
-								style={{ alignText: "center" }}
-							>
-								Filter
-							</InputLabel>
-							<Select
-								native
-								value={state.age}
-								onChange={handleChange}
-								style={{
-									width: "120%",
-									maxHeight: "80%",
-									marginBottom: "5%",
-								}}
-								label="Filter"
-								inputProps={{
-									name: "Filter",
-									id: "outlined-age-native-simple",
-								}}
-							>
-								<option aria-label="None" value="" />
-								<option value={10}>Ten</option>
-								<option value={20}>Twenty</option>
-								<option value={30}>Thirty</option>
-							</Select>
-						</FormControl>
+						<span
+							style={{
+								textAlign: "center",
+								fontSize: "large",
+							}}
+						>
+							From Date
+						</span>
+						<DatePicker width="70%" />
+						<span
+							style={{
+								textAlign: "center",
+								fontSize: "large",
+								alignItems: "baseline",
+								justifyContent: "baseline",
+							}}
+						>
+							To Date
+						</span>
+						<DatePicker width="70%" />
 						<Button
 							variant="contained"
-							color="secondary"
 							onClick={toggleModal}
 							style={{
 								textTransform: "none",
 								textAlign: "center",
-								width: "45%",
 								// height: "95%",
-								marginBottom: "3.2%",
+								marginBottom: "1%",
+								backgroundColor: "#3B86FF",
+								color: "white",
 							}}
 						>
-							Add new city
+							Download
 						</Button>
 					</div>
 				</div>
@@ -200,87 +257,32 @@ export default function Language() {
 					<ModalHeader toggle={toggleModal}>Add City</ModalHeader>
 					<ModalBody className={styles.modalContainer}>
 						<form className={classes.root}>
-							<FormControl variant="outlined">
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{ alignText: "center" }}
-								>
-									Country
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										maxHeight: "80%",
-										marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
-							<FormControl variant="outlined">
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{ alignText: "center" }}
-								>
-									State
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										maxHeight: "80%",
-										marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
-							<FormControl variant="outlined">
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{ alignText: "center" }}
-								>
-									City
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										maxHeight: "80%",
-										marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
+							<TextField
+								className={classes.root}
+								variant="outlined"
+								label="Country Name"
+								style={{ width: "80%" }}
+								onChange={(text) =>
+									text_enabled(!text.target.value)
+								}
+							/>
+							<TextField
+								className={classes.root}
+								variant="outlined"
+								label="State Name"
+								style={{ width: "80%" }}
+								disabled={text_disabled}
+								onChange={(text) =>
+									text_disabled(!text.target.value)
+								}
+							/>
+							<TextField
+								className={classes.root}
+								variant="outlined"
+								label="City Name"
+								style={{ width: "80%" }}
+								disabled={text2_disabled}
+							/>
 						</form>
 					</ModalBody>
 					<ModalFooter>
@@ -319,7 +321,7 @@ export default function Language() {
 											color: "#A3A6B4",
 										}}
 									>
-										CITY NAME
+										S.NO
 									</TableCell>
 									<TableCell
 										style={{
@@ -327,17 +329,35 @@ export default function Language() {
 											color: "#A3A6B4",
 										}}
 									>
-										CODE
+										Number of QC jobs created
 									</TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
-									<TableCell align="center"></TableCell>
+									<TableCell
+										align="left"
+										style={{
+											textAlign: "center",
+											color: "#A3A6B4",
+										}}
+									>
+										Number of cards completed in QC
+									</TableCell>
+									<TableCell
+										align="left"
+										style={{
+											textAlign: "center",
+											color: "#A3A6B4",
+										}}
+									>
+										Number of initialisations needed
+									</TableCell>
+									<TableCell
+										align="left"
+										style={{
+											textAlign: "center",
+											color: "#A3A6B4",
+										}}
+									>
+										Number of Un-installations needed
+									</TableCell>
 								</TableRow>
 							</TableHead>
 						</Table>
@@ -360,33 +380,55 @@ export default function Language() {
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												California
-											</TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell align="center"></TableCell>
-											<TableCell
-												align="justify"
-												padding="checkbox"
-											>
-												<DeleteForeverIcon
-													style={{
-														padding: "none",
-														cursor: "pointer",
-														color: "#43425D",
-													}}
-												/>
+												1
 											</TableCell>
 											<TableCell
 												align="left"
-												padding="checkbox"
+												component="th"
+												scope="row"
+												style={{
+													color: "#4D4F5C",
+													fontFamily:
+														"Regular 13px/20px Source Sans Pro",
+												}}
 											>
-												<img src={edit} alt="Edit" />
+												250
+											</TableCell>
+											<TableCell
+												align="left"
+												component="th"
+												scope="row"
+												style={{
+													color: "#4D4F5C",
+													fontFamily:
+														"Regular 13px/20px Source Sans Pro",
+												}}
+											>
+												250
+											</TableCell>
+											<TableCell
+												align="left"
+												component="th"
+												scope="row"
+												style={{
+													color: "#4D4F5C",
+													fontFamily:
+														"Regular 13px/20px Source Sans Pro",
+												}}
+											>
+												250
+											</TableCell>
+											<TableCell
+												align="left"
+												component="th"
+												scope="row"
+												style={{
+													color: "#4D4F5C",
+													fontFamily:
+														"Regular 13px/20px Source Sans Pro",
+												}}
+											>
+												250
 											</TableCell>
 										</TableRow>
 									))}

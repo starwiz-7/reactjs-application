@@ -6,10 +6,6 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexWrap: "wrap",
 	},
-	textField: {
-		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
-	},
 }));
 
 export default function DatePickers(props) {
@@ -27,7 +23,7 @@ export default function DatePickers(props) {
 				InputLabelProps={{
 					shrink: true,
 				}}
-				style={{ width: props.width }}
+				style={{ width: props.width, padding: "1%" }}
 			/>
 		</form>
 	);

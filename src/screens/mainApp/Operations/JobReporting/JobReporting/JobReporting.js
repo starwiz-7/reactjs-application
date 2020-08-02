@@ -1,5 +1,5 @@
 import React from "react";
-import JobReportingCard from "../../../../components/JobReportingCard/JobReportingCard";
+import JobReportingCard from "../../../../../components/JobReportingCard/JobReportingCard";
 import styles from "./JobReporting.module.css";
 export default function Jobreporting() {
 	return (

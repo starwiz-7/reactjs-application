@@ -104,17 +104,6 @@ const JobCard = (props) => {
 				>
 					{props.details}
 				</div>
-				<div
-					style={{
-						width: "0",
-						height: "0",
-						bottom: "0",
-						// marginLeft: "100%",
-
-						borderBottom: " 1000% solid red",
-						borderLeft: "1000% solid transparent",
-					}}
-				></div>
 			</CardText>
 		</Card>
 	);
