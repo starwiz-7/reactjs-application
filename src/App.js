@@ -37,7 +37,6 @@ import QC1 from "./screens/mainApp/Operations/JobReporting/JobReporting/QC/QC";
 function App() {
 	let routes = (
 		<Switch>
-			<Route path="/login" render={(props) => <Login />} />
 			<Route path="/signup" render={(props) => <SignUp />} />
 			<Route
 				path="/forgot-password"
@@ -125,7 +124,8 @@ function App() {
 				path="/package"
 				render={(props) => <Drawer page={<Package />} />}
 			/>
-			<Route to="/" render={(props) => <Drawer />} />
+			<Route path="/" render={(props) => <Login />} />
+			{/* <Route to="/" render={(props) => <Drawer />} /> */}
 		</Switch>
 	);
 	return <Suspense fallback={<p>Loading ...</p>}>{routes}</Suspense>;

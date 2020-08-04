@@ -713,7 +713,7 @@ export default function MiniDrawer(props) {
 				{/* <InstZoom /> */}
 				{/* <QCTable /> */}
 				{/* <OTP /> */}
-				<OrganisationMain />
+				{/* <OrganisationMain /> */}
 			</main>
 		</div>
 	);
