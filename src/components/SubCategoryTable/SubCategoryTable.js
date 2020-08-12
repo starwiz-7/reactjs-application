@@ -40,17 +40,38 @@ export default function SimpleTable() {
 			<Table className={classes.table} aria-label="simple table">
 				<TableHead style={{ backgroundColor: "#F5F6FA" }}>
 					<TableRow>
-						<TableCell align="left" style={{ color: "#A3A6B4" }}>
-							SUbCATEGORY NAME
+						<TableCell
+							align="left"
+							style={{
+								color: "#A3A6B4",
+								font: "Source Sans Pro",
+								fontSize: "13px",
+							}}
+						>
+							SUBCATEGORY NAME
 						</TableCell>
-						<TableCell align="left" style={{ color: "#A3A6B4" }}>
+						<TableCell
+							align="left"
+							style={{
+								color: "#A3A6B4",
+								font: "Source Sans Pro",
+								fontSize: "13px",
+							}}
+						>
 							CATEGORY NAME
 						</TableCell>
 						<TableCell></TableCell>
 						<TableCell></TableCell>
 						<TableCell></TableCell>
-						<TableCell align="center" style={{ color: "#A3A6B4" }}>
-							IS ACTIVE
+						<TableCell
+							align="center"
+							style={{
+								color: "#A3A6B4",
+								font: "Source Sans Pro",
+								fontSize: "13px",
+							}}
+						>
+							STATUS
 						</TableCell>
 						<TableCell></TableCell>
 						<TableCell></TableCell>

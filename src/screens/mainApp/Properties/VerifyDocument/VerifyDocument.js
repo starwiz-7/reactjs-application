@@ -13,7 +13,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import Pagination from "@material-ui/lab/Pagination";
-
+import Dropdown from "../../../../components/Select/Select";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import VerifyDocumentTable from "../../../../components/VerifyDocumentTable/VerifyDocumentTable";
@@ -35,17 +35,12 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: "column",
 		justifyContent: "flex-start",
 	},
-}));
-
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
+	"& .MuiPaginationItem-page.Mui-selected": {
+		backgroundColor: "#3B86FF",
+		color: "white",
+		outline: "none",
 	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+}));
 
 export default function Language() {
 	const classes = useStyles();
@@ -70,7 +65,7 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "lighter" }}>Verify Document</span>
+				<span>Verify Document</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
@@ -84,12 +79,10 @@ export default function Language() {
 								style={{
 									borderColor: "#F5F6FA",
 									borderRadius: "4px",
-									marginBottom: "1%",
-									height: "60%",
 								}}
 								InputProps={{
 									startAdornment: icon,
-									placeholder: "Search..",
+									placeholder: "Search...",
 									classes: { input: classes.input },
 									color: "#4D4F5C",
 									focused: classes.focused,
@@ -97,51 +90,16 @@ export default function Language() {
 							/>
 						</div>
 						<div className={styles.dropDownDiv}>
-							<FormControl
-								variant="outlined"
-								style={{ height: "70%" }}
-							>
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{
-										alignText: "center",
-									}}
-								>
-									Filter
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										width: "120%",
-										maxHeight: "100%",
-										// marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
+							<Dropdown holder="Filter" />
 							<Button
 								variant="contained"
 								style={{
 									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "20px",
-									height: "70%",
 									width: "35%",
 									textTransform: "none",
-									fontWeight: "lighter",
 									outline: "none",
-									marginLeft: "6%",
 								}}
 							>
 								Search
@@ -154,7 +112,6 @@ export default function Language() {
 					<VerifyDocumentTable togglingModal={toggleModal} />
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
-					<ModalHeader toggle={toggleModal}>Add City</ModalHeader>
 					<ModalBody className={styles.modalContainer}>
 						<div className={styles.innerDiv}>
 							<span
@@ -201,9 +158,11 @@ export default function Language() {
 							variant="contained"
 							onClick={toggleModal}
 							style={{
-								marginRight: "2%",
+								marginRight: "4%",
 								backgroundColor: "#43425D",
 								color: "white",
+								textTransform: "none",
+								width: "25%",
 							}}
 						>
 							Cancel
@@ -214,6 +173,9 @@ export default function Language() {
 							style={{
 								backgroundColor: "#F2134F",
 								color: "white",
+								textTransform: "none",
+								marginRight: "4%",
+								width: "25%",
 							}}
 						>
 							Verify

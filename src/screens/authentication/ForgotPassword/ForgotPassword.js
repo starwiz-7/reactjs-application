@@ -40,8 +40,8 @@ export default function ForgotPassword() {
 					style={{
 						color: "#F2134F",
 						position: "absolute",
-						top: "-26",
-						right: "-30",
+						top: "-17",
+						right: "-17",
 						height: "10%",
 						width: "10%",
 						cursor: "pointer",
@@ -85,10 +85,11 @@ export default function ForgotPassword() {
 							width: "43ch",
 							textTransform: "none",
 							height: "4em",
+							outline: "none",
 						}}
 						onClick={() => {}}
 					>
-						Send
+						Get OTP
 					</Button>
 				</div>
 				<div style={{ paddingLeft: "14%", paddingTop: "5%" }}>

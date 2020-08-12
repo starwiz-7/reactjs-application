@@ -1,28 +1,13 @@
 import React, { useState } from "react";
-import {
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
-	Input,
-	Label,
-	Form,
-	FormGroup,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styles from "./Country.module.css";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
-
+import Dropdown from "../../../../components/Select/Select";
 import CountryTable from "../../../../components/CountryTable/CountryTable";
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +78,6 @@ export default function Language() {
 									style={{
 										borderColor: "#F5F6FA",
 										borderRadius: "4px",
-										marginBottom: "5%",
 									}}
 									InputProps={{
 										startAdornment: icon,
@@ -114,9 +98,6 @@ export default function Language() {
 									borderRadius: "17px",
 									textTransform: "none",
 									width: "45%",
-									fontWeight: "lighter",
-									marginBottom: "3%",
-									height: "90%",
 									outline: "none",
 								}}
 							>
@@ -125,34 +106,7 @@ export default function Language() {
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
-						<FormControl variant="outlined">
-							<InputLabel
-								htmlFor="outlined-age-native-simple"
-								style={{ alignText: "center" }}
-							>
-								Filter
-							</InputLabel>
-							<Select
-								native
-								value={state.age}
-								onChange={handleChange}
-								style={{
-									width: "120%",
-									maxHeight: "80%",
-									marginBottom: "5%",
-								}}
-								label="Filter"
-								inputProps={{
-									name: "Filter",
-									id: "outlined-age-native-simple",
-								}}
-							>
-								<option aria-label="None" value="" />
-								<option value={10}>Ten</option>
-								<option value={20}>Twenty</option>
-								<option value={30}>Thirty</option>
-							</Select>
-						</FormControl>
+						<Dropdown holder="Filter" />
 						<Button
 							variant="contained"
 							color="secondary"
@@ -160,11 +114,9 @@ export default function Language() {
 							style={{
 								textTransform: "none",
 								textAlign: "center",
-								width: "45%",
-								// height: "95%",
-								marginBottom: "3.2%",
+								whiteSpace: "nowrap",
 								outline: "none",
-								marginLeft: "30%",
+								marginLeft: "2%",
 							}}
 						>
 							Add new country

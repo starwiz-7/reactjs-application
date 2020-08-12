@@ -1,5 +1,5 @@
 .main {
-    background-color: #f7f7f5;
+    background-color: #F9F9F9;
     width: 100%;
     height: 100%;
     padding: 2%;
@@ -10,7 +10,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: xx-large;
+    font: Source Sans Pro;
+    font-size: 28px;
 }
 
 .tableDiv {

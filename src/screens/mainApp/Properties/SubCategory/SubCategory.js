@@ -11,7 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 import SubCategoryTable from "../../../../components/SubCategoryTable/SubCategoryTable";
-
+import Dropdown from "../../../../components/Select/Select";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
@@ -60,7 +60,7 @@ export default function AllProperties() {
 									}}
 									InputProps={{
 										startAdornment: icon,
-										placeholder: "Search..",
+										placeholder: "Search...",
 										classes: { input: classes.input },
 										color: "#4D4F5C",
 										focused: classes.focused,
@@ -69,34 +69,7 @@ export default function AllProperties() {
 							</div>
 						</div>
 						<div className={styles.dropDownDiv}>
-							<FormControl variant="outlined">
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{
-										alignText: "center",
-									}}
-								>
-									Category
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										width: "120%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
+							<Dropdown holder="Category" />
 						</div>
 					</div>
 					<div className={styles.buttonContainer}>

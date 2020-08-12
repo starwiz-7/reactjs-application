@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import Pagination from "@material-ui/lab/Pagination";
 import InitialisationTable from "../../../../../components/JobCreationTables/InitialisationTable/InitialisationTable";
+import download from "../../../../../Assets/upload1.png";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -38,21 +39,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
-	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function Language() {
 	const classes = useStyles();
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const [check, setCheck] = useState(false);
-	const handleChange = () => setCheck(!check);
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 	return (
 		<div className={styles.main}>
@@ -60,7 +48,13 @@ export default function Language() {
 				<span style={{ fontWeight: "light", color: "#43425D" }}>
 					Operations / Job Creation /
 				</span>
-				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
+				<span
+					style={{
+						fontWeight: "light",
+						color: "#BBBBBB",
+						fontSize: "26px",
+					}}
+				>
 					&nbsp;Initialisation
 				</span>
 			</div>
@@ -112,9 +106,32 @@ export default function Language() {
 							style={{
 								textTransform: "none",
 								textAlign: "center",
+								width: "45%",
+								alignSelf: "right",
+								outline: "none",
+								backgroundColor: "#3B86FF",
+								fontSize: "10px",
+							}}
+						>
+							Download
+							<img
+								src={download}
+								style={{
+									transform: "rotate(180deg)",
+									marginLeft: "30%",
+								}}
+							/>
+						</Button>
+						<Button
+							variant="contained"
+							color="secondary"
+							onClick={() => {}}
+							style={{
+								textTransform: "none",
+								textAlign: "center",
 								// width: "60%",
 								alignSelf: "right",
-								marginLeft: "48%",
+								marginLeft: "2%",
 								outline: "none",
 							}}
 						>

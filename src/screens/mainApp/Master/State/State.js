@@ -1,34 +1,16 @@
 import React, { useState } from "react";
-import {
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
-	Input,
-	Label,
-	Form,
-	FormGroup,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styles from "./State.module.css";
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-} from "reactstrap";
 import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import SvgIcon from "@material-ui/core/SvgIcon";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
+import Dropdown from "../../../../components/Select/Select";
 
 import StateTable from "../../../../components/StateTable/StateTable";
 
@@ -63,9 +45,7 @@ const GreenCheckbox = withStyles({
 
 export default function Language() {
 	const classes = useStyles();
-	const [state, setState] = React.useState({
-
-	});
+	const [state, setState] = React.useState({});
 	const handleChange = (event) => {
 		const name = event.target.name;
 		setState({
@@ -87,32 +67,29 @@ export default function Language() {
 				<span style={{ fontWeight: "lighter" }}>Master /</span>
 				<span style={{ fontWeight: "lighter", color: "#43425D" }}>
 					State
-                </span>
+				</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
-						<div>
-							<div className={styles.searchBar}>
-								<TextField
-									id="standard-search"
-									size="small"
-									type="search"
-									variant="outlined"
-									style={{
-										borderColor: "#F5F6FA",
-										borderRadius: "4px",
-										marginBottom: "5%",
-									}}
-									InputProps={{
-										startAdornment: icon,
-										placeholder: "Search..",
-										classes: { input: classes.input },
-										color: "#4D4F5C",
-										focused: classes.focused,
-									}}
-								/>
-							</div>
+						<div className={styles.searchBar}>
+							<TextField
+								id="standard-search"
+								size="small"
+								type="search"
+								variant="outlined"
+								style={{
+									borderColor: "#F5F6FA",
+									borderRadius: "4px",
+								}}
+								InputProps={{
+									startAdornment: icon,
+									placeholder: "Search..",
+									classes: { input: classes.input },
+									color: "#4D4F5C",
+									focused: classes.focused,
+								}}
+							/>
 						</div>
 						<div className={styles.dropDownDiv}>
 							<Button
@@ -123,46 +100,14 @@ export default function Language() {
 									borderRadius: "20px",
 									textTransform: "none",
 									width: "45%",
-									fontWeight: "lighter",
-									marginBottom: "3%",
-									height: "90%",
 								}}
 							>
 								Search
-                            </Button>
+							</Button>
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
-						<FormControl variant="outlined">
-							<InputLabel
-								htmlFor="outlined-age-native-simple"
-								style={{ alignText: "center" }}
-							>
-								Filter
-
-							</InputLabel>
-
-							<Select
-								native
-								value={state.age}
-								onChange={handleChange}
-								style={{
-									width: "120%",
-									maxHeight: "80%",
-									marginBottom: "5%",
-								}}
-								label="Filter"
-								inputProps={{
-									name: "Filter",
-									id: "outlined-age-native-simple",
-								}}
-							>
-								<option aria-label="None" value="" />
-								<option value={10}>Ten</option>
-								<option value={20}>Twenty</option>
-								<option value={30}>Thirty</option>
-							</Select>
-						</FormControl>
+						<Dropdown holder="Filter" />
 						<Button
 							variant="contained"
 							color="secondary"
@@ -170,13 +115,13 @@ export default function Language() {
 							style={{
 								textTransform: "none",
 								textAlign: "center",
-								width: "45%",
-								// height: "95%",
-								marginBottom: "3.2%",
+								whiteSpace: "nowrap",
+								outline: "none",
+								marginLeft: "2%",
 							}}
 						>
 							Add new state
-                        </Button>
+						</Button>
 					</div>
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
@@ -210,14 +155,14 @@ export default function Language() {
 							style={{ marginRight: "2%" }}
 						>
 							Cancel
-                        </Button>
+						</Button>
 						<Button
 							variant="contained"
 							color="secondary"
 							onClick={toggleModal}
 						>
 							Save
-                        </Button>
+						</Button>
 					</ModalFooter>
 				</Modal>
 				<div className={styles.table}>
@@ -226,16 +171,14 @@ export default function Language() {
 
 				<div className={classes.root}></div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-				}}
-			/>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

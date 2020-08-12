@@ -23,8 +23,14 @@ export default function JobCreation() {
 		<div className={styles.main}>
 			<div className={styles.title}>
 				<span style={{ fontWeight: "light" }}>Operations/ </span>
-				<span style={{ fontWeight: "light", color: " #BBBBBB" }}>
-					{" "}
+				<span
+					style={{
+						fontWeight: "light",
+						color: " #BBBBBB",
+						font: "Segoe UI",
+						fontSize: "26px",
+					}}
+				>
 					Job Creation
 				</span>
 			</div>

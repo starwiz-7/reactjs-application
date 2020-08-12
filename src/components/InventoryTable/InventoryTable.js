@@ -42,73 +42,122 @@ export default function SimpleTable1() {
 					<TableRow>
 						<TableCell
 							align="left"
-							style={{ textAlign: "left", color: "#A3A6B4" }}
+							style={{
+								textAlign: "left",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							PACKAGE
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							NO. OF FRESH CARDS
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							NO. OF FAILED
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							NO. OF DAMAGE CARDS
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							SCREW
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							SCREW DRIVER
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							DRILL GUN
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							WOOD PLUGS
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							JOB SHEETS
 						</TableCell>
 						<TableCell
-							align="center"
-							style={{ textAlign: "center", color: "#A3A6B4" }}
+							align="left"
+							style={{
+								textAlign: "center",
+								color: "#A3A6B4",
+								whiteSpace: "nowrap",
+								fontSize: "13px",
+							}}
 						>
 							QUANTITIES
 						</TableCell>
-						<TableCell align="center"></TableCell>
-						<TableCell align="center"></TableCell>
+						<TableCell align="left"></TableCell>
+						<TableCell align="left"></TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{rows.map((row) => (
 						<TableRow key={row.name}>
 							<TableCell
-								align="left"
 								component="th"
 								scope="row"
 								style={{
@@ -119,9 +168,9 @@ export default function SimpleTable1() {
 							>
 								USER
 							</TableCell>
-							<TableCell>1000</TableCell>
-							<TableCell>1000</TableCell>
-							<TableCell>50</TableCell>
+							<TableCell align="left">1000</TableCell>
+							<TableCell align="left">1000</TableCell>
+							<TableCell align="left">50</TableCell>
 							<TableCell></TableCell>
 							<TableCell></TableCell>
 							<TableCell></TableCell>

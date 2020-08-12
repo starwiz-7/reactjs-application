@@ -6,17 +6,16 @@
 }
 
 .title {
-    margin-left: 2%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: xx-large;
-    color: #43425D;
+    font-size: 28px;
+    color: #43425d;
 }
 
 .tableDiv {
     background-color: white;
-    margin-top: 5%;
+    margin-top: 2%;
     padding: 0 1.5%;
     height: 80%;
     display: flex;
@@ -60,7 +59,11 @@
     align-items: flex-end;
 }
 
-@media (min-width:1441px) and (max-width:2560px) {
+.buttonDiv {
+    width: 10%;
+}
+
+@media (min-width: 1441px) and (max-width: 2560px) {
     .searchAndDrop {
         width: 40%;
     }
@@ -69,7 +72,7 @@
     }
 }
 
-@media (min-width:1025px) and (max-width:1440px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
     .searchAndDrop {
         width: 45%;
     }
@@ -78,7 +81,7 @@
     }
 }
 
-@media (min-width:769px) and (max-width:1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .searchAndDrop {
         width: 65%;
     }
@@ -87,7 +90,7 @@
     }
 }
 
-@media (min-width:426px) and (max-width:768px) {
+@media (min-width: 426px) and (max-width: 768px) {
     .searchAndDrop {
         width: 70%;
     }
@@ -96,7 +99,7 @@
     }
 }
 
-@media (min-width:376px) and (max-width:425px) {
+@media (min-width: 376px) and (max-width: 425px) {
     .searchAndDrop {
         width: 70%;
     }
@@ -105,7 +108,7 @@
     }
 }
 
-@media (min-width:320px) and (max-width:375px) {
+@media (min-width: 320px) and (max-width: 375px) {
     .searchAndDrop {
         width: 70%;
     }

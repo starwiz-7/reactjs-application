@@ -13,10 +13,13 @@ export default function UserList() {
 				<div className={styles.title}>UserList</div>
 				<div className={styles.searchAndButton}>
 					<div className={styles.searchBar}>
-						<SearchIcon fontSize="large" />
+						<SearchIcon
+							fontSize="large"
+							style={{ color: "#BCBCCB" }}
+						/>
 						<TextField
 							id="standard-basic"
-							label="Search user..."
+							placeholder="Search name.."
 							InputProps={{ disableUnderline: true }}
 						/>
 						<Button
@@ -25,23 +28,26 @@ export default function UserList() {
 								backgroundColor: "#43425D",
 								borderRadius: "17px",
 								color: "white",
-								fontSize: "15px",
-								height: "38px",
-								width: "108px",
+								height: "50%",
+								textTransform: "none",
+								width: "30%",
+								marginLeft: "30%",
+								outline: "none",
 							}}
 						>
-							{" "}
 							Search
 						</Button>
 					</div>
 					<Button
 						variant="contained"
 						style={{
-							backgroundColor: "#50c878",
+							backgroundColor: "#0CD241",
 							color: "white",
 							height: "45px",
-							width: "164px",
+							width: "25%",
 							alignSelf: "left",
+							textTransform: "none",
+							outline: "none",
 						}}
 					>
 						Invite User
@@ -49,18 +55,42 @@ export default function UserList() {
 				</div>
 			</div>
 			<div className={styles.grid}>
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
+				<Card
+					name="David James"
+					place="United States"
+					contact="871.567.4877"
+				/>
 			</div>
 			<Pagination
 				variant="outlined"
 				shape="rounded"
 				count={5}
-				style={{ marginLeft: "70%" }}
+				style={{ marginLeft: "75%" }}
 			/>
 		</div>
 	);

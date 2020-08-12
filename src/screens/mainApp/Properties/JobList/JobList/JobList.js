@@ -1,27 +1,13 @@
 import React, { useState } from "react";
-import {
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
-	Input,
-	Label,
-	Form,
-	FormGroup,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import styles from "./JobList.module.css";
-
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import Dropdown from "../../../../../components/Select/Select";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
 
 import JobListTable from "../../../../../components/JobListTable/JobListTable";
@@ -45,16 +31,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
-	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function Language() {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
@@ -70,14 +46,13 @@ export default function Language() {
 	};
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
-	const [check, setCheck] = useState(false);
 	const [text_enabled, text_disabled, text2_disabled] = useState(true);
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "lighter" }}>Job List</span>
+				<span>Job List</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
@@ -95,7 +70,7 @@ export default function Language() {
 								}}
 								InputProps={{
 									startAdornment: icon,
-									placeholder: "Search..",
+									placeholder: "Search...",
 									classes: { input: classes.input },
 									color: "#4D4F5C",
 									focused: classes.focused,
@@ -103,39 +78,7 @@ export default function Language() {
 							/>
 						</div>
 						<div className={styles.dropDownDiv}>
-							<FormControl
-								variant="outlined"
-								style={{ height: "80%" }}
-							>
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{
-										alignText: "center",
-									}}
-								>
-									Filter
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										width: "120%",
-										maxHeight: "100%",
-										// marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl>
+							<Dropdown holder="Filter" />
 							<Button
 								variant="contained"
 								style={{
@@ -144,10 +87,8 @@ export default function Language() {
 									borderRadius: "20px",
 									paddingLeft: "5%",
 									position: "relative",
-									height: "80%",
 									width: "35%",
 									textTransform: "none",
-									fontWeight: "lighter",
 									outline: "none",
 									marginLeft: "3%",
 								}}
@@ -166,7 +107,6 @@ export default function Language() {
 								textAlign: "center",
 								width: "25%",
 								outline: "none",
-								// height: "95%",
 							}}
 						>
 							Add
@@ -229,16 +169,14 @@ export default function Language() {
 
 				<div className={classes.root}></div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-				}}
-			/>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

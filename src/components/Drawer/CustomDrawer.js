@@ -16,11 +16,22 @@ import PersonOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import EqualizerOutlinedIcon from "@material-ui/icons/EqualizerOutlined";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import { plainTabsStylesHook } from "@mui-treasury/styles/tabs";
+
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import { useGutterBorderedGridStyles } from "@mui-treasury/styles/grid/gutterBordered";
+
 import logout from "./images/logout-2@2x.png";
 import folder from "./images/folder@2x.png";
 import press from "./images/press@2x.png";
 import organisation from "./images/organisation@2x.png";
 import taxation from "./images/taxation@2x.png";
+import check from "./images/check.png";
+import box from "./images/box.png";
+import store from "./images/store.png";
 import Logo from "./images/Logo.png";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
@@ -31,12 +42,9 @@ import Badge from "@material-ui/core/Badge";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 
 import InstZoom from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/InstallationZoom/InstZoom.js";
-import DropDown from "../../components/DropDown/DropDown";
+import Select1 from "../../components/Select/Select";
 import Stepper from "../../components/Stepper/Stepper";
 import DashBoard from "../../screens/mainApp/DashBoard/DashBoard";
 import BlankSamadhanID from "../../screens/mainApp/SamadhanID/BlankSamadhanID/BlankSamadhanID";
@@ -90,7 +98,7 @@ import ForPassword from "../../screens/authentication/ForgotPassword/ForgotPassw
 import SuccPassword from "../../screens/authentication/SuccessfulPasswordReset/SuccessfulPasswordReset";
 import CustomizedInputs from "../../screens/authentication/Login/ll";
 
-const drawerWidth = 270;
+const drawerWidth = 252;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -117,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "none",
 	},
 	drawer: {
-		width: drawerWidth,
+		width: "260px",
 		flexShrink: 0,
 		whiteSpace: "nowrap",
 		overflow: "hidden",
@@ -182,16 +190,56 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const style = {
-	notClick: { color: "#43425D" },
-	onClicked: { color: "red" },
-};
+export function OperationTab() {
+	//Tabs
+	const [tabIndex, setTabIndex] = React.useState(0);
+	const tabsStyles = plainTabsStylesHook.useTabs();
+	const tabItemStyles = plainTabsStylesHook.useTabItem();
+
+	return (
+		<div style={{ margin: "0 auto", marginTop: "1.1%" }}>
+			<Tabs
+				classes={tabsStyles}
+				value={tabIndex}
+				onChange={(e, index) => setTabIndex(index)}
+			>
+				<Tab
+					classes={tabItemStyles}
+					label={"JOBCREATION"}
+					disableRipple={true}
+					style={{
+						color: "#3B86FF",
+						outline: "none",
+						width: "10px",
+						borderRadius: "5px",
+					}}
+				/>
+				<Tab
+					classes={tabItemStyles}
+					label={"JOBREPORTING"}
+					disableRipple={true}
+					style={{
+						color: "#BBBBBB",
+						outline: "none",
+						width: "10px",
+						borderRadius: "5px",
+						backgroundColor: "white",
+						borderRight: "none",
+						borderTop: "none",
+						borderBottom: "none",
+					}}
+				/>
+			</Tabs>
+		</div>
+	);
+}
 export default function MiniDrawer(props) {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
 	const [masterSubMenu, setMasterSubmenu] = useState(false);
 	const [propertiesSubMenu, setPropertiesSubmenu] = useState(false);
+	const [showTabs, setShowTabs] = useState(false);
 	const [value, setValue] = React.useState(0);
 	const [state, setState] = React.useState({
 		age: "",
@@ -204,6 +252,8 @@ export default function MiniDrawer(props) {
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
+
+	const onTab = () => {};
 	const handleChange1 = (event) => {
 		const name = event.target.name;
 		setState({
@@ -217,9 +267,14 @@ export default function MiniDrawer(props) {
 		setMasterSubmenu(false);
 		setPropertiesSubmenu(false);
 	};
+	//Section for top right side
+	const colWidth = { xs: 4 };
+	const borderColor = "grey.500";
+	const styles = useGutterBorderedGridStyles({ borderColor, height: "80%" });
+
 	const toggleIcon = open ? <CancelOutlinedIcon /> : <MenuIcon />;
 	const samadhanSubMenuListItems = samadhanSubMenu ? (
-		<List>
+		<List style={{ backgroundColor: "#FFFFFF" }}>
 			<a
 				href="/samadhanID/organisation"
 				style={{ textDecoration: "none", color: "#43425D" }}
@@ -323,6 +378,36 @@ export default function MiniDrawer(props) {
 					</div>
 				</ListItem>
 			</a>
+			<a
+				href="/properties/joblist"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Job List" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/properties/verifydocument"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Verify Document" />
+					</div>
+				</ListItem>
+			</a>
+			<a
+				href="/properties/requestaccess"
+				style={{ textDecoration: "none", color: "#43425D" }}
+			>
+				<ListItem button key="Organisation">
+					<div className={styles.subMenuItems}>
+						<ListItemText primary="Request Access" />
+					</div>
+				</ListItem>
+			</a>
 		</List>
 	) : null;
 
@@ -330,13 +415,20 @@ export default function MiniDrawer(props) {
 		<div className={classes.root}>
 			<CssBaseline />
 			<AppBar position="fixed" className={clsx(classes.appBar, {})}>
-				<Toolbar style={{ display: "flex", flexDirection: "row" }}>
+				<Toolbar
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: "space-between",
+					}}
+				>
 					<div
 						style={{
 							display: "flex",
 							flexDirection: "row",
 							justifyContent: "space-between",
 							alignItems: "baseline",
+							float: "left",
 						}}
 					>
 						<img
@@ -354,24 +446,13 @@ export default function MiniDrawer(props) {
 							onClick={toggleDrawer}
 							edge="start"
 							className={clsx(classes.menuButton)}
-							style={{ outline: "none" }}
+							style={{ outline: "none", marginLeft: "7%" }}
 						>
 							{toggleIcon}
 						</IconButton>
 					</div>
-					{/* <Paper className={classes.tabs} style={{ border: "none" }}>
-						<Tabs value={value} onChange={handleChange} centered>
-							<Tab
-								label="Item One"
-								style={{ color: "#BBBBBB" }}
-							/>
-							<Tab
-								label="Item Two"
-								style={{ color: "#BBBBBB" }}
-							/>
-						</Tabs>
-					</Paper> */}
-					<div style={{ marginLeft: "50%", paddingRight: "1%" }}>
+					{showTabs ? <OperationTab /> : null}
+					<div>
 						<Badge
 							variant="dot"
 							style={{
@@ -386,8 +467,6 @@ export default function MiniDrawer(props) {
 								}}
 							/>
 						</Badge>
-					</div>
-					<div>
 						<FormControl>
 							<InputLabel
 								style={{
@@ -402,7 +481,6 @@ export default function MiniDrawer(props) {
 								value={state.age}
 								onChange={handleChange1}
 								style={{
-									width: "120%",
 									maxHeight: "80%",
 									marginBottom: "5%",
 								}}
@@ -425,6 +503,7 @@ export default function MiniDrawer(props) {
 							flexDirection: "row",
 							justifyContent: "flex-start",
 							alignItems: "baseline",
+							float: "right",
 						}}
 					>
 						<Avatar
@@ -462,6 +541,62 @@ export default function MiniDrawer(props) {
 							</Select>
 						</FormControl>
 					</div>
+					{/* <div>
+						<Box width={{ xs: "100%", md: "80%" }}>
+							<Grid container justify={"center"}>
+								// eslint-disable-next-line
+								react/no-array-index-key
+								<Grid item {...colWidth} classes={styles}>
+									<Box textAlign={"center"}>
+										<h2
+											style={{
+												margin: 0,
+												fontSize: 20,
+											}}
+										>
+											Content
+										</h2>
+									</Box>
+								</Grid>
+								<Grid item {...colWidth} classes={styles}>
+									<Box textAlign={"center"}>
+										<h2
+											style={{
+												margin: 0,
+												fontSize: 20,
+											}}
+										>
+											Content
+										</h2>
+									</Box>
+								</Grid>
+								<Grid item {...colWidth} classes={styles}>
+									<Box textAlign={"center"}>
+										<h2
+											style={{
+												margin: 0,
+												fontSize: 20,
+											}}
+										>
+											Content
+										</h2>
+									</Box>
+								</Grid>
+								<Grid item {...colWidth} classes={styles}>
+									<Box textAlign={"center"}>
+										<h2
+											style={{
+												margin: 0,
+												fontSize: 20,
+											}}
+										>
+											Content
+										</h2>
+									</Box>
+								</Grid>
+							</Grid>
+						</Box>
+					</div> */}
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -478,7 +613,14 @@ export default function MiniDrawer(props) {
 				}}
 			>
 				<div className={classes.toolbar}></div>
-				<List>
+				<List
+					disablePadding={true}
+					style={{
+						backgroundColor: "#FCFCFC",
+						boxShadow: "8px -8px 15px #00000024",
+					}}
+					className={styles.drawer}
+				>
 					<a
 						href="/dashboard"
 						style={{ textDecoration: "none", color: "#43425D" }}
@@ -570,14 +712,7 @@ export default function MiniDrawer(props) {
 						href="/operations/jobcreation"
 						style={{ textDecoration: "none", color: "#43425D" }}
 					>
-						<ListItem
-							button
-							key="Operations"
-							style={
-								state.clicked ? style.notClick : style.onClicked
-							}
-							onClick={handleClick}
-						>
+						<ListItem button key="Operations" onClick={onTab}>
 							<ListItemIcon>
 								<img src={folder} alt="Operations" />
 							</ListItemIcon>
@@ -609,9 +744,12 @@ export default function MiniDrawer(props) {
 					>
 						<ListItem button key="Inventory">
 							<ListItemIcon>
-								<img src={taxation} alt="Inventory" />
+								<img src={store} alt="Inventory" />
 							</ListItemIcon>
-							<ListItemText primary="Inventory" />
+							<ListItemText
+								primary="Inventory"
+								style={{ fontSize: "smaller" }}
+							/>
 						</ListItem>
 					</a>
 					<a
@@ -620,14 +758,14 @@ export default function MiniDrawer(props) {
 					>
 						<ListItem button key="Package">
 							<ListItemIcon>
-								<img src={taxation} alt="Package" />
+								<img src={box} alt="Package" />
 							</ListItemIcon>
 							<ListItemText primary="Package" />
 						</ListItem>
 					</a>
 					<ListItem button key="Attendance">
 						<ListItemIcon>
-							<img src={taxation} alt="Attendance" />
+							<img src={check} alt="Attendance" />
 						</ListItemIcon>
 						<ListItemText primary="Attendance" />
 					</ListItem>
@@ -665,6 +803,7 @@ export default function MiniDrawer(props) {
 				<div className={classes.toolbar} />
 				{props.page}
 				{/* <AddOrganisation /> */}
+				{/* <SamadhanIDViewAll /> */}
 				{/* <Stepper /> */}
 				{/* <TreeView /> */}
 				{/* <UserList /> */}
@@ -714,7 +853,14 @@ export default function MiniDrawer(props) {
 				{/* <QCTable /> */}
 				{/* <OTP /> */}
 				{/* <OrganisationMain /> */}
+				{/* <Select1 /> */}
 			</main>
 		</div>
 	);
 }
+
+/*
+Today's update:
+1. Merged code of various pages with Kuldeep sir.
+2. Solved design issues and added responsiveness to pages Attendance, Master section pages, SubCategoryList,CategoryList,JobList,VerifyDocument,RequestAccess,Package.
+*/

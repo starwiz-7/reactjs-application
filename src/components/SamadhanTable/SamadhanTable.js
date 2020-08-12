@@ -66,10 +66,8 @@ export default function SimpleTable() {
 							>
 								12-02-2020
 							</TableCell>
-							<TableCell align="center">
-								<a href="#" style={{ textAlign: "center" }}>
-									View All
-								</a>
+							<TableCell align="center" style={{ color:"#3B86FF", cursor:"pointer", font:"Semibold 13px/20px Source Sans Pro"}}>
+									VIEW ALL
 							</TableCell>
 						</TableRow>
 					))}

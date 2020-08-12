@@ -8,9 +8,9 @@ import styles from "./JobCreationCard.module.css";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		minWidth: 255,
+		minWidth: 270,
 		margin: "2%",
-		maxHeight: 90,
+		maxHeight: 110,
 	},
 	root1: {
 		display: "flex",
@@ -41,8 +41,9 @@ const JobCard = (props) => {
 								style={{
 									backgroundColor: props.color,
 									marginTop: "9%",
+									boxShadow: "0px 3px 6px #00000029",
 								}}
-								className={classes.medium}
+								className={classes.large}
 							>
 								<img src={props.img} />
 							</Avatar>
@@ -53,7 +54,7 @@ const JobCard = (props) => {
 							marginTop: "-4%",
 							font: "Semibold Source Sans Pro",
 							marginLeft: "4%",
-							fontSize: "large",
+							fontSize: "22px",
 						}}
 					>
 						{props.details}

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import styles from "./Attendance.module.css";
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-} from "reactstrap";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-
+import Dropdown from "../../../components/Select/Select";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 import Table from "../../../components/Table/Table";
 
@@ -28,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OrganisationSamadhanID() {
 	const classes = useStyles();
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
+	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (
 		<div className={styles.main}>
@@ -39,43 +32,53 @@ export default function OrganisationSamadhanID() {
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
-						<div>
-							<div className={styles.searchBar}>
-								<SearchIcon />
-								<TextField
-									id="standard-search"
-									label="Search..."
-									type="search"
-								/>
-							</div>
+						<div className={styles.searchBar}>
+							<TextField
+								id="standard-search"
+								size="small"
+								type="search"
+								variant="outlined"
+								style={{
+									borderColor: "#F5F6FA",
+									borderRadius: "4px",
+									marginRight: "2%",
+								}}
+								InputProps={{
+									startAdornment: icon,
+									placeholder: "Search..",
+									classes: { input: classes.input },
+									color: "#4D4F5C",
+									focused: classes.focused,
+								}}
+							/>
+							<Dropdown holder="User" />
 						</div>
 						<div className={styles.dropDownDiv}>
-							<Dropdown isOpen={dropdownOpen} toggle={toggle}>
-								<DropdownToggle
-									caret
-									style={{
-										backgroundColor: "white",
-										color: "grey",
-									}}
-								>
-									User
-								</DropdownToggle>
-								<DropdownMenu>
-									<DropdownItem header>Actions</DropdownItem>
-									<DropdownItem>Some Action</DropdownItem>
-									<DropdownItem>Action</DropdownItem>
-									<DropdownItem>Foo Action</DropdownItem>
-									<DropdownItem>Bar Action</DropdownItem>
-									<DropdownItem>Quo Action</DropdownItem>
-								</DropdownMenu>
-							</Dropdown>
-							<DatePicker />
+							<TextField
+								id="standard-search"
+								size="small"
+								type="date"
+								variant="outlined"
+								style={{
+									borderColor: "#F5F6FA",
+									borderRadius: "4px",
+									width: "42%",
+								}}
+								InputProps={{
+									classes: { input: classes.input },
+									color: "#4D4F5C",
+									focused: classes.focused,
+								}}
+							/>
+
 							<Button
 								variant="contained"
 								style={{
-									backgroundColor: "#21034B",
+									backgroundColor: "#43425D",
 									color: "white",
 									borderRadius: "20px",
+									textTransform: "none",
+									width: "30%",
 								}}
 							>
 								Search

@@ -27,6 +27,9 @@ import Initialisation from "./screens/mainApp/Operations/JobCreation/Initialisat
 import PropertyList from "./screens/mainApp/Properties/PropertyList/AllProperties/AllProperties";
 import CategoryList from "./screens/mainApp/Properties/CategoryList/Category/CategoryList";
 import SubCategoryList from "./screens/mainApp/Properties/SubCategory/SubCategory";
+import JobList from "./screens/mainApp/Properties/JobList/JobList/JobList";
+import VerifyDocument from "./screens/mainApp/Properties/VerifyDocument/VerifyDocument";
+import RequestAccess from "./screens/mainApp/Properties/RequestAccess/RequestAccess";
 
 import Inventory from "./screens/mainApp/Inventory/InventoryList/Inventory";
 
@@ -114,6 +117,18 @@ function App() {
 				path="/properties/subcategorylist"
 				render={(props) => <Drawer page={<SubCategoryList />} />}
 			/>
+			<Route
+				path="/properties/joblist"
+				render={(props) => <Drawer page={<JobList />} />}
+			/>
+			<Route
+				path="/properties/verifydocument"
+				render={(props) => <Drawer page={<VerifyDocument />} />}
+			/>
+			<Route
+				path="/properties/requestaccess"
+				render={(props) => <Drawer page={<RequestAccess />} />}
+			/>
 
 			<Route
 				path="/inventory"
@@ -124,8 +139,8 @@ function App() {
 				path="/package"
 				render={(props) => <Drawer page={<Package />} />}
 			/>
+			<Route to="/dev" render={(props) => <Drawer />} />
 			<Route path="/" render={(props) => <Login />} />
-			{/* <Route to="/" render={(props) => <Drawer />} /> */}
 		</Switch>
 	);
 	return <Suspense fallback={<p>Loading ...</p>}>{routes}</Suspense>;

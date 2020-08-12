@@ -1,5 +1,5 @@
 .main {
-    background-color: #f7f7f5;
+    background-color: #f9f9f9;
     width: 100%;
     height: 100%;
     padding: 2%;
@@ -10,14 +10,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: x-large;
+    font-size: 28px;
     color: #43425D;
 }
 
 .innerDiv {
     margin: 2% 0;
     background-color: #F0F2F8;
-    width: 80%;
+    width: 100%;
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -55,7 +55,6 @@
 }
 
 .dropDownDiv {
-    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
