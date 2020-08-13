@@ -16,11 +16,11 @@
 
 .dropdownMain {
     display: flex;
-    margin-right: 4%;
+    margin-right: 2%;
+    margin-top: 2%;
     padding-bottom: 2%;
     align-items: flex-end;
     justify-content: flex-end;
-    width: 20%
 }
 
 .title {
@@ -51,10 +51,11 @@
     border-bottom: 0.1rem solid #43425D;
     padding-bottom: 1%;
     margin-right: 2%;
+    white-space: nowrap;
 }
 
 .dropdown2 {
-    margin-left: 34%;
+    margin-left: 32%;
 }
 
 .date {
@@ -69,21 +70,67 @@
     color: #43425D;
     font-size: medium;
     text-align: center;
+    white-space: nowrap;
 }
 
 .cards {
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-evenly;
     flex: 1;
     margin-top: 5%;
-    margin-left: 3%;
+    margin-left: 1%;
 }
 
 .final {
-    margin-left: 83%;
+    margin-left: 85%;
     display: flex;
     flex-direction: row;
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .cards {
+        width: 100%;
+    }
+    .dropdown2 {
+        margin-left: 20%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cards {
+        width: 100%;
+    }
+    .dropdown2 {
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .cards {
+        width: 100%;
+    }
+    .dropdown2 {
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+    .cards {
+        width: 100%;
+    }
+    .dropdown2 {
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+    .cards {
+        width: 100%;
+    }
+    .dropdown2 {
+        margin-left: 5%;
+    }
 }

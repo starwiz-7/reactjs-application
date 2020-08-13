@@ -61,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
 			fontWeight: 400,
 		},
 	},
+	input: {
+		color: "#4D4F5C",
+		fontSize: "smaller",
+	},
 }));
 
 export function Dropdown(props1) {
@@ -163,7 +167,7 @@ export default function OrganisationSamadhanID() {
 								style={{
 									borderColor: "#F5F6FA",
 									borderRadius: "4px",
-									width: "65%",
+									width: "50%",
 								}}
 								InputProps={{
 									classes: { input: classes.input },

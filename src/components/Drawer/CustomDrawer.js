@@ -89,6 +89,7 @@ import AuditJob1 from "../../screens/mainApp/Operations/JobReporting/JobReportin
 import InstallationTable from "../../screens/mainApp/Operations/JobReporting/JobReporting/AuditJob/AuditTable/AuditTable";
 import Installation1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/Installation";
 import OrganisationMain from "../../screens/mainApp/Organisation/OrganisationMain/OrganisationMain";
+import AddSub from "../../screens/mainApp/Properties/SubCategory/AddSubCategory/AddSub";
 
 import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
@@ -854,6 +855,7 @@ export default function MiniDrawer(props) {
 				{/* <OTP /> */}
 				{/* <OrganisationMain /> */}
 				{/* <Select1 /> */}
+				{/* <AddSub /> */}
 			</main>
 		</div>
 	);
@@ -861,6 +863,6 @@ export default function MiniDrawer(props) {
 
 /*
 Today's update:
-1. Merged code of various pages with Kuldeep sir.
-2. Solved design issues and added responsiveness to pages Attendance, Master section pages, SubCategoryList,CategoryList,JobList,VerifyDocument,RequestAccess,Package.
+1. Created AddSubCategory page.
+2. Resolved design issues and added responsiveness to pages UserList, JobReporting page(Audit), DhuleOrganisation,OTP Verification.
 */

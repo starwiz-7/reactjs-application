@@ -9,7 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import back from "./back.png";
 import LinearProgress from "@material-ui/core/LinearProgress";
-
+import Dropdown from "../../../../../../components/Select/Select";
 import Typography from "@material-ui/core/Typography";
 const BorderLinearProgress = withStyles((theme) => ({
 	root: {
@@ -26,10 +26,11 @@ const BorderLinearProgress = withStyles((theme) => ({
 		padding: "2%",
 	},
 }))(LinearProgress);
+
 const useStyles = makeStyles({
 	root: {
-		maxWidth: "90%",
-		minWidth: "25%",
+		maxWidth: "30%",
+		minWidth: "30%",
 	},
 	title: {
 		fontSize: 14,
@@ -65,58 +66,13 @@ export default function Initialisation() {
 					</span>
 				</div>
 				<div className={styles.dropdownMain}>
-					<FormControl variant="outlined" style={{ height: "10%" }}>
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Initial
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							style={{}}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Initialisation" />
 				</div>
 			</div>
 			<div className={styles.header2}>
 				<span className={styles.subTitle}>Initialisation</span>
 				<div className={styles.dropdown2}>
-					<FormControl variant="outlined">
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Today
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Today" />
 				</div>
 				<div className={styles.date}>
 					<span className={styles.label}>From Date</span>
@@ -133,6 +89,8 @@ export default function Initialisation() {
 							style={{
 								color: "#BBBBBB",
 								textAlign: "center",
+								fontSize: "large",
+								whiteSpace: "nowrap",
 							}}
 							gutterBottom
 						>
@@ -143,7 +101,7 @@ export default function Initialisation() {
 							style={{
 								color: "#03E565",
 								textAlign: "center",
-								fontSize: "x-large",
+								fontSize: "33px",
 								fontWeight: "bold",
 								paddingBottom: "5%",
 							}}
@@ -167,6 +125,8 @@ export default function Initialisation() {
 							style={{
 								color: "#BBBBBB",
 								textAlign: "center",
+								fontSize: "large",
+								whiteSpace: "nowrap",
 							}}
 							gutterBottom
 						>
@@ -177,7 +137,7 @@ export default function Initialisation() {
 							style={{
 								color: "#56BBFE",
 								textAlign: "center",
-								fontSize: "x-large",
+								fontSize: "33px",
 								fontWeight: "bold",
 								paddingBottom: "5%",
 							}}
@@ -201,6 +161,8 @@ export default function Initialisation() {
 							style={{
 								color: "#BBBBBB",
 								textAlign: "center",
+								fontSize: "large",
+								whiteSpace: "nowrap",
 							}}
 							gutterBottom
 						>
@@ -211,7 +173,7 @@ export default function Initialisation() {
 							style={{
 								color: "#FF6060",
 								textAlign: "center",
-								fontSize: "x-large",
+								fontSize: "33px",
 								fontWeight: "bold",
 								paddingBottom: "5%",
 							}}

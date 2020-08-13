@@ -63,9 +63,15 @@
 
 .buttonAndFilter {
     display: flex;
-    width: 22%;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.paginationDiv {
+    margin-top: 2%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 @media (min-width: 1441px) and (max-width: 2560px) {
@@ -75,6 +81,9 @@
     .dropDownDiv {
         width: 60%;
     }
+    .buttonAndFilter {
+        width: 22%;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -82,7 +91,10 @@
         width: 50%;
     }
     .dropDownDiv {
-        width: 50%;
+        width: 60%;
+    }
+    .buttonAndFilter {
+        width: 30%;
     }
 }
 
@@ -93,6 +105,9 @@
     .dropDownDiv {
         width: 60%;
     }
+    .buttonAndFilter {
+        width: 40%;
+    }
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
@@ -101,6 +116,9 @@
     }
     .dropDownDiv {
         width: 60%;
+    }
+    .buttonAndFilter {
+        width: 40%;
     }
 }
 
@@ -111,6 +129,9 @@
     .dropDownDiv {
         width: 80%;
     }
+    .buttonAndFilter {
+        width: 40%;
+    }
 }
 
 @media (min-width: 320px) and (max-width: 375px) {
@@ -119,5 +140,20 @@
     }
     .dropDownDiv {
         width: 80%;
+    }
+    .buttonAndFilter {
+        width: 40%;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 319px) {
+    .searchAndDrop {
+        width: 70%;
+    }
+    .dropDownDiv {
+        width: 80%;
+    }
+    .buttonAndFilter {
+        width: 40%;
     }
 }

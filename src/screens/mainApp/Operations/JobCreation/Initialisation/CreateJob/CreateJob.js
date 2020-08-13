@@ -93,7 +93,10 @@ export default function CreateJob() {
 					<FormControl variant="outlined">
 						<InputLabel
 							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center", fontSize: "" }}
+							style={{
+								alignText: "center",
+								whiteSpace: "nowrap",
+							}}
 						>
 							Selection of associate
 						</InputLabel>

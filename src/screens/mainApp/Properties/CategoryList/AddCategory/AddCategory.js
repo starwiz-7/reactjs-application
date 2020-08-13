@@ -28,10 +28,8 @@ export default function AddProperty() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "lighter" }}>Property List /</span>
-				<span style={{ color: "#a9a9a9", fontWeight: "lighter" }}>
-					&nbsp;Upload Property
-				</span>
+				<span>Category List /</span>
+				<span style={{ color: "#a9a9a9" }}>&nbsp;Add Category</span>
 			</div>
 			<div className={styles.formDiv}>
 				<form noValidate autoComplete="off">
@@ -60,7 +58,8 @@ export default function AddProperty() {
 							label="Is Active"
 							style={{
 								color: "#43425D",
-								marginRight: "75%",
+								marginRight: "85%",
+								whiteSpace: "nowrap",
 							}}
 						/>
 					</div>
@@ -73,9 +72,8 @@ export default function AddProperty() {
 								backgroundColor: "#43425D",
 								color: "white",
 								textTransform: "none",
-								fontWeight: "lighter",
 								outline: "none",
-								// width: "100%",
+								width: "6em",
 							}}
 						>
 							Cancel
@@ -88,9 +86,8 @@ export default function AddProperty() {
 								backgroundColor: "#F2134F",
 								color: "white",
 								textTransform: "none",
-								fontWeight: "lighter",
 								outline: "none",
-								// width: "100%",
+								width: "6em",
 							}}
 						>
 							Save

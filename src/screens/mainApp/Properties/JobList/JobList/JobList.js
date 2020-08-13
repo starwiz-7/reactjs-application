@@ -66,7 +66,6 @@ export default function Language() {
 								style={{
 									borderColor: "#F5F6FA",
 									borderRadius: "4px",
-									marginBottom: "1%",
 								}}
 								InputProps={{
 									startAdornment: icon,

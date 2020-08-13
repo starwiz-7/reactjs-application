@@ -60,7 +60,7 @@ export default function ForgotPassword() {
 						<input
 							style={{
 								width: "10%",
-								height: "100%",
+								minHeight: "3.25vw",
 								border: "2px solid #1A73E8",
 								borderRadius: "5px",
 								marginRight: "5%",
@@ -70,7 +70,7 @@ export default function ForgotPassword() {
 						<input
 							style={{
 								width: "10%",
-								height: "100%",
+								minHeight: "3.25vw",
 								border: "2px solid #1A73E8",
 								borderRadius: "5px",
 								marginRight: "5%",
@@ -79,7 +79,7 @@ export default function ForgotPassword() {
 						<input
 							style={{
 								width: "10%",
-								height: "100%",
+								minHeight: "3.25vw",
 								border: "2px solid #1A73E8",
 								borderRadius: "5px",
 								marginRight: "5%",
@@ -88,7 +88,7 @@ export default function ForgotPassword() {
 						<input
 							style={{
 								width: "10%",
-								height: "100%",
+								minHeight: "3.25vw",
 								border: "2px solid #1A73E8",
 								borderRadius: "5px",
 								marginRight: "5%",
@@ -96,20 +96,39 @@ export default function ForgotPassword() {
 						/>
 					</form>
 				</div>
+				<div className={styles.helper}>
+					<span style={{ fontSize: "smaller" }}>
+						OTP expires in 4:53 minutes
+					</span>
+					<span
+						style={{
+							font: "Source Sans Pro",
+							fontWeight: "bold",
+							color: "#F2134F",
+							fontSize: "smaller",
+							marginRight: "5%",
+							cursor: "pointer",
+						}}
+					>
+						RESEND OTP
+					</span>
+				</div>
 				<div
 					style={{
 						display: "flex",
 						justifyContent: "center",
-						padding: "3%",
+						marginTop: "5%",
 					}}
 				>
 					<Button
 						variant="contained"
 						color="secondary"
 						style={{
-							width: "43ch",
+							width: "19.5vw",
 							textTransform: "none",
 							height: "4em",
+							font: "SF Pro Text",
+							fontSize: "16px",
 						}}
 						onClick={() => {}}
 					>

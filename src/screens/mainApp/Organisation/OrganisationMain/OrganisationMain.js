@@ -98,12 +98,18 @@ export function Organisation() {
 						marginLeft: "3%",
 						marginTop: "3%",
 						marginBottom: "5%",
+						fontSize: "22px",
 					}}
 				>
 					Organisation Profile
 				</span>
 				<div className={styles.formRowDiv}>
-					<span style={{ color: "#43425D", paddingBottom: "2%" }}>
+					<span
+						style={{
+							color: "#43425D",
+							paddingBottom: "2%",
+						}}
+					>
 						Organisation display name
 					</span>
 					<TextField
@@ -126,7 +132,10 @@ export function Organisation() {
 					</span>
 					<TextField
 						variant="outlined"
-						style={{ width: "90%", outline: "none" }}
+						style={{
+							width: "90%",
+							outline: "none",
+						}}
 					></TextField>
 				</div>
 				<div className={styles.formRowDiv}>
@@ -147,37 +156,49 @@ export function Organisation() {
 						style={{ width: "90%", outline: "none" }}
 					></TextField>
 				</div>
+				<div className={styles.formRowDiv}>
+					<span style={{ color: "#43425D", paddingBottom: "2%" }}>
+						Billing email (Private)
+					</span>
+					<TextField
+						variant="outlined"
+						style={{ width: "90%", outline: "none" }}
+					></TextField>
+				</div>
+				<div className={styles.formRowDiv}>
+					<span style={{ color: "#43425D", paddingBottom: "2%" }}>
+						Gravatar email (Private)
+					</span>
+					<TextField
+						variant="outlined"
+						style={{ width: "90%", outline: "none" }}
+					></TextField>
+				</div>
 			</div>
 			<div className={styles.organisationProfileDiv}>
 				<span
 					style={{
 						color: "#707070",
 						fontSize: "large",
-						font: "Semibold Source Sans Pro",
+						font: "Source Sans Pro",
 						fontWeight: "bold",
 					}}
 				>
 					Profile Picture
 				</span>
-				<div
-					style={{
-						height: "13vw",
-						width: "13vw",
-						borderRadius: "50%",
-						border: "5px solid white",
-						backgroundColor: "black",
-						alignSelf: "center",
-						marginTop: "5%",
-						marginBottom: "5%",
-					}}
-				></div>
+				<div className={styles.container}>
+					<div className={styles.circle}>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Chapultepec_Zoo_-_Jaguar_%2802%29.jpg/2560px-Chapultepec_Zoo_-_Jaguar_%2802%29.jpg" />
+					</div>
+				</div>
 				<Button
 					variant="filled"
 					style={{
 						backgroundColor: "#3B86FF",
 						color: "white",
 						textAlign: "center",
-						height: "120%",
+						height: "4em",
+						marginTop: "5%",
 						font: "Semibold Source Sans Pro",
 					}}
 				>

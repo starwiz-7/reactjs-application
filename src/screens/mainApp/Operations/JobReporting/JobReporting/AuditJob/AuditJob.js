@@ -8,8 +8,7 @@ import DatePicker from "../../../../../../components/DatePicker/DatePicker";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import back from "./back.png";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Avatar from "@material-ui/core/Avatar";
+import Dropdown from "../../../../../../components/Select/Select";
 
 import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
@@ -51,61 +50,13 @@ export default function Initialisation() {
 					</span>
 				</div>
 				<div className={styles.dropdownMain}>
-					<FormControl
-						variant="outlined"
-						style={{ height: "10%", width: "50%" }}
-					>
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Audit Job
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							style={{}}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Audit Job" />
 				</div>
 			</div>
 			<div className={styles.header2}>
 				<span className={styles.subTitle}>Audit Job</span>
 				<div className={styles.dropdown2}>
-					<FormControl variant="outlined" style={{ width: "110%" }}>
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Today
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Today" />
 				</div>
 				<div className={styles.date}>
 					<span className={styles.label}>From Date</span>

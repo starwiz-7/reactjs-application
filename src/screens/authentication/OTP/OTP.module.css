@@ -37,9 +37,8 @@
 .textField {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 4%;
     margin-top: 5%;
 }
 
@@ -47,4 +46,12 @@
     position: absolute;
     top: -25px;
     left: 96%;
+}
+
+.helper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 5%;
 }

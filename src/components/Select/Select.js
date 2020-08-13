@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { useBorderSelectStyles } from "@mui-treasury/styles/select/border";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { blue, grey } from "@material-ui/core/colors";
-// Original design here: https://github.com/siriwatknp/mui-treasury/issues/541
 
 const useStyles = makeStyles(() => ({
 	select: {
-		minWidth: "9.5vw",
+		minWidth: "12vw",
+		["@media (min-width: 320px) and (max-width: 375px)"]: {
+			minWidth: "25vw",
+		},
+		["@media (min-width: 376px) and (max-width: 425px)"]: {
+			minWidth: "25vw",
+		},
 		background: "white",
 		color: grey[700],
 		borderColor: "#D7DAE2",

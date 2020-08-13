@@ -1,13 +1,14 @@
 import React from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import styles from "./Installation.module.css";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import DatePicker from "../../../../../../components/DatePicker/DatePicker";
-import { Card, Button, CardTitle, CardText } from "reactstrap";
+import { Card, CardText } from "reactstrap";
 import expand from "../../../../../../Assets/fullscreen.png";
 import TextField from "@material-ui/core/TextField";
+import Dropdown from "../../../../../../components/Select/Select";
 import back from "./back.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -153,61 +154,13 @@ export default function Initialisation() {
 					</span>
 				</div>
 				<div className={styles.dropdownMain}>
-					<FormControl
-						variant="outlined"
-						style={{ height: "10%", marginRight: "18%" }}
-					>
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Initial
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							style={{}}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Installation" style={{}} />
 				</div>
 			</div>
 			<div className={styles.header2}>
 				<span className={styles.subTitle}>Installation</span>
 				<div className={styles.dropdown2}>
-					<FormControl variant="outlined">
-						<InputLabel
-							htmlFor="outlined-age-native-simple"
-							style={{ alignText: "center" }}
-						>
-							Today
-						</InputLabel>
-						<Select
-							native
-							value={state.age}
-							onChange={handleChange}
-							label="Filter"
-							inputProps={{
-								name: "Filter",
-								id: "outlined-age-native-simple",
-							}}
-						>
-							<option aria-label="None" value="" />
-							<option value={10}>Ten</option>
-							<option value={20}>Twenty</option>
-							<option value={30}>Thirty</option>
-						</Select>
-					</FormControl>
+					<Dropdown holder="Today" />
 				</div>
 				<div className={styles.date}>
 					<span className={styles.label}>From Date</span>

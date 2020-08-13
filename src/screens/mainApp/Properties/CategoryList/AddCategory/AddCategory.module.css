@@ -9,7 +9,8 @@
 }
 
 .title {
-    font-size: xx-large;
+    font-size: 28px;
+    font: Source Sans Pro;
 }
 
 .formDiv {
@@ -37,7 +38,6 @@
     display: flex;
     margin: 2% 0;
     padding: 2%;
-    justify-content: space-around;
 }
 
 .row2 {
@@ -50,12 +50,11 @@
 .buttonDiv {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-left: 50%;
-    width: 100%
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 15%;
 }
 
 .buttons {
-    padding: 3%;
+    margin: 2%;
 }

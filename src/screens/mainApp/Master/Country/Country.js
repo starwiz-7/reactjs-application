@@ -29,16 +29,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
-	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function Language() {
 	const classes = useStyles();
 	const [state, setState] = React.useState({

@@ -23,7 +23,7 @@ export default function DatePickers(props) {
 				InputLabelProps={{
 					shrink: true,
 				}}
-				style={{ width: props.width, padding: "1%" }}
+				style={{ width: props.width, padding: "1%", fontSize: "small" }}
 			/>
 		</form>
 	);
