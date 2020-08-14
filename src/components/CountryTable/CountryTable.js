@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
-	Input,
-	Label,
-	Form,
-	FormGroup,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -26,6 +17,8 @@ const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
 		borderRadius: 0,
+		borderCollapse: "seperate !important",
+		borderSpacing: "0 5px !important",
 	},
 });
 

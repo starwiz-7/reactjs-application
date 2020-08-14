@@ -168,9 +168,36 @@ export default function SimpleTable1() {
 							>
 								USER
 							</TableCell>
-							<TableCell align="left">1000</TableCell>
-							<TableCell align="left">1000</TableCell>
-							<TableCell align="left">50</TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								1000
+							</TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								1000
+							</TableCell>
+							<TableCell
+								align="center"
+								style={{
+									color: "#4D4F5C",
+									fontFamily:
+										"Regular 13px/20px Source Sans Pro",
+								}}
+							>
+								50
+							</TableCell>
 							<TableCell></TableCell>
 							<TableCell></TableCell>
 							<TableCell></TableCell>
@@ -178,7 +205,7 @@ export default function SimpleTable1() {
 							<TableCell></TableCell>
 							<TableCell></TableCell>
 
-							<TableCell align="justify" padding="checkbox">
+							<TableCell align="left" padding="checkbox">
 								<DeleteForeverIcon
 									style={{
 										padding: "none",

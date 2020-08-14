@@ -37,6 +37,8 @@ import Package from "./screens/mainApp/Package/PackageList/PackageList";
 
 import QC1 from "./screens/mainApp/Operations/JobReporting/JobReporting/QC/QC";
 
+import Profile from "./components/ProfileStepper/Stepper";
+
 function App() {
 	let routes = (
 		<Switch>
@@ -139,6 +141,12 @@ function App() {
 				path="/package"
 				render={(props) => <Drawer page={<Package />} />}
 			/>
+
+			<Route
+				path="/profile"
+				render={(props) => <Drawer page={<Profile />} />}
+			/>
+
 			<Route to="/dev" render={(props) => <Drawer />} />
 			<Route path="/" render={(props) => <Login />} />
 		</Switch>

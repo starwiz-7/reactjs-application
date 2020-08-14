@@ -90,6 +90,7 @@ import InstallationTable from "../../screens/mainApp/Operations/JobReporting/Job
 import Installation1 from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/Installation";
 import OrganisationMain from "../../screens/mainApp/Organisation/OrganisationMain/OrganisationMain";
 import AddSub from "../../screens/mainApp/Properties/SubCategory/AddSubCategory/AddSub";
+import InstCJ from "../../screens/mainApp/Operations/JobCreation/Installation/CreateJob/CreateJob";
 
 import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
@@ -782,12 +783,17 @@ export default function MiniDrawer(props) {
 						</ListItemIcon>
 						<ListItemText primary="Taxation and Payments" />
 					</ListItem>
-					<ListItem button key="Profile">
-						<ListItemIcon>
-							<PersonOutlinedIcon />
-						</ListItemIcon>
-						<ListItemText primary="Profile" />
-					</ListItem>
+					<a
+						href="/profile"
+						style={{ textDecoration: "none", color: "#43425D" }}
+					>
+						<ListItem button key="Profile">
+							<ListItemIcon>
+								<PersonOutlinedIcon />
+							</ListItemIcon>
+							<ListItemText primary="Profile" />
+						</ListItem>
+					</a>
 					<ListItem button key="Logout">
 						<ListItemIcon>
 							<img
@@ -856,13 +862,8 @@ export default function MiniDrawer(props) {
 				{/* <OrganisationMain /> */}
 				{/* <Select1 /> */}
 				{/* <AddSub /> */}
+				<InstCJ />
 			</main>
 		</div>
 	);
 }
-
-/*
-Today's update:
-1. Created AddSubCategory page.
-2. Resolved design issues and added responsiveness to pages UserList, JobReporting page(Audit), DhuleOrganisation,OTP Verification.
-*/

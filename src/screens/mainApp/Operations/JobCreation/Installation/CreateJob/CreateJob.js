@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	select: {
-		minWidth: "51vw",
+		minWidth: "23vw",
 		["@media (min-width: 320px) and (max-width: 375px)"]: {
 			minWidth: "25vw",
 		},
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function Dropdown() {
+export function Dropdown(props1) {
 	const [val, setVal] = React.useState(0);
 
 	const handleChange = (event) => {
@@ -112,7 +112,7 @@ export function Dropdown() {
 					marginRight: "2%",
 				}}
 			>
-				<MenuItem value={0}> Selection of associate </MenuItem>{" "}
+				<MenuItem value={0}> {props1.holder} </MenuItem>{" "}
 				<MenuItem value={1}> One </MenuItem>{" "}
 				<MenuItem value={2}> Two </MenuItem>{" "}
 				<MenuItem value={3}> Three </MenuItem>{" "}
@@ -141,14 +141,14 @@ export default function CreateJob() {
 		<div className={styles.main}>
 			<div className={styles.title}>
 				<span style={{ fontWeight: "light", color: "#43425D" }}>
-					Operations/ Job Creation / Initialisation /
+					Operations/ Job Creation / Installation /
 				</span>
 				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
 					&nbsp;Create Job
 				</span>
 			</div>
 			<div className={styles.container}>
-				<div className={styles.row2}>
+				<div className={styles.row2} style={{ paddingTop: "5%" }}>
 					<TextField
 						id="outlined-basic"
 						label={<span className={styles.label}>Title</span>}
@@ -173,30 +173,31 @@ export default function CreateJob() {
 				</div>
 				<div style={{ flexDirection: "column" }}>
 					<div className={styles.date}>
-						<div>
+						<div className={styles.inDate}>
 							<span className={styles.label}>Start Date</span>
 							<DatePicker />
 						</div>
-						<span className={styles.label}>End Date</span>
-						<DatePicker />
+						<div className={styles.inDate}>
+							<span className={styles.label}>End Date</span>
+							<DatePicker />
+						</div>
 					</div>
-				</div>
-				<div className={styles.row2}>
-					<TextField
-						id="outlined-basic"
-						label="No. of NFC tags"
-						variant="outlined"
-						size="normal"
-						style={{ width: "80%" }}
-					/>
 				</div>
 				<div
 					style={{
 						width: "calc(100vw - 80px)",
 						marginLeft: "10%",
-						paddingBottom: "5%",
+						paddingBottom: "2%",
+						paddingTop: "2%",
 					}}
 				>
+					<Dropdown holder="Selection of category" />
+				</div>
+				<div className={styles.row3}>
+					<Dropdown
+						holder="Selection of sub groups"
+						style={{ marginRight: "10%" }}
+					/>
 					<Dropdown holder="Selection of associate" />
 				</div>
 				<div classname={styles.row2}>
@@ -210,6 +211,7 @@ export default function CreateJob() {
 							borderRadius: "5px",
 							marginLeft: "69%",
 							width: "10%",
+							outline: "none",
 						}}
 					>
 						Cancel
@@ -224,6 +226,7 @@ export default function CreateJob() {
 							borderRadius: "5px",
 							width: "10%",
 							marginLeft: "2%",
+							outline: "none",
 						}}
 					>
 						Save
