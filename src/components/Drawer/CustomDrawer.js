@@ -42,6 +42,7 @@ import Badge from "@material-ui/core/Badge";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import flag from "../../Assets/uk.png";
 
 import InstZoom from "../../screens/mainApp/Operations/JobReporting/JobReporting/Installation/InstallationZoom/InstZoom.js";
 import Select1 from "../../components/Select/Select";
@@ -454,11 +455,20 @@ export default function MiniDrawer(props) {
 						</IconButton>
 					</div>
 					{showTabs ? <OperationTab /> : null}
-					<div>
+					<div
+						style={{
+							marginRight: "-2%",
+							display: "flex",
+							flexDirection: "row",
+							justifyContent: "flex-start",
+							alignItems: "center",
+						}}
+					>
 						<Badge
 							variant="dot"
 							style={{
 								color: "#000",
+								padding: "2%",
 							}}
 						>
 							<NotificationsNoneIcon
@@ -474,6 +484,7 @@ export default function MiniDrawer(props) {
 								style={{
 									alignText: "center",
 									fontSize: "smaller",
+									padding: "2%",
 								}}
 							>
 								Dhule&nbsp;ORG
@@ -498,19 +509,9 @@ export default function MiniDrawer(props) {
 								<option value={30}>Thirty</option>
 							</Select>
 						</FormControl>
-					</div>
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "row",
-							justifyContent: "flex-start",
-							alignItems: "baseline",
-							float: "right",
-						}}
-					>
 						<Avatar
 							className={classes.orange}
-							style={{ marginLeft: "15%", marginRight: "5%" }}
+							style={{ marginRight: "5%", padding: "2%" }}
 						>
 							JD
 						</Avatar>
@@ -519,6 +520,7 @@ export default function MiniDrawer(props) {
 								style={{
 									alignText: "center",
 									fontSize: "smaller",
+									padding: "2%",
 								}}
 							>
 								John&nbsp;Doe
@@ -531,6 +533,39 @@ export default function MiniDrawer(props) {
 									maxHeight: "80%",
 								}}
 								label="DHULE ORG"
+								disableUnderline={true}
+								InputProps={{
+									name: "Filter",
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value={10}>Ten</option>
+								<option value={20}>Twenty</option>
+								<option value={30}>Thirty</option>
+							</Select>
+						</FormControl>
+						<img
+							src={flag}
+							style={{ marginRight: "1%", padding: "2%" }}
+						/>
+						<FormControl>
+							<InputLabel
+								style={{
+									alignText: "center",
+									fontSize: "smaller",
+									padding: "2%",
+								}}
+							>
+								EN
+							</InputLabel>
+							<Select
+								native
+								value={state.age}
+								onChange={handleChange1}
+								style={{
+									maxHeight: "80%",
+									marginBottom: "5%",
+								}}
 								disableUnderline={true}
 								InputProps={{
 									name: "Filter",
@@ -862,7 +897,7 @@ export default function MiniDrawer(props) {
 				{/* <OrganisationMain /> */}
 				{/* <Select1 /> */}
 				{/* <AddSub /> */}
-				<InstCJ />
+				{/* <InstCJ /> */}
 			</main>
 		</div>
 	);

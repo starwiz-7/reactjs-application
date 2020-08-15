@@ -11,7 +11,6 @@ import Button from "@material-ui/core/Button";
 import edit from "../../../../Assets/edit.png";
 import Dropdown from "../../../../components/Select/Select";
 import SearchIcon from "@material-ui/icons/Search";
-import CountryTable from "../../../../components/CountryTable/CountryTable";
 //Inventory
 import InventoryTable from "../../../../components/InventoryTable/InventoryTable";
 
@@ -24,6 +23,26 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Pagination from "@material-ui/lab/Pagination";
+
+//Custom Select
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { blue, grey } from "@material-ui/core/colors";
+import { useBorderSelectStyles } from "@mui-treasury/styles/select/border";
+import { Divider } from "@material-ui/core";
+
+//Custom Searchbox
+import InputBase from "@material-ui/core/InputBase";
+import Search from "@material-ui/icons/Search";
+import { useBorderedInputBaseStyles } from "@mui-treasury/styles/inputBase/bordered";
+
+//Team
+import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import FingerprintIcon from "@material-ui/icons/Fingerprint";
+import Checkbox from "@material-ui/core/Checkbox";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -64,7 +83,7 @@ const AntTab = withStyles((theme) => ({
 		textTransform: "none",
 		minWidth: 72,
 		fontWeight: theme.typography.fontWeightRegular,
-		marginRight: theme.spacing(4),
+		marginRight: theme.spacing(3),
 		outline: "none",
 		fontFamily: [
 			"-apple-system",
@@ -101,10 +120,123 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 	},
 	table: {
-		minWidth: 650,
+		minWidth: 620,
 		borderRadius: 0,
 	},
+	select: {
+		minWidth: "8vw",
+		["@media (min-width: 320px) and (max-width: 375px)"]: {
+			minWidth: "25vw",
+		},
+		["@media (min-width: 376px) and (max-width: 425px)"]: {
+			minWidth: "25vw",
+		},
+		background: "white",
+		color: "#43425D",
+		borderColor: "#D7DAE2",
+		borderStyle: "solid",
+		borderWidth: "2px",
+		borderRadius: "4px",
+		paddingLeft: "5px",
+		paddingTop: "2px",
+		paddingBottom: "2px",
+		fontSize: "13px",
+		"&:hover": {
+			borderColor: grey[400],
+		},
+		"&:focus": {
+			borderRadius: "4px",
+			background: "white",
+			borderColor: blue[200],
+		},
+	},
+	icon: {
+		color: "#43425D",
+		right: 12,
+		position: "absolute",
+		userSelect: "none",
+		pointerEvents: "none",
+	},
+	list: {
+		paddingTop: 0,
+		paddingBottom: 0,
+		background: "white",
+		color: "#4d4f5c",
+		fontSize: "smaller",
+		"& li.Mui-selected": {
+			fontWeight: 400,
+		},
+	},
+	input: {
+		"&::placeholder": {
+			color: "#4D4F5C",
+			fontSize: "smaller",
+		},
+	},
 }));
+
+const BorderSelect = (props1) => {
+	const [val, setVal] = React.useState(0);
+
+	const handleChange = (event) => {
+		setVal(event.target.value);
+	};
+
+	const borderSelectClasses = useBorderSelectStyles();
+	const menuProps = {
+		classes: {
+			list: borderSelectClasses.list,
+		},
+		anchorOrigin: {
+			vertical: "bottom",
+			horizontal: "left",
+		},
+		transformOrigin: {
+			vertical: "top",
+			horizontal: "left",
+		},
+		getContentAnchorEl: null,
+	};
+
+	const classes = useStyles();
+
+	const iconComponent = (props) => {
+		return (
+			<ExpandMoreIcon
+				className={
+					props.className +
+					" " +
+					borderSelectClasses.icon +
+					" " +
+					classes.icon
+				}
+			/>
+		);
+	};
+
+	return (
+		<FormControl>
+			<Select
+				disableUnderline
+				labelId="inputLabel"
+				placeholder="Role"
+				IconComponent={iconComponent}
+				className={classes.select}
+				MenuProps={menuProps}
+				value={val}
+				onChange={handleChange}
+				style={{
+					marginRight: "2%",
+				}}
+			>
+				<MenuItem value={0}> {props1.holder} </MenuItem>{" "}
+				<MenuItem value={1}> One </MenuItem>{" "}
+				<MenuItem value={2}> Two </MenuItem>{" "}
+				<MenuItem value={3}> Three </MenuItem>{" "}
+			</Select>
+		</FormControl>
+	);
+};
 
 export function Organisation() {
 	return (
@@ -243,14 +375,6 @@ function createData(name, calories, fat, carbs, protein) {
 const rows = [
 	createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
 	createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-	createData("Eclair", 262, 16.0, 24, 6.0),
-	createData("Cupcake", 305, 3.7, 67, 4.3),
-	createData("Gingerbread", 356, 16.0, 49, 3.9),
-	createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-	createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-	createData("Eclair", 262, 16.0, 24, 6.0),
-	createData("Cupcake", 305, 3.7, 67, 4.3),
-	createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
 export function Inventory() {
@@ -575,6 +699,693 @@ export function Settings() {
 		</div>
 	);
 }
+
+const SearchBox = () => {
+	const styles = useBorderedInputBaseStyles();
+	return (
+		<div>
+			<InputBase
+				classes={styles}
+				placeholder={"Find a repository they have access to..."}
+				startAdornment={<Search />}
+				style={{
+					backgroundColor: "#FFFFFF",
+					border: "none",
+					fontSize: "12px",
+					borderRadius: "5px",
+					boxShadow: "0px 3px 3px #00000014",
+					minWidth: "20vw",
+					padding: "5px",
+				}}
+			/>
+		</div>
+	);
+};
+export function Module() {
+	const classes = useStyles();
+	return (
+		<div className={styles.moduleDiv}>
+			<div className={styles.table1div}>
+				<TableContainer
+					component={Paper}
+					style={{ boxShadow: "0px 2px 3px #0000000A" }}
+				>
+					<Table aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "50%",
+										padding: "10px",
+									}}
+								>
+									Organisation Details
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							<TableRow>
+								<TableCell component="th" scope="row">
+									<BorderSelect holder="Role:Member" />
+								</TableCell>
+							</TableRow>
+							<Divider />
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									1 modules
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									0 teams
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Membership Private
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									User Verified
+								</TableCell>
+							</TableRow>
+						</TableBody>
+					</Table>
+				</TableContainer>
+				<Button
+					variant="filled"
+					style={{
+						backgroundColor: "#DF2020",
+						color: "white",
+						fontSize: "14px",
+						width: "100%",
+						textTransform: "none",
+						marginTop: "10%",
+						outline: "none",
+					}}
+				>
+					Remove from organisation
+				</Button>
+			</div>
+			<div className={styles.table2div}>
+				<TableContainer component={Paper}>
+					<Table
+						aria-label="simple table"
+						style={{ tableLayout: "auto" }}
+					>
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										textAlign: "left",
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "70%",
+									}}
+								>
+									List of Modules
+								</TableCell>
+								<TableCell
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+									}}
+								>
+									<SearchBox />
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row) => (
+								<TableRow key={row.name}>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											color: "#43425D",
+											font:
+												"Semibold 18px/25px Source Sans Pro",
+											fontWeight: "bold",
+											fontSize: "18px",
+										}}
+									>
+										Samadhan-Technologies/Dhule/Property
+									</TableCell>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											textAlign: "right",
+											color: "#03C903",
+											font:
+												"Semibold 13px/20px Source Sans Pro",
+											paddingRight: "3vw",
+											fontWeight: "bold",
+										}}
+									>
+										ACTIVE
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+		</div>
+	);
+}
+
+export function Teams() {
+	const [modal, setModal] = React.useState(false);
+	const toggleModal = () => setModal(!modal);
+	return (
+		<div className={styles.teamDiv}>
+			<div className={styles.cardDiv}>
+				<div className={styles.circleCard}>
+					<Card
+						style={{
+							minWidth: 310,
+							minHeight: 200,
+							boxShadow: "3px 3px 3px #00000014",
+							borderRadius: "8px",
+							border: "none",
+						}}
+					>
+						<div className={styles.circleDiv}></div>
+						<CardBody>
+							<CardTitle
+								style={{
+									marginTop: "20%",
+									marginLeft: "10%",
+									color: "#43425D",
+									fontSize: "22px",
+									fontWeight: "bold",
+								}}
+							>
+								Flexible module access
+							</CardTitle>
+							<CardSubtitle
+								style={{
+									marginLeft: "9%",
+									color: "#7070708F",
+									fontSize: "15px",
+								}}
+							>
+								you can add modules to your teams
+							</CardSubtitle>
+						</CardBody>
+					</Card>
+				</div>
+				<div className={styles.circleCard}>
+					<Card
+						style={{
+							minWidth: 310,
+							minHeight: 200,
+							boxShadow: "3px 3px 3px #00000014",
+							marginLeft: "50%",
+							borderRadius: "8px",
+							border: "none",
+						}}
+					>
+						<div className={styles.circleDiv}></div>
+						<CardBody>
+							<CardTitle
+								style={{
+									marginTop: "20%",
+									marginLeft: "10%",
+									color: "#43425D",
+									fontSize: "22px",
+									fontWeight: "bold",
+								}}
+							>
+								Request to join teams
+							</CardTitle>
+							<CardSubtitle
+								style={{
+									marginLeft: "9%",
+									color: "#7070708F",
+									fontSize: "15px",
+								}}
+							>
+								Request members to join the team
+							</CardSubtitle>
+						</CardBody>
+					</Card>
+				</div>
+			</div>
+			<div className={styles.teamTableDiv}>
+				<TableContainer component={Paper}>
+					<Table aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										textAlign: "left",
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "5%",
+										padding: "5px",
+									}}
+								>
+									<Checkbox color="primary" />
+								</TableCell>
+								<TableCell
+									style={{
+										color: "#A3A6B4",
+										whiteSpace: "nowrap",
+										fontSize: "13px",
+										width: "40%",
+										padding: "5px",
+									}}
+								>
+									LIST OF TEAMS
+								</TableCell>
+								<TableCell
+									style={{
+										color: "#A3A6B4",
+										whiteSpace: "nowrap",
+										fontSize: "13px",
+										width: "40%",
+										padding: "5px",
+									}}
+								>
+									MEMBERS
+								</TableCell>
+								<TableCell></TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row) => (
+								<TableRow key={row.name}>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											padding: "5px",
+										}}
+									>
+										<Checkbox color="primary" />
+									</TableCell>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											color: "#43425D",
+											font:
+												"Semibold 13px/20px Source Sans Pro",
+											padding: "5px",
+										}}
+									>
+										TEAM#A
+									</TableCell>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											color: "#6C6C6C",
+											font:
+												"Semibold 13px/20px Source Sans Pro",
+											padding: "5px",
+										}}
+									>
+										10
+									</TableCell>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											textAlign: "right",
+											color: "#03C903",
+											font:
+												"Semibold 13px/20px Source Sans Pro",
+											fontWeight: "bold",
+											paddingRight: "2vw",
+										}}
+									>
+										<img src={edit} />
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+			<div className={styles.teamButtonDiv}>
+				<Button
+					variant="contained"
+					style={{
+						backgroundColor: "#0CD241",
+						color: "white",
+						textTransform: "none",
+						outline: "none",
+						width: "10%",
+					}}
+					onClick={toggleModal}
+				>
+					New team
+				</Button>
+				<Button
+					variant="contained"
+					style={{
+						marginLeft: "4%",
+						backgroundColor: "#FFFFFF",
+						color: "#3B86FF",
+						textTransform: "none",
+						outline: "none",
+						width: "10%",
+					}}
+				>
+					Learn more
+				</Button>
+			</div>
+			<Modal isOpen={modal} toggle={toggleModal} centered={true}>
+				<ModalHeader
+					style={{
+						font: "Source Sans Pro",
+						color: "#43425D",
+						fontWeight: "normal",
+					}}
+				>
+					Create new team
+				</ModalHeader>
+				<ModalBody className={styles.modalContainer}>
+					<form>
+						<div
+							style={{
+								marginBottom: "5%",
+								marginTop: "2%",
+							}}
+						>
+							<TextField
+								variant="outlined"
+								label="Team name"
+								style={{ width: "95%" }}
+							/>
+							<span
+								style={{
+									color: "#64686D",
+									marginLeft: "2%",
+									font: "SF Pro Text",
+									fontSize: "15px",
+								}}
+							>
+								You'll use this name to mention this team in
+								conversations.
+							</span>
+						</div>
+						<div
+							style={{
+								marginBottom: "5%",
+							}}
+						>
+							<TextField
+								variant="outlined"
+								label="Description"
+								style={{ width: "95%" }}
+							/>
+							<span
+								style={{
+									color: "#64686D",
+									marginLeft: "2%",
+									font: "SF Pro Text",
+									fontSize: "15px",
+								}}
+							>
+								What is this team all about?
+							</span>
+						</div>
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								marginLeft: "2%",
+								marginBottom: "20%",
+							}}
+						>
+							<span
+								style={{ color: "#43425D", fontSize: "18px" }}
+							>
+								Parent team
+							</span>
+							<span
+								style={{ color: "#707070", fontSize: "16px" }}
+							>
+								There are no teams that can be selected.
+							</span>
+						</div>
+					</form>
+				</ModalBody>
+				<ModalFooter>
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={toggleModal}
+						style={{
+							marginRight: "2%",
+							backgroundColor: "#43425D",
+							textTransform: "none",
+							width: "20%",
+							marginRight: "5%",
+						}}
+					>
+						Cancel
+					</Button>
+					<Button
+						variant="contained"
+						color="secondary"
+						onClick={toggleModal}
+						disabled
+						style={{
+							textTransform: "none",
+						}}
+					>
+						Create team
+					</Button>
+				</ModalFooter>
+			</Modal>
+		</div>
+	);
+}
+
+export function ManageAccess() {
+	const classes = useStyles();
+	return (
+		<div className={styles.moduleDiv}>
+			<div className={styles.table1div}>
+				<TableContainer
+					component={Paper}
+					style={{ boxShadow: "0px 2px 3px #0000000A" }}
+				>
+					<Table aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "50%",
+										padding: "10px",
+									}}
+								>
+									Organisation Details
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							<TableRow>
+								<TableCell component="th" scope="row">
+									<BorderSelect holder="Role:Member" />
+								</TableCell>
+							</TableRow>
+							<Divider />
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									1 modules
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									0 teams
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Membership Private
+								</TableCell>
+							</TableRow>
+						</TableBody>
+					</Table>
+				</TableContainer>
+				<Button
+					variant="filled"
+					style={{
+						backgroundColor: "#DF2020",
+						color: "white",
+						fontSize: "14px",
+						width: "100%",
+						textTransform: "none",
+						marginTop: "10%",
+						outline: "none",
+					}}
+				>
+					Remove from organisation
+				</Button>
+			</div>
+			<div className={styles.table2div}>
+				<TableContainer component={Paper}>
+					<Table
+						aria-label="simple table"
+						style={{ tableLayout: "auto" }}
+					>
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										textAlign: "left",
+										color: "#A3A6B4",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "50%",
+									}}
+								>
+									<span style={{ color: "#43425D" }}>
+										priyanshiSamadhan
+									</span>
+									&nbsp;has access to 1 module
+								</TableCell>
+								<TableCell style={{ width: "60%" }}>
+									&nbsp;
+								</TableCell>
+								<TableCell
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+									}}
+								>
+									<SearchBox />
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row) => (
+								<TableRow key={row.name}>
+									<TableCell
+										component="th"
+										scope="row"
+										style={{
+											color: "#3B86FF",
+											font:
+												"Semibold 18px/25px Source Sans Pro",
+											fontWeight: "bold",
+											fontSize: "14px",
+										}}
+									>
+										Samadhan-Technologies/Dhule/Property
+									</TableCell>
+									<TableCell
+										style={{
+											color: "#6C6C6C",
+											fontSize: "14px",
+										}}
+									>
+										Read on this module
+									</TableCell>
+									<TableCell
+										component="th"
+										scope="row"
+										align="right"
+									>
+										<Button
+											style={{
+												backgroundColor: "#43425D",
+												color: "white",
+												textTransform: "none",
+												fontWeight: "lighter",
+												fontSize: "smaller",
+											}}
+										>
+											Manage access
+										</Button>
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+		</div>
+	);
+}
 export default function Main() {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
@@ -589,7 +1400,7 @@ export default function Main() {
 			</div>
 			<div className={styles.tabsDiv}>
 				<div className={classes.root}>
-					<div>
+					<div style={{ marginLeft: "-1%" }}>
 						<AntTabs
 							value={value}
 							onChange={handleChange}
@@ -624,6 +1435,15 @@ export default function Main() {
 						</TabPanel>
 						<TabPanel value={value} index={7}>
 							<Settings />
+						</TabPanel>
+						<TabPanel value={value} index={3}>
+							<Module />
+						</TabPanel>
+						<TabPanel value={value} index={2}>
+							<Teams />
+						</TabPanel>
+						<TabPanel value={value} index={1}>
+							<ManageAccess />
 						</TabPanel>
 					</div>
 				</div>
