@@ -20,8 +20,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+
+import Dropdown from "../../../../../../../components/Select/Select";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -121,7 +121,7 @@ export default function Language() {
 										focused: classes.focused,
 									}}
 								/>
-								<FormControl
+								{/* <FormControl
 									variant="outlined"
 									style={{ marginLeft: "1%", height: "30%" }}
 								>
@@ -152,7 +152,8 @@ export default function Language() {
 										<option value={20}>Twenty</option>
 										<option value={30}>Thirty</option>
 									</Select>
-								</FormControl>
+								</FormControl> */}
+								<Dropdown holder="Filter" />
 							</div>
 						</div>
 						<div className={styles.dropDownDiv}>
@@ -174,7 +175,7 @@ export default function Language() {
 							>
 								Search
 							</Button>
-							<FormControl variant="outlined">
+							{/* <FormControl variant="outlined">
 								<InputLabel
 									htmlFor="outlined-age-native-simple"
 									style={{ alignText: "center" }}
@@ -200,7 +201,8 @@ export default function Language() {
 									<option value={20}>Twenty</option>
 									<option value={30}>Thirty</option>
 								</Select>
-							</FormControl>
+							</FormControl> */}
+							<Dropdown holder="Week" />
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>

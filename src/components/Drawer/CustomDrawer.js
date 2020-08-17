@@ -92,6 +92,8 @@ import Installation1 from "../../screens/mainApp/Operations/JobReporting/JobRepo
 import OrganisationMain from "../../screens/mainApp/Organisation/OrganisationMain/OrganisationMain";
 import AddSub from "../../screens/mainApp/Properties/SubCategory/AddSubCategory/AddSub";
 import InstCJ from "../../screens/mainApp/Operations/JobCreation/Installation/CreateJob/CreateJob";
+import UWH from "../../screens/mainApp/Operations/JobReporting/JobReporting/UserWorkHistory/UWH";
+import UWHT from "../../screens/mainApp/Operations/JobReporting/JobReporting/UserWorkHistory/UWHTable/UWHTAble";
 
 import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
@@ -211,17 +213,6 @@ export function OperationTab() {
 					label={"JOBCREATION"}
 					disableRipple={true}
 					style={{
-						color: "#3B86FF",
-						outline: "none",
-						width: "10px",
-						borderRadius: "5px",
-					}}
-				/>
-				<Tab
-					classes={tabItemStyles}
-					label={"JOBREPORTING"}
-					disableRipple={true}
-					style={{
 						color: "#BBBBBB",
 						outline: "none",
 						width: "10px",
@@ -230,6 +221,17 @@ export function OperationTab() {
 						borderRight: "none",
 						borderTop: "none",
 						borderBottom: "none",
+					}}
+				/>
+				<Tab
+					classes={tabItemStyles}
+					label={"JOBREPORTING"}
+					disableRipple={true}
+					style={{
+						color: "#3B86FF",
+						outline: "none",
+						width: "10px",
+						borderRadius: "5px",
 					}}
 				/>
 			</Tabs>
@@ -454,7 +456,7 @@ export default function MiniDrawer(props) {
 							{toggleIcon}
 						</IconButton>
 					</div>
-					{showTabs ? <OperationTab /> : null}
+					<OperationTab />
 					<div
 						style={{
 							marginRight: "-2%",
@@ -898,6 +900,8 @@ export default function MiniDrawer(props) {
 				{/* <Select1 /> */}
 				{/* <AddSub /> */}
 				{/* <InstCJ /> */}
+				{/* <UWH /> */}
+				<UWHT />
 			</main>
 		</div>
 	);

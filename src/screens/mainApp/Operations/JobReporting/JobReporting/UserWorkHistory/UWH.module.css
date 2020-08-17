@@ -40,7 +40,8 @@
     flex-direction: row;
     align-items: flex-end;
     margin-top: 5%;
-    width: 102%;
+    width: 100%;
+    margin-right: 3%;
     justify-content: space-around;
     justify-items: flex-end;
 }
@@ -51,12 +52,13 @@
     font-weight: bold;
     border-bottom: 0.1rem solid #43425D;
     padding-bottom: 1%;
+    margin-left: 2%;
     white-space: nowrap;
     justify-content: flex-start;
 }
 
 .dropdown2 {
-    margin-left: 28%;
+    margin-left: 25%;
 }
 
 .date {
@@ -75,14 +77,14 @@
 }
 
 .cards {
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
     flex: 1;
     margin-top: 5%;
-    margin-left: 2%;
+    margin-left: 1%;
 }
 
 .final {
@@ -134,16 +136,4 @@
     .dropdown2 {
         margin-left: 5%;
     }
-}
-
-.circle {
-    position: relative;
-    height: 7vw;
-    width: 7vw;
-    align-self: center;
-    color: #FFFFFF;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

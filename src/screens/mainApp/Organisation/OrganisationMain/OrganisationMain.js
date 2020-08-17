@@ -44,6 +44,9 @@ import FingerprintIcon from "@material-ui/icons/Fingerprint";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
+//VerifyDocument
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
 
@@ -439,9 +442,17 @@ export function Inventory() {
 						</Button>
 					</div>
 				</div>
-				<div className={styles.table}>
+				<div className={styles.tableDiv}>
 					<InventoryTable />
 				</div>
+			</div>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
 			</div>
 		</div>
 	);
@@ -476,7 +487,7 @@ export function Billing() {
 					style={{ width: "90%", outline: "none" }}
 				></TextField>
 			</div>
-			<div className={styles.formRowDiv}>
+			<div className={styles.formRowDiv} style={{ marginBottom: "10%" }}>
 				<span style={{ color: "#43425D", paddingBottom: "2%" }}>
 					Billing email
 				</span>
@@ -1386,6 +1397,381 @@ export function ManageAccess() {
 		</div>
 	);
 }
+
+const SearchBox1 = () => {
+	const styles = useBorderedInputBaseStyles();
+	return (
+		<div>
+			<InputBase
+				classes={styles}
+				placeholder={"Search..."}
+				startAdornment={<Search />}
+				style={{
+					backgroundColor: "#FFFFFF",
+					border: "none",
+					fontSize: "12px",
+					borderRadius: "5px",
+					boxShadow: "0px 3px 3px #00000014",
+					minWidth: "11vw",
+					padding: "5px",
+				}}
+			/>
+		</div>
+	);
+};
+
+export function VerifyDocument() {
+	const classes = useStyles();
+	const [modal, setModal] = React.useState(false);
+	const toggleModal = () => setModal(!modal);
+	const [state, setState] = React.useState({
+		age: "",
+		checkedModule3: "false",
+		checkedModule2: "false",
+		checkedModule1: "false",
+	});
+	const handleChange = (event) => {
+		const name = event.target.name;
+		setState({
+			...state,
+			[name]: event.target.value,
+		});
+	};
+	return (
+		<div className={styles.moduleDiv}>
+			<div className={styles.table1div}>
+				<TableContainer
+					component={Paper}
+					style={{ boxShadow: "0px 2px 3px #0000000A" }}
+				>
+					<Table aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "50%",
+										padding: "10px",
+									}}
+								>
+									Organisation Permissions
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							<TableRow>
+								<TableCell component="th" scope="row">
+									<span style={{ color: "#707070" }}>
+										Members
+									</span>
+									<span
+										style={{
+											color: "#707070",
+											marginLeft: "70%",
+										}}
+									>
+										4
+									</span>
+								</TableCell>
+							</TableRow>
+							<Divider />
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Outside collaborators
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Pending collaborators
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Pending invitations
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#4D4F5C",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Failed invitations
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#43425D",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+										fontWeight: "bold",
+									}}
+								>
+									Verify Documents
+								</TableCell>
+							</TableRow>
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+			<div className={styles.vdtable2div}>
+				<div className={styles.vdsearchBarDiv}>
+					<div className={styles.vdsearchAndDrop}>
+						<div className={styles.vdsearchBar}>
+							<SearchBox1 />
+						</div>
+						<div className={styles.vddropDownDiv}>
+							<Dropdown holder="User" />
+							<Button
+								variant="contained"
+								style={{
+									backgroundColor: "#43425D",
+									color: "white",
+									borderRadius: "20px",
+									width: "35%",
+									textTransform: "none",
+									outline: "none",
+								}}
+							>
+								Search
+							</Button>
+						</div>
+					</div>
+				</div>
+
+				<TableContainer component={Paper}>
+					<Table className={classes.table} aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{ color: "#A3A6B4" }}
+								>
+									Username
+								</TableCell>
+								<TableCell
+									align="left"
+									style={{ color: "#A3A6B4" }}
+								>
+									Firstname
+								</TableCell>
+								<TableCell
+									align="left"
+									style={{ color: "#A3A6B4" }}
+								>
+									Lastname
+								</TableCell>
+								<TableCell></TableCell>
+								<TableCell></TableCell>
+								<TableCell align="right">
+									<Checkbox />
+								</TableCell>
+								<TableCell></TableCell>
+								<TableCell
+									align="center"
+									style={{ color: "#A3A6B4" }}
+								></TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row) => (
+								<TableRow key={row.name}>
+									<TableCell
+										align="left"
+										style={{ color: "#4D4F5C" }}
+									>
+										User
+									</TableCell>
+									<TableCell
+										align="left"
+										style={{ color: "#4D4F5C" }}
+									>
+										UserFirst
+									</TableCell>
+									<TableCell
+										align="left"
+										style={{ color: "#4D4F5C" }}
+									>
+										UserLast
+									</TableCell>
+									<TableCell align="left"></TableCell>
+									<TableCell align="left"></TableCell>
+									<TableCell align="right">
+										<Checkbox />
+									</TableCell>
+									<TableCell></TableCell>
+									<TableCell align="left">
+										<span
+											style={{
+												cursor: "pointer",
+												color: "#3B86FF",
+											}}
+											onClick={toggleModal}
+										>
+											View
+										</span>
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+						<Modal
+							isOpen={modal}
+							toggle={toggleModal}
+							centered={true}
+						>
+							<ModalBody className={styles.vdmodalContainer}>
+								<div className={styles.vdinnerDiv}>
+									<span
+										style={{
+											color: "#4D4F5C",
+											opacity: "0.5",
+											padding: "10% 20% 20% 40%",
+										}}
+									>
+										Document
+									</span>
+								</div>
+								<FormControlLabel
+									control={
+										<Checkbox
+											checked={state.checkedA}
+											onChange={handleChange}
+											name="checkedModule1"
+											style={{
+												color: "#3B86FF",
+											}}
+										/>
+									}
+									style={{ color: "#43425D" }}
+									label="Aadhaar Card"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											checked={state.checkedB}
+											onChange={handleChange}
+											name="checkedModule2"
+											style={{
+												color: "#3B86FF",
+											}}
+										/>
+									}
+									style={{ color: "#43425D" }}
+									label="Pan Card"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											checked={state.checkedC}
+											onChange={handleChange}
+											name="checkedModule3"
+											style={{
+												color: "#3B86FF",
+											}}
+										/>
+									}
+									style={{ color: "#43425D" }}
+									label="Others"
+								/>
+							</ModalBody>
+							<ModalFooter
+								style={{
+									display: "flex",
+									flexDirection: "row",
+									justifyContent: "space-evenly",
+								}}
+							>
+								<Button
+									variant="contained"
+									style={{
+										backgroundColor: "#3B86FF",
+										color: "white",
+										textTransform: "none",
+										whiteSpace: "nowrap",
+										fontSize: "small",
+										outline: "none",
+									}}
+								>
+									User Verified
+								</Button>
+								<Button
+									variant="contained"
+									onClick={toggleModal}
+									style={{
+										backgroundColor: "#FF0000",
+										color: "white",
+										textTransform: "none",
+										whiteSpace: "nowrap",
+										fontSize: "small",
+										outline: "none",
+									}}
+								>
+									Document not verified
+								</Button>
+								<Button
+									variant="contained"
+									onClick={toggleModal}
+									style={{
+										backgroundColor: "#0CD241",
+										color: "white",
+										textTransform: "none",
+										whiteSpace: "nowrap",
+										fontSize: "small",
+										outline: "none",
+									}}
+								>
+									Document Verified
+								</Button>
+							</ModalFooter>
+						</Modal>
+					</Table>
+				</TableContainer>
+				<div className={styles.vdpaginationDiv}>
+					<Pagination
+						count={5}
+						shape="rounded"
+						color="primary"
+						variant="outlined"
+					/>
+				</div>
+			</div>
+		</div>
+	);
+}
 export default function Main() {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
@@ -1442,8 +1828,11 @@ export default function Main() {
 						<TabPanel value={value} index={2}>
 							<Teams />
 						</TabPanel>
-						<TabPanel value={value} index={1}>
+						{/* <TabPanel value={value} index={1}>
 							<ManageAccess />
+						</TabPanel> */}
+						<TabPanel value={value} index={1}>
+							<VerifyDocument />
 						</TabPanel>
 					</div>
 				</div>

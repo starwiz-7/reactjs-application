@@ -9,7 +9,7 @@ import { blue, grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(() => ({
 	select: {
-		minWidth: "12vw",
+		minWidth: "8.5vw",
 		["@media (min-width: 320px) and (max-width: 375px)"]: {
 			minWidth: "25vw",
 		},
@@ -25,6 +25,7 @@ const useStyles = makeStyles(() => ({
 		paddingLeft: "5px",
 		paddingTop: "2px",
 		paddingBottom: "2px",
+		fontSize: "13px",
 		"&:hover": {
 			borderColor: grey[400],
 		},

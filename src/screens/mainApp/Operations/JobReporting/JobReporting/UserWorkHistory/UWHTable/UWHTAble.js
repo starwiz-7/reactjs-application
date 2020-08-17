@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-import styles from "./AuditTable.module.css";
-
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import styles from "./UWHT.module.css";
+import Dropdown from "../../../../../../../components/Select/Select";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -22,7 +19,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import Dropdown from "../../../../../../../components/Select/Select";
+import download from "../../../../../../../../src/Assets/upload1.png";
+import edit from "./edit.png";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -91,18 +89,16 @@ export default function Language() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "lighter" }}>
-					Operations/ Job Reporting /
-				</span>
-				<span style={{ fontWeight: "lighter", color: "#BBBBBB" }}>
-					&nbsp;Installation
+				<span>Operations/ Job Reporting /</span>
+				<span style={{ color: "#BBBBBB" }}>
+					&nbsp;User work history
 				</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
 					<div className={styles.searchAndDrop}>
 						<div>
-							<div className={styles.searchBarDiv}>
+							<div className={styles.searchBar}>
 								<TextField
 									id="standard-search"
 									size="small"
@@ -122,39 +118,10 @@ export default function Language() {
 										focused: classes.focused,
 									}}
 								/>
-								{/* <FormControl
-									variant="outlined"
-									style={{ marginLeft: "1%", height: "30%" }}
-								>
-									<InputLabel
-										htmlFor="outlined-age-native-simple"
-										style={{
-											alignText: "center",
-										}}
-									>
-										Filter
-									</InputLabel>
-									<Select
-										native
-										value={state.age}
-										onChange={handleChange}
-										style={{
-											maxHeight: "40%",
-											marginBottom: "5%",
-										}}
-										label="Filter"
-										inputProps={{
-											name: "Filter",
-											id: "outlined-age-native-simple",
-										}}
-									>
-										<option aria-label="None" value="" />
-										<option value={10}>Ten</option>
-										<option value={20}>Twenty</option>
-										<option value={30}>Thirty</option>
-									</Select>
-								</FormControl> */}
-								<Dropdown holder="Filter" />
+								<Dropdown
+									holder="Filter"
+									style={{ paddingLeft: "2%" }}
+								/>
 							</div>
 						</div>
 						<div className={styles.dropDownDiv}>
@@ -168,7 +135,6 @@ export default function Language() {
 									textTransform: "none",
 									width: "45%",
 									fontWeight: "lighter",
-									height: "70%",
 									marginBottom: "3%",
 									marginLeft: "5%",
 									marginRight: "5%",
@@ -176,33 +142,6 @@ export default function Language() {
 							>
 								Search
 							</Button>
-							{/* <FormControl variant="outlined">
-								<InputLabel
-									htmlFor="outlined-age-native-simple"
-									style={{ alignText: "center" }}
-								>
-									Week
-								</InputLabel>
-								<Select
-									native
-									value={state.age}
-									onChange={handleChange}
-									style={{
-										maxHeight: "80%",
-										marginBottom: "5%",
-									}}
-									label="Filter"
-									inputProps={{
-										name: "Filter",
-										id: "outlined-age-native-simple",
-									}}
-								>
-									<option aria-label="None" value="" />
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</Select>
-							</FormControl> */}
 							<Dropdown holder="Week" />
 						</div>
 					</div>
@@ -268,6 +207,10 @@ export default function Language() {
 							}}
 						>
 							Download
+							<img
+								src={download}
+								style={{ transform: "rotate(180deg)" }}
+							/>
 						</Button>
 					</div>
 				</div>
@@ -298,76 +241,50 @@ export default function Language() {
 											color: "#A3A6B4",
 										}}
 									>
-										NUMBER OF ASSIGNED PROPERTIES
+										INDEPENDENT ACTIVE USERS{" "}
 									</TableCell>
 									<TableCell
-										align="left"
 										style={{
 											textAlign: "center",
 											color: "#A3A6B4",
 										}}
 									>
-										NUMBER OF ATTEMPTED PROPERTIES
+										AVERAGE IN TIME
 									</TableCell>
 									<TableCell
-										align="left"
 										style={{
 											textAlign: "center",
 											color: "#A3A6B4",
 										}}
 									>
-										AVERAGE ATTEMPT ON A PROPERTY
+										AVERAGE OUT TIME
 									</TableCell>
 									<TableCell
-										align="left"
+										style={{
+											textAlign: "left",
+											color: "#A3A6B4",
+										}}
+									>
+										CARD INSTALLED PER PERSON
+									</TableCell>
+									<TableCell
 										style={{
 											textAlign: "center",
 											color: "#A3A6B4",
 										}}
-									>
-										Number of FAILED PROPERTIES
-									</TableCell>
-
+									></TableCell>
 									<TableCell
-										align="left"
 										style={{
 											textAlign: "center",
 											color: "#A3A6B4",
 										}}
-									>
-										NUMBER OF ABORTED PROPERTIES
-									</TableCell>
-
+									></TableCell>
 									<TableCell
-										align="left"
 										style={{
 											textAlign: "center",
 											color: "#A3A6B4",
 										}}
-									>
-										NUMBER OF PROPERTIES SENT BACK BECAUSE
-										OF AUDIT
-									</TableCell>
-
-									<TableCell
-										align="left"
-										style={{
-											textAlign: "center",
-											color: "#A3A6B4",
-										}}
-									>
-										NUMBER OF NEW PROPERTIES IDENTIFIED
-									</TableCell>
-
-									<TableCell
-										align="left"
-										style={{
-											textAlign: "center",
-											color: "#A3A6B4",
-										}}
-									>
-										AVERAGE TIME SPENT PER PROPERTY
-									</TableCell>
+									></TableCell>
 								</TableRow>
 							</TableHead>
 						</Table>
@@ -393,100 +310,64 @@ export default function Language() {
 												1
 											</TableCell>
 											<TableCell
-												align="left"
 												component="th"
 												scope="row"
 												style={{
+													textAlign: "left",
 													color: "#4D4F5C",
 													fontFamily:
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												Demo#
+												Demo Associate
 											</TableCell>
 											<TableCell
-												align="left"
 												component="th"
 												scope="row"
 												style={{
+													textAlign: "center",
 													color: "#4D4F5C",
 													fontFamily:
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												Demo#
+												10.30 am
 											</TableCell>
 											<TableCell
-												align="left"
 												component="th"
 												scope="row"
 												style={{
+													textAlign: "center",
 													color: "#4D4F5C",
 													fontFamily:
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												Demo#
+												6.00 pm
 											</TableCell>
 											<TableCell
-												align="left"
 												component="th"
 												scope="row"
 												style={{
+													textAlign: "center",
 													color: "#4D4F5C",
 													fontFamily:
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												Demo#
+												35
 											</TableCell>
 											<TableCell
-												align="left"
 												component="th"
 												scope="row"
 												style={{
+													textAlign: "center",
 													color: "#4D4F5C",
 													fontFamily:
 														"Regular 13px/20px Source Sans Pro",
 												}}
 											>
-												Demo#
-											</TableCell>
-											<TableCell
-												align="left"
-												component="th"
-												scope="row"
-												style={{
-													color: "#4D4F5C",
-													fontFamily:
-														"Regular 13px/20px Source Sans Pro",
-												}}
-											>
-												Demo#
-											</TableCell>
-											<TableCell
-												align="left"
-												component="th"
-												scope="row"
-												style={{
-													color: "#4D4F5C",
-													fontFamily:
-														"Regular 13px/20px Source Sans Pro",
-												}}
-											>
-												Demo#
-											</TableCell>
-											<TableCell
-												align="left"
-												component="th"
-												scope="row"
-												style={{
-													color: "#4D4F5C",
-													fontFamily:
-														"Regular 13px/20px Source Sans Pro",
-												}}
-											>
-												Demo#
+												MON
 											</TableCell>
 										</TableRow>
 									))}
@@ -498,16 +379,14 @@ export default function Language() {
 
 				<div className={classes.root}></div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-				}}
-			/>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

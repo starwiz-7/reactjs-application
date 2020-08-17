@@ -3,10 +3,6 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import styles from "./VerifyDocument.module.css";
 
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
@@ -58,8 +54,6 @@ export default function Language() {
 	};
 	const [modal, setModal] = useState(false);
 	const toggleModal = () => setModal(!modal);
-	const [check, setCheck] = useState(false);
-	const [text_enabled, text_disabled, text2_disabled] = useState(true);
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 
 	return (

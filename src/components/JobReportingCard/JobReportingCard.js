@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		minWidth: "21%",
 		maxWidth: "21%",
+		minHeight: "80%",
 		margin: "2%",
 		// minHeight: 90,
 		borderColor: "black",
@@ -100,6 +101,7 @@ const JobCard = (props) => {
 						bottom: "0",
 						left: "0",
 						marginTop: "2%",
+						whiteSpace: "nowrap",
 					}}
 				>
 					{props.details}

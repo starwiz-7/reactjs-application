@@ -157,3 +157,7 @@
         margin-right: 5%;
     }
 }
+
+.modalContainer {
+    max-height: 20vw;
+}

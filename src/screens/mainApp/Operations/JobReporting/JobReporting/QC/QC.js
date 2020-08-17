@@ -13,7 +13,7 @@ import Dropdown from "../../../../../../components/Select/Select";
 import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
 	root: {
-		maxWidth: "80%",
+		maxWidth: "24%",
 		minWidth: "24%",
 	},
 	title: {
