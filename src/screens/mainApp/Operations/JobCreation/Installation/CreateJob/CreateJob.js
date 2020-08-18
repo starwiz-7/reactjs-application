@@ -140,12 +140,10 @@ export default function CreateJob() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "light", color: "#43425D" }}>
+				<span style={{ color: "#43425D" }}>
 					Operations/ Job Creation / Installation /
 				</span>
-				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
-					&nbsp;Create Job
-				</span>
+				<span style={{ color: "#BBBBBB" }}>&nbsp;Create Job</span>
 			</div>
 			<div className={styles.container}>
 				<div className={styles.row2} style={{ paddingTop: "5%" }}>
@@ -186,7 +184,7 @@ export default function CreateJob() {
 				<div
 					style={{
 						width: "calc(100vw - 80px)",
-						marginLeft: "10%",
+						marginLeft: "5%",
 						paddingBottom: "2%",
 						paddingTop: "2%",
 					}}
@@ -200,7 +198,7 @@ export default function CreateJob() {
 					/>
 					<Dropdown holder="Selection of associate" />
 				</div>
-				<div classname={styles.row2}>
+				<div classname={styles.buttonDiv}>
 					<Button
 						variant="contained"
 						style={{
@@ -209,7 +207,7 @@ export default function CreateJob() {
 							textTransform: "none",
 							fontWeight: "lighter",
 							borderRadius: "5px",
-							marginLeft: "69%",
+							marginLeft: "68%",
 							width: "10%",
 							outline: "none",
 						}}

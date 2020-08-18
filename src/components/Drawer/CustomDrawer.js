@@ -456,7 +456,7 @@ export default function MiniDrawer(props) {
 							{toggleIcon}
 						</IconButton>
 					</div>
-					<OperationTab />
+					{/* <OperationTab /> */}
 					<div
 						style={{
 							marginRight: "-2%",
@@ -899,9 +899,9 @@ export default function MiniDrawer(props) {
 				{/* <OrganisationMain /> */}
 				{/* <Select1 /> */}
 				{/* <AddSub /> */}
-				{/* <InstCJ /> */}
+				<InstCJ />
 				{/* <UWH /> */}
-				<UWHT />
+				{/* <UWHT /> */}
 			</main>
 		</div>
 	);

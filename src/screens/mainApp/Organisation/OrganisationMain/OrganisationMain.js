@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 0,
 	},
 	select: {
-		minWidth: "8vw",
+		minWidth: "19vw",
 		["@media (min-width: 320px) and (max-width: 375px)"]: {
 			minWidth: "25vw",
 		},
@@ -172,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	input: {
 		"&::placeholder": {
-			color: "#4D4F5C",
+			color: "#43425D",
 			fontSize: "smaller",
 		},
 	},
@@ -504,14 +504,17 @@ export function Account() {
 	const classes = useStyles();
 	return (
 		<div>
-			<TableContainer component={Paper}>
+			<TableContainer
+				component={Paper}
+				style={{
+					marginLeft: "-1%",
+				}}
+			>
 				<Table className={classes.table} aria-label="simple table">
 					<TableHead style={{ backgroundColor: "#F5F6FA" }}>
 						<TableRow>
 							<TableCell
-								align="left"
 								style={{
-									textAlign: "left",
 									color: "#A3A6B4",
 									whiteSpace: "nowrap",
 									fontSize: "13px",
@@ -520,7 +523,6 @@ export function Account() {
 								ORGANISATION NAME
 							</TableCell>
 							<TableCell
-								align="left"
 								style={{
 									color: "#A3A6B4",
 									whiteSpace: "nowrap",
@@ -530,7 +532,6 @@ export function Account() {
 								AMOUNT PAID
 							</TableCell>
 							<TableCell
-								align="left"
 								style={{
 									color: "#A3A6B4",
 									whiteSpace: "nowrap",
@@ -540,9 +541,7 @@ export function Account() {
 								PROPERTY NUMBER
 							</TableCell>
 							<TableCell
-								align="left"
 								style={{
-									textAlign: "left",
 									color: "#A3A6B4",
 									whiteSpace: "nowrap",
 									fontSize: "13px",
@@ -551,7 +550,6 @@ export function Account() {
 								TAX TYPE
 							</TableCell>
 							<TableCell
-								align="left"
 								style={{
 									textAlign: "left",
 									color: "#A3A6B4",
@@ -578,11 +576,7 @@ export function Account() {
 									Dhule Organisation
 								</TableCell>
 								<TableCell
-									component="th"
-									scope="row"
-									align="center"
 									style={{
-										textAlign: "left",
 										color: "#4D4F5C",
 										fontFamily:
 											"Regular 13px/20px Source Sans Pro",
@@ -591,11 +585,7 @@ export function Account() {
 									1000
 								</TableCell>
 								<TableCell
-									component="th"
-									scope="row"
-									align="center"
 									style={{
-										textAlign: "left",
 										color: "#4D4F5C",
 										fontFamily:
 											"Regular 13px/20px Source Sans Pro",
@@ -604,8 +594,6 @@ export function Account() {
 									78546
 								</TableCell>
 								<TableCell
-									component="th"
-									scope="row"
 									style={{
 										color: "#4D4F5C",
 										fontFamily:
@@ -615,8 +603,6 @@ export function Account() {
 									Property Tax
 								</TableCell>
 								<TableCell
-									component="th"
-									scope="row"
 									style={{
 										color: "#4D4F5C",
 										fontFamily:
@@ -630,6 +616,26 @@ export function Account() {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
+		</div>
+	);
+}
+
+export function Account2() {
+	return (
+		<div>
+			<div className={styles.acc2mainDiv}>
+				<span className={styles.spanDiv}>
+					This screen is not accessible to your Organisation
+				</span>
+			</div>
 			<div className={styles.paginationDiv}>
 				<Pagination
 					count={5}
@@ -1772,6 +1778,201 @@ export function VerifyDocument() {
 		</div>
 	);
 }
+
+export function Security() {
+	const classes = useStyles();
+	const [state, setState] = React.useState({
+		checkedA: "false",
+	});
+	const handleChange = (event) => {
+		const name = event.target.name;
+		setState({
+			...state,
+			[name]: event.target.value,
+		});
+	};
+	return (
+		<div className={styles.secMainDiv}>
+			<div className={styles.secHeader}>
+				<span className={styles.secTitle}>Security</span>
+			</div>
+			<div className={styles.secHeader2}>
+				<span style={{ marginLeft: "3%" }} className={styles.secTitle2}>
+					DELETE
+				</span>
+				<span
+					style={{ marginLeft: "10%" }}
+					className={styles.secTitle2}
+				>
+					ROLE DESCRIPTION
+				</span>
+				<span
+					style={{ marginLeft: "30%" }}
+					className={styles.secTitle2}
+				>
+					PERMISSIONS
+				</span>
+			</div>
+			<div className={styles.cellDiv}>
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={state.checkedA}
+							onChange={handleChange}
+							name="checkedA"
+							style={{ color: "#43425D" }}
+						/>
+					}
+				/>
+				<InputBase
+					className={classes.select}
+					style={{ marginLeft: "15%" }}
+					placeholder="Admin"
+					InputProps={{
+						input: classes.input,
+					}}
+				/>
+				{/* Custom minWidth:"19vw" */}
+				<div className={styles.innerCellDiv}>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="addUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="editRoles"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+				</div>
+				<div className={styles.innerCellDiv}>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="editUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="deleteUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+				</div>
+			</div>
+			<div className={styles.cellDiv} style={{ border: "none" }}>
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={state.checkedA}
+							onChange={handleChange}
+							name="checkedA"
+							style={{ color: "#43425D" }}
+						/>
+					}
+				/>
+				<InputBase
+					className={classes.select}
+					style={{ marginLeft: "15%" }}
+				/>
+				{/* Custom minWidth:"19vw" */}
+				<div className={styles.innerCellDiv}>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="addUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="editRoles"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+				</div>
+				<div className={styles.innerCellDiv}>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="editUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={state.checkedA}
+								onChange={handleChange}
+								name="checkedA"
+								style={{ color: "#43425D" }}
+							/>
+						}
+						label="deleteUser"
+						style={{ color: "#43425D", fontWeight: "bolder" }}
+					/>
+				</div>
+			</div>
+			<div className={styles.secFinalDiv}>
+				<Button
+					variant="outlined"
+					style={{
+						border: "1.5px solid #43425D",
+						textTransform: "none",
+						outline: "none",
+						color: "#43425D",
+						fontWeight: "bold",
+					}}
+				>
+					Update Roles
+				</Button>
+			</div>
+		</div>
+	);
+}
+
 export default function Main() {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
@@ -1833,6 +2034,9 @@ export default function Main() {
 						</TabPanel> */}
 						<TabPanel value={value} index={1}>
 							<VerifyDocument />
+						</TabPanel>
+						<TabPanel value={value} index={6}>
+							<Security />
 						</TabPanel>
 					</div>
 				</div>
