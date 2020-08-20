@@ -316,9 +316,12 @@ export default function Login(props) {
 							</div>
 							<div
 								className={styles.signInDiv}
-								style={{ marginRight: "50%" }}
+								style={{
+									justifyContent: "flex-start",
+									whiteSpace: "nowrap",
+								}}
 							>
-								Already have an account?{" "}
+								Already have an account?
 								<a href="#" style={{ color: "red" }}>
 									<Link to="/login" style={{ color: "red" }}>
 										<span style={{ fontWeight: "500" }}>

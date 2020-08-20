@@ -1,11 +1,11 @@
 .title {
     margin-top: 3%;
-    margin-left: 2%;
+    margin-left: 5%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-size: xx-large;
-    font-family: Sans-Pro;
+    font: Regular Source Sans Pro;
     color: #43425D;
 }
 
@@ -13,8 +13,12 @@
     display: flex;
     justify-content: flex-start;
     align-content: space-between;
-    align-items: center;
-    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     flex: 1;
+    margin-left: 3%;
+}
+
+@media only screen and (min-width:1000px) {
+    margin-right: 3%;
 }

@@ -105,16 +105,6 @@ export function Login(props) {
 			<CircularProgress color="inherit" />
 		</Backdrop>
 	) : null;
-
-	// useEffect(() => {
-	// 	if (props.isAuthenticated) {
-	// 		console.log("redirected");
-	// 		setIsLoading(false);
-	// 		authRedirect = "Hello";
-	// 	} else {
-	// 		console.log("cannot redirect");
-	// 	}
-	// });
 	return (
 		<div>
 			{authRedirect}
@@ -263,14 +253,7 @@ export function Login(props) {
 									Sign In
 								</Button>
 							</form>
-							<div
-								style={{
-									margin: "10%",
-									marginLeft: "0%",
-									left: "0",
-									marginRight: "25%",
-								}}
-							>
+							<div className={styles.noAcc}>
 								<span className={styles.signUpText}>
 									Don't have an account?
 								</span>{" "}

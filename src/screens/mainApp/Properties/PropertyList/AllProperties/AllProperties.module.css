@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    width: 90%;
 }
 
 .searchText {
@@ -38,7 +39,7 @@
 }
 
 .dropDownDiv {
-    width: 25%;
+    width: 45%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -62,10 +63,17 @@
 }
 
 .buttonContainer {
-    width: 25%;
+    width: 22%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.paginationDiv {
+    margin-top: 2%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 @media (min-width: 1441px) and (max-width: 2560px) {
@@ -84,6 +92,9 @@
     .dropDownDiv {
         width: 50%;
     }
+    .buttonContainer {
+        width: 30%;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -91,7 +102,10 @@
         width: 70%;
     }
     .dropDownDiv {
-        width: 60%;
+        width: 80%;
+    }
+    .buttonContainer {
+        width: 40%;
     }
 }
 
@@ -102,6 +116,9 @@
     .dropDownDiv {
         width: 60%;
     }
+    .buttonContainer {
+        width: 45%;
+    }
 }
 
 @media (min-width: 376px) and (max-width: 425px) {
@@ -111,6 +128,9 @@
     .dropDownDiv {
         width: 80%;
     }
+    .buttonContainer {
+        width: 45%;
+    }
 }
 
 @media (min-width: 320px) and (max-width: 375px) {
@@ -119,5 +139,20 @@
     }
     .dropDownDiv {
         width: 80%;
+    }
+    .buttonContainer {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 319px) {
+    .searchAndDrop {
+        width: 70%;
+    }
+    .dropDownDiv {
+        width: 80%;
+    }
+    .buttonContainer {
+        width: 45%;
     }
 }

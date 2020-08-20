@@ -101,7 +101,6 @@ import ResPassword from "../../screens/authentication/ResetPassword/ResetPasswor
 import SignUp from "../../screens/authentication/SignUp/SignUp";
 import ForPassword from "../../screens/authentication/ForgotPassword/ForgotPassword";
 import SuccPassword from "../../screens/authentication/SuccessfulPasswordReset/SuccessfulPasswordReset";
-import CustomizedInputs from "../../screens/authentication/Login/ll";
 
 const drawerWidth = 252;
 

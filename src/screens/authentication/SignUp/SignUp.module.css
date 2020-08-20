@@ -148,12 +148,31 @@
     }
 }
 
+@media only screen and (max-width:319px) {
+    .parent {
+        visibility: hidden;
+    }
+    .left_main {
+        padding-left: 85%;
+    }
+    .signUp_text {
+        font-size: small;
+    }
+    .signUp_desc {
+        font-size: small;
+    }
+    .buttonDiv {
+        width: 283.45px;
+        height: 50px;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 375px) {
     .parent {
         visibility: hidden;
     }
     .left_main {
-        padding-left: 80%;
+        padding-left: 85%;
     }
     .signUp_text {
         font-size: medium;
@@ -230,9 +249,12 @@
         padding-left: 0em;
         justify-content: space-evenly;
     }
+    .signInDiv {
+        margin-right: 35%;
+    }
 }
 
-@media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1023px) and (max-width: 1439px) {
     .image1 {
         width: 104%;
     }
@@ -272,6 +294,9 @@
     .innerLinks {
         padding-left: 0.5em;
         justify-content: space-evenly;
+    }
+    .signInDiv {
+        margin-right: 45%;
     }
 }
 
@@ -316,5 +341,8 @@
     .innerLinks {
         padding-left: 0.5em;
         justify-content: space-evenly;
+    }
+    .signInDiv {
+        margin-right: 45%;
     }
 }

@@ -1,33 +1,18 @@
 import React, { useState } from "react";
-import {
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
-	Input,
-	Label,
-	Form,
-	FormGroup,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styles from "./Language.module.css";
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-} from "reactstrap";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import { useBorderSelectStyles } from "@mui-treasury/styles/select/border";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { blue, grey } from "@material-ui/core/colors";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import Pagination from "@material-ui/lab/Pagination";
 
 import LanguageTable from "../../../../components/LanguageTable/LanguageTable";
@@ -49,7 +34,108 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: "column",
 		justifyContent: "flex-start",
 	},
+	select: {
+		minWidth: "8.5vw",
+		["@media (min-width: 320px) and (max-width: 375px)"]: {
+			minWidth: "25vw",
+		},
+		["@media (min-width: 376px) and (max-width: 425px)"]: {
+			minWidth: "25vw",
+		},
+		background: "white",
+		color: grey[700],
+		borderColor: "#D7DAE2",
+		borderStyle: "solid",
+		borderWidth: "2px",
+		borderRadius: "4px",
+		paddingLeft: "5px",
+		paddingTop: "2px",
+		paddingBottom: "2px",
+		fontSize: "13px",
+		"&:hover": {
+			borderColor: grey[400],
+		},
+		"&:focus": {
+			borderRadius: "4px",
+			background: "white",
+			borderColor: blue[200],
+		},
+	},
+	icon: {
+		color: grey[500],
+		right: 12,
+		position: "absolute",
+		userSelect: "none",
+		pointerEvents: "none",
+	},
+	list: {
+		paddingTop: 0,
+		paddingBottom: 0,
+		background: "white",
+		color: "#4d4f5c",
+		fontSize: "smaller",
+		"& li.Mui-selected": {
+			fontWeight: 400,
+		},
+	},
 }));
+
+const Dropdown = (props1) => {
+	const [val, setVal] = useState(0);
+
+	const handleChange = (event) => {
+		setVal(event.target.value);
+	};
+
+	const borderSelectClasses = useBorderSelectStyles();
+	const menuProps = {
+		classes: {
+			list: borderSelectClasses.list,
+		},
+		anchorOrigin: {
+			vertical: "bottom",
+			horizontal: "left",
+		},
+		transformOrigin: {
+			vertical: "top",
+			horizontal: "left",
+		},
+		getContentAnchorEl: null,
+	};
+
+	const classes = useStyles();
+
+	const iconComponent = (props) => {
+		return (
+			<ExpandMoreIcon
+				className={props.className + " " + borderSelectClasses.icon}
+			/>
+		);
+	};
+
+	return (
+		<FormControl>
+			<Select
+				disableUnderline
+				labelId="inputLabel"
+				placeholder={props1.holder}
+				IconComponent={iconComponent}
+				className={classes.select}
+				MenuProps={menuProps}
+				value={val}
+				onChange={handleChange}
+				style={{
+					marginRight: "2%",
+				}}
+			>
+				<MenuItem value={0}> {props1.holder} </MenuItem>{" "}
+				<MenuItem value={1}> One </MenuItem>{" "}
+				<MenuItem value={2}> Two </MenuItem>{" "}
+				<MenuItem value={3}> Three </MenuItem>{" "}
+			</Select>
+		</FormControl>
+	);
+};
 
 const GreenCheckbox = withStyles({
 	root: {
@@ -100,7 +186,6 @@ export default function Language() {
 									style={{
 										borderColor: "#F5F6FA",
 										borderRadius: "4px",
-										marginBottom: "5%",
 									}}
 									InputProps={{
 										startAdornment: icon,
@@ -121,9 +206,7 @@ export default function Language() {
 									borderRadius: "20px",
 									textTransform: "none",
 									width: "45%",
-									fontWeight: "lighter",
-									marginBottom: "3%",
-									height: "90%",
+									outline: "none",
 								}}
 							>
 								Search
@@ -131,34 +214,7 @@ export default function Language() {
 						</div>
 					</div>
 					<div className={styles.buttonAndFilter}>
-						<FormControl variant="outlined">
-							<InputLabel
-								htmlFor="outlined-age-native-simple"
-								style={{ alignText: "center" }}
-							>
-								Filter
-							</InputLabel>
-							<Select
-								native
-								value={state.age}
-								onChange={handleChange}
-								style={{
-									width: "120%",
-									maxHeight: "80%",
-									marginBottom: "5%",
-								}}
-								label="Filter"
-								inputProps={{
-									name: "Filter",
-									id: "outlined-age-native-simple",
-								}}
-							>
-								<option aria-label="None" value="" />
-								<option value={10}>Ten</option>
-								<option value={20}>Twenty</option>
-								<option value={30}>Thirty</option>
-							</Select>
-						</FormControl>
+						<Dropdown holder="Filter" />
 						<Button
 							variant="contained"
 							color="secondary"
@@ -166,9 +222,8 @@ export default function Language() {
 							style={{
 								textTransform: "none",
 								textAlign: "center",
-								width: "45%",
-								// height: "95%",
-								marginBottom: "3.2%",
+								marginLeft: "2%",
+								outline: "none",
 							}}
 						>
 							Add Language
@@ -176,14 +231,31 @@ export default function Language() {
 					</div>
 				</div>
 				<Modal isOpen={modal} toggle={toggleModal} centered={true}>
-					<ModalHeader toggle={toggleModal}>Add State</ModalHeader>
+					<ModalHeader>Add State</ModalHeader>
 					<ModalBody className={styles.modalContainer}>
 						<form className={classes.root}>
 							<TextField
 								className={classes.root}
 								variant="outlined"
-								label="State Name"
-								style={{ width: "80%" }}
+								label="Language Name"
+							/>
+							<TextField
+								className={classes.root}
+								variant="outlined"
+								label="Description"
+							/>
+							<FormControlLabel
+								control={
+									<Checkbox
+										checked={state.checkedB}
+										onChange={handleChange}
+										name="checkedB"
+										style={{
+											color: "#05CE20",
+										}}
+									/>
+								}
+								label="Is active"
 							/>
 						</form>
 					</ModalBody>
@@ -192,7 +264,11 @@ export default function Language() {
 							variant="contained"
 							color="primary"
 							onClick={toggleModal}
-							style={{ marginRight: "2%" }}
+							style={{
+								marginRight: "2%",
+								backgroundColor: "#43425D",
+								textTransform: "none",
+							}}
 						>
 							Cancel
 						</Button>
@@ -200,6 +276,10 @@ export default function Language() {
 							variant="contained"
 							color="secondary"
 							onClick={toggleModal}
+							style={{
+								backgroundColor: "#F2134F",
+								textTransform: "none",
+							}}
 						>
 							Save
 						</Button>

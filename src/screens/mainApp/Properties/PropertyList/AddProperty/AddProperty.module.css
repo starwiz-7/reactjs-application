@@ -17,6 +17,7 @@
     padding: 1%;
     background-color: white;
     width: 80%;
+    min-width: 490px;
 }
 
 .row1 {

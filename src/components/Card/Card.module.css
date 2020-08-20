@@ -19,12 +19,11 @@
 }
 
 .stats {
-    font-size: larger;
+    font-size: x-large;
     font-weight: bolder;
     color: #4D4F5C;
     opacity: 1;
-    font: Bold 25px/32px Source Sans Pro;
-    font-size: 25px;
+    font: Bold Source Sans Pro;
 }
 
 .image {

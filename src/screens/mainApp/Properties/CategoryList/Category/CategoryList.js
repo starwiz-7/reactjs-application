@@ -116,19 +116,14 @@ export default function AllProperties() {
 					<CategoryTable />
 				</div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-					outline: "none",
-				}}
-			>
-				<PaginationItem color="#3B86FF" />
-			</Pagination>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

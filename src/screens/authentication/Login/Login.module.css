@@ -92,6 +92,16 @@
     justify-content: space-between;
 }
 
+.noAcc {
+    margin-top: 10%;
+    margin-right: 25%;
+    left: 0;
+}
+
+.signUpText {
+    white-space: nowrap;
+}
+
 @media only screen and (min-width: 2560px) {
     .image1 {
         width: 102.5%;
@@ -165,6 +175,9 @@
         justify-content: space-between;
         align-items: center;
     }
+    .noAcc {
+        margin-right: 10%;
+    }
 }
 
 @media only screen and (min-width:376px) and (max-width:425px) {
@@ -233,6 +246,9 @@
     }
     .checkBox {
         display: flex;
+    }
+    .noAcc {
+        margin-right: 30%;
     }
 }
 

@@ -129,7 +129,8 @@ export default function AddProperty() {
 								style={{
 									alignSelf: "left",
 									marginRight: "15%",
-									// fontSize: "large",
+									textTransform: "none",
+									whiteSpace: "nowrap",
 								}}
 							>
 								Download Template
@@ -194,7 +195,6 @@ export default function AddProperty() {
 								textTransform: "none",
 								fontWeight: "lighter",
 								outline: "none",
-								// width: "80%",
 							}}
 						>
 							Cancel
@@ -209,7 +209,6 @@ export default function AddProperty() {
 								textTransform: "none",
 								fontWeight: "lighter",
 								outline: "none",
-								// width: "80%",
 							}}
 						>
 							Submit

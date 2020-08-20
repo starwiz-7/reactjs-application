@@ -9,8 +9,11 @@
     left: 30%;
     width: 35%;
     height: 70%;
+    justify-content: center;
     background-color: white;
     padding: 2%;
+    min-width: 280px;
+    max-height: 70%;
 }
 
 .logoDiv {
