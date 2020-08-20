@@ -20,3 +20,14 @@
     font: Semibold 22px/28px Source Sans Pro;
     margin-top: 0px;
 }
+
+.triangle_br {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    border-width: 30px 30px 0 0;
+    border-color: transparent black transparent transparent;
+    right: 0;
+    bottom: 0;
+}

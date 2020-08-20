@@ -1,67 +1,109 @@
 import React from "react";
 import styles from "./Stepper.module.css";
-
-import { makeStyles } from "@material-ui/core/styles";
+import Profile from "../../screens/mainApp/Profile/Profile";
+import Avatar from "../../components/ProfileAvatar/ProfileAvatar";
+import PropTypes from "prop-types";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
+import StepConnector from "@material-ui/core/StepConnector";
 import Button from "@material-ui/core/Button";
 
-import Profile from "../../screens/mainApp/Profile/Profile";
-import Avatar from "../../components/ProfileAvatar/ProfileAvatar";
+const ColorlibConnector = withStyles({
+	alternativeLabel: {
+		top: 22,
+	},
+	active: {
+		"& $line": {
+			backgroundImage: "#E9E9F0",
+		},
+	},
+	completed: {
+		"& $line": {
+			backgroundImage: "#E9E9F0",
+		},
+	},
+	line: {
+		height: "2px",
+		border: 0,
+		backgroundColor: "#eaeaf0",
+		borderRadius: 1,
+	},
+})(StepConnector);
+
+const useColorlibStepIconStyles = makeStyles({
+	root: {
+		backgroundColor: "white",
+		zIndex: 1,
+		color: "#fff",
+		width: 40,
+		height: 40,
+		display: "flex",
+		borderRadius: "50%",
+		justifyContent: "center",
+		alignItems: "center",
+		border: "1px solid #3B86FF",
+		color: "#3B86FF",
+	},
+	active: {
+		backgroundColor: "#3B86FF",
+		color: "white",
+	},
+	completed: {
+		backgroundColor: "#3B86FF",
+		color: "white",
+	},
+});
+
+function ColorlibStepIcon(props) {
+	const classes = useColorlibStepIconStyles();
+	const { active, completed } = props;
+	const icons = {
+		1: 1,
+		2: 2,
+		3: 3,
+	};
+	return (
+		<div
+			className={clsx(classes.root, {
+				[classes.active]: active,
+				[classes.completed]: completed,
+			})}
+		>
+			{icons[String(props.icon)]}
+		</div>
+	);
+}
+
+ColorlibStepIcon.propTypes = {
+	/**
+	 * Whether this step is active.
+	 */
+	active: PropTypes.bool,
+	/**
+	 * Mark the step as completed. Is passed to child components.
+	 */
+	completed: PropTypes.bool,
+	/**
+	 * The label displayed in the step icon.
+	 */
+	icon: PropTypes.node,
+};
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		color: "#eaeaf0",
 	},
-	active: {
-		color: "#784af4",
-	},
-	circle: {
-		width: 8,
-		height: 8,
-		borderRadius: "50%",
-		backgroundColor: "currentColor",
-	},
-	backButton: {
+	button: {
 		marginRight: theme.spacing(1),
-	},
-	completed: {
-		color: "#784af4",
-		zIndex: 1,
-		fontSize: 18,
 	},
 	instructions: {
 		marginTop: theme.spacing(1),
 		marginBottom: theme.spacing(1),
 	},
 }));
-const useQontoStepIconStyles = makeStyles({
-	root: {
-		display: "flex",
-		height: 22,
-		alignItems: "center",
-	},
-	active: {
-		color: "#784af4",
-	},
-	circle: {
-		width: 8,
-		height: 8,
-		borderRadius: "50%",
-		backgroundColor: "currentColor",
-	},
-	completed: {
-		color: "#784af4",
-		zIndex: 1,
-		fontSize: 18,
-	},
-});
-
 function getSteps() {
 	return ["Basic Details", "Fill out your address", "Done"];
 }
@@ -79,7 +121,7 @@ function getStepContent(stepIndex) {
 	}
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function CustomizedSteppers() {
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = React.useState(0);
 	const steps = getSteps();
@@ -92,6 +134,10 @@ export default function HorizontalLabelPositionBelowStepper() {
 		setActiveStep((prevActiveStep) => prevActiveStep - 1);
 	};
 
+	const handleReset = () => {
+		setActiveStep(0);
+	};
+
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
@@ -101,18 +147,24 @@ export default function HorizontalLabelPositionBelowStepper() {
 				<div className={styles.avatar}>
 					<Avatar />
 				</div>
-				<div style={{ textAlign: "center", paddingBottom: "3%" }}>
-					<span style={{ fontWeight: "bolder", fontSize: "medium" }}>
+				<div style={{ textAlign: "center", paddingBottom: "1%" }}>
+					<span style={{ color: "#4D4F5C", fontSize: "medium" }}>
 						John Mayers
 					</span>
 				</div>
 			</div>
 			<div className={styles.container}>
 				<div className={classes.root}>
-					<Stepper activeStep={activeStep} alternativeLabel>
+					<Stepper
+						alternativeLabel
+						activeStep={activeStep}
+						connector={<ColorlibConnector />}
+					>
 						{steps.map((label) => (
 							<Step key={label}>
-								<StepLabel>{label}</StepLabel>
+								<StepLabel StepIconComponent={ColorlibStepIcon}>
+									{label}
+								</StepLabel>
 							</Step>
 						))}
 					</Stepper>
@@ -126,6 +178,13 @@ export default function HorizontalLabelPositionBelowStepper() {
 									color="primary"
 									onClick={handleBack}
 									className={classes.backButton}
+									style={{
+										textTransform: "none",
+										outline: "none",
+										width: "12%",
+										marginRight: "2%",
+										backgroundColor: "#43425D",
+									}}
 								>
 									Previous
 								</Button>
@@ -133,6 +192,12 @@ export default function HorizontalLabelPositionBelowStepper() {
 									variant="contained"
 									color="secondary"
 									onClick={handleNext}
+									style={{
+										textTransform: "none",
+										outline: "none",
+										backgroundColor: "#F2134F",
+										width: "12%",
+									}}
 								>
 									{activeStep === steps.length - 1
 										? "Submit"

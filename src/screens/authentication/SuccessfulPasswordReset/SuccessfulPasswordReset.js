@@ -8,18 +8,7 @@ import history from "../../../history";
 
 export default function ForgotPassword() {
 	return (
-		<div
-			style={{
-				width: "100%",
-				height: "100%",
-				objectFit: "fit",
-				overflow: "hidden",
-				position: "absolute",
-				top: "0",
-				left: "0",
-			}}
-			className={styles.background}
-		>
+		<div className={styles.background1}>
 			<div className={styles.div1}>
 				<div className={styles.logoDiv}>
 					<img src={Logo} alt="logo" />

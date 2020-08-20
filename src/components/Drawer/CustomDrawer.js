@@ -240,7 +240,7 @@ export function OperationTab() {
 }
 export default function MiniDrawer(props) {
 	const classes = useStyles();
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = React.useState(true);
 	const [samadhanSubMenu, setSamadhanSubmenu] = useState(false);
 	const [masterSubMenu, setMasterSubmenu] = useState(false);
 	const [propertiesSubMenu, setPropertiesSubmenu] = useState(false);
@@ -899,7 +899,7 @@ export default function MiniDrawer(props) {
 				{/* <OrganisationMain /> */}
 				{/* <Select1 /> */}
 				{/* <AddSub /> */}
-				<InstCJ />
+				{/* <InstCJ /> */}
 				{/* <UWH /> */}
 				{/* <UWHT /> */}
 			</main>

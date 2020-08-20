@@ -147,8 +147,8 @@ function App() {
 				render={(props) => <Drawer page={<Profile />} />}
 			/>
 
+			<Route path="/login" render={(props) => <Login />} />
 			<Route to="/dev" render={(props) => <Drawer />} />
-			<Route path="/" render={(props) => <Login />} />
 		</Switch>
 	);
 	return <Suspense fallback={<p>Loading ...</p>}>{routes}</Suspense>;

@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	root1: {
 		display: "flex",
-		"& > *": {
-			margin: theme.spacing(2),
-		},
 	},
 	small: {
 		width: theme.spacing(3),
@@ -59,6 +56,8 @@ const JobCard = (props) => {
 					>
 						{props.details}
 					</div>
+
+					<div className={styles.triangle_br}></div>
 				</div>
 			</CardContent>
 		</Card>

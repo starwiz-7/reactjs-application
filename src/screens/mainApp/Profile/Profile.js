@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	select: {
-		minWidth: "20vw",
+		minWidth: "20.5vw",
 		["@media (min-width: 321px) and (max-width: 374px)"]: {
 			minWidth: "89vw",
 		},
@@ -214,88 +214,15 @@ export default function Profile(props) {
 				/>
 			</div>
 			<div className={styles.row1}>
-				<FormControl
-					variant="outlined"
-					size="small"
-					className={classes.formControl}
-					style={{ width: "45%" }}
-				>
-					<InputLabel htmlFor="outlined-age-native-simple">
-						{<span className={styles.label}>Country</span>}
-					</InputLabel>
-					<Select
-						native
-						value={state.age}
-						onChange={handleChange}
-						label="Country"
-						inputProps={{
-							name: "age",
-							id: "outlined-age-native-simple",
-						}}
-					>
-						<option aria-label="None" value="" />
-						<option value={10}>Ten</option>
-						<option value={20}>Twenty</option>
-						<option value={30}>Thirty</option>
-					</Select>
-				</FormControl>
-				<FormControl
-					variant="outlined"
-					size="small"
-					className={classes.formControl}
-					style={{ width: "45%" }}
-				>
-					<InputLabel htmlFor="outlined-age-native-simple">
-						{<span className={styles.label}>State</span>}
-					</InputLabel>
-					<Select
-						native
-						value={state.age}
-						onChange={handleChange}
-						label="State"
-						inputProps={{
-							name: "age",
-							id: "outlined-age-native-simple",
-						}}
-					>
-						<option aria-label="None" value="" />
-						<option value={10}>Ten</option>
-						<option value={20}>Twenty</option>
-						<option value={30}>Thirty</option>
-					</Select>
-				</FormControl>
+				<Dropdown holder="Blood Group" />
+				<Dropdown holder="Blood Group" />
 			</div>
 			<div className={styles.row1}>
-				<FormControl
-					variant="outlined"
-					size="small"
-					className={classes.formControl}
-					style={{ width: "45%" }}
-				>
-					<InputLabel htmlFor="outlined-age-native-simple">
-						{<span className={styles.label}>City</span>}
-					</InputLabel>
-					<Select
-						native
-						value={state.age}
-						onChange={handleChange}
-						label="City"
-						inputProps={{
-							name: "age",
-							id: "outlined-age-native-simple",
-						}}
-					>
-						<option aria-label="None" value="" />
-						<option value={10}>Ten</option>
-						<option value={20}>Twenty</option>
-						<option value={30}>Thirty</option>
-					</Select>
-				</FormControl>
+				<Dropdown holder="Blood Group" />
 				<TextField
 					id="outlined-basic"
 					label={<span className={styles.label}>Postal Code</span>}
 					variant="outlined"
-					size="small"
 					style={{ width: "45%" }}
 				/>
 			</div>

@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 		height: theme.spacing(3),
 	},
 	large: {
-		width: theme.spacing(7),
-		height: theme.spacing(7),
+		width: theme.spacing(9),
+		height: theme.spacing(9),
 	},
 }));
 
@@ -40,41 +40,48 @@ export default function SimpleCard() {
 							<Avatar
 								alt="Remy Sharp"
 								src="/static/images/avatar/1.jpg"
-								className={classes.large}
-							/>{" "}
-						</div>{" "}
-					</div>{" "}
-					<div className={styles.textdetailsDiv}>
+								style={{
+									minWidth: "5.5rem",
+									minHeight: "5.5rem",
+								}}
+							/>
+						</div>
+					</div>
+					<div
+						className={styles.textdetailsDiv}
+						style={{ marginLeft: "2%" }}
+					>
 						<div
 							style={{
 								fontWeight: "bolder",
+								color: "#4D4F5C",
+								fontSize: "18px",
 							}}
 						>
-							{" "}
-							David James{" "}
-						</div>{" "}
+							David James
+						</div>
 						<div
 							style={{
-								fontWeight: "lighter",
+								opacity: "0.5",
+								color: "#43425D",
 							}}
 						>
-							{" "}
-							United States{" "}
-						</div>{" "}
+							United States
+						</div>
 						<div
 							style={{
-								fontWeight: "lighter",
+								opacity: "0.5",
+								color: "#43425D",
 							}}
 						>
-							{" "}
-							8715674877{" "}
-						</div>{" "}
-					</div>{" "}
-				</div>{" "}
+							8715674877
+						</div>
+					</div>
+				</div>
 				<div className={styles.switchDiv}>
 					<AntSwitch />
-				</div>{" "}
-			</CardContent>{" "}
+				</div>
+			</CardContent>
 		</Card>
 	);
 }
