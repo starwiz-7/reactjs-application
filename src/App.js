@@ -1,5 +1,11 @@
 import React, { Suspense } from "react";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import {
+	BrowserRouter,
+	Route,
+	Switch,
+	withRouter,
+	Redirect,
+} from "react-router-dom";
 import Login from "./screens/authentication/Login/Login";
 import SignUp from "./screens/authentication/SignUp/SignUp";
 import Drawer from "./components/Drawer/CustomDrawer";
@@ -41,115 +47,122 @@ import Profile from "./components/ProfileStepper/Stepper";
 
 function App() {
 	let routes = (
-		<Switch>
-			<Route path="/signup" render={(props) => <SignUp />} />
-			<Route
-				path="/forgot-password"
-				render={(props) => <ForgotPassword />}
-			/>
-			<Route
-				path="/reset-password"
-				render={(props) => <ResetPassword />}
-			/>
-			<Route
-				path="/password-reset-successful"
-				render={(props) => <SuccessfulPasswordReset />}
-			/>
-			<Route path="/otp-verify" render={(props) => <OTP />} />
-			<Route
-				path="/dashboard"
-				render={(props) => <Drawer page={<Dashboard />} />}
-			/>
-			<Route path="/QC" render={(props) => <Drawer page={<QC1 />} />} />
+		<BrowserRouter>
+			<Switch>
+				<Route path="/login" render={(props) => <Login />} />
+				<Route path="/signup" render={(props) => <SignUp />} />
+				<Route
+					path="/forgot-password"
+					render={(props) => <ForgotPassword />}
+				/>
+				<Route
+					path="/reset-password"
+					render={(props) => <ResetPassword />}
+				/>
+				<Route
+					path="/password-reset-successful"
+					render={(props) => <SuccessfulPasswordReset />}
+				/>
+				<Route path="/otp-verify" render={(props) => <OTP />} />
+				<Route
+					path="/dashboard"
+					render={(props) => <Drawer page={<Dashboard />} />}
+				/>
+				<Route
+					path="/QC"
+					render={(props) => <Drawer page={<QC1 />} />}
+				/>
 
-			<Route
-				path="/samadhanID/organisation"
-				render={(props) => <Drawer page={<OrganisationSamadhanID />} />}
-			/>
-			<Route
-				path="/samadhanID/blank"
-				render={(props) => <Drawer page={<BlankSamadhanID />} />}
-			/>
+				<Route
+					path="/samadhanID/organisation"
+					render={(props) => (
+						<Drawer page={<OrganisationSamadhanID />} />
+					)}
+				/>
+				<Route
+					path="/samadhanID/blank"
+					render={(props) => <Drawer page={<BlankSamadhanID />} />}
+				/>
 
-			<Route
-				path="/master/city"
-				render={(props) => <Drawer page={<City />} />}
-			/>
-			<Route
-				path="/master/country"
-				render={(props) => <Drawer page={<Country />} />}
-			/>
-			<Route
-				path="/master/state"
-				render={(props) => <Drawer page={<State />} />}
-			/>
-			<Route
-				path="/master/language"
-				render={(props) => <Drawer page={<Language />} />}
-			/>
+				<Route
+					path="/master/city"
+					render={(props) => <Drawer page={<City />} />}
+				/>
+				<Route
+					path="/master/country"
+					render={(props) => <Drawer page={<Country />} />}
+				/>
+				<Route
+					path="/master/state"
+					render={(props) => <Drawer page={<State />} />}
+				/>
+				<Route
+					path="/master/language"
+					render={(props) => <Drawer page={<Language />} />}
+				/>
 
-			<Route
-				path="/userlist"
-				render={(props) => <Drawer page={<UserList />} />}
-			/>
+				<Route
+					path="/userlist"
+					render={(props) => <Drawer page={<UserList />} />}
+				/>
 
-			<Route
-				path="/organisation"
-				render={(props) => <Drawer page={<OrganisationMain />} />}
-			/>
+				<Route
+					path="/organisation"
+					render={(props) => <Drawer page={<OrganisationMain />} />}
+				/>
 
-			<Route
-				path="/operations/jobcreation"
-				render={(props) => <Drawer page={<JobCreation />} />}
-			/>
-			<Route
-				path="/operations/jobcreation/initialisation"
-				render={(props) => <Drawer page={<Initialisation />} />}
-			/>
+				<Route
+					path="/operations/jobcreation"
+					render={(props) => <Drawer page={<JobCreation />} />}
+				/>
+				<Route
+					path="/operations/jobcreation/initialisation"
+					render={(props) => <Drawer page={<Initialisation />} />}
+				/>
 
-			<Route
-				path="/properties/propertylist"
-				render={(props) => <Drawer page={<PropertyList />} />}
-			/>
-			<Route
-				path="/properties/categorylist"
-				render={(props) => <Drawer page={<CategoryList />} />}
-			/>
-			<Route
-				path="/properties/subcategorylist"
-				render={(props) => <Drawer page={<SubCategoryList />} />}
-			/>
-			<Route
-				path="/properties/joblist"
-				render={(props) => <Drawer page={<JobList />} />}
-			/>
-			<Route
-				path="/properties/verifydocument"
-				render={(props) => <Drawer page={<VerifyDocument />} />}
-			/>
-			<Route
-				path="/properties/requestaccess"
-				render={(props) => <Drawer page={<RequestAccess />} />}
-			/>
+				<Route
+					path="/properties/propertylist"
+					render={(props) => <Drawer page={<PropertyList />} />}
+				/>
+				<Route
+					path="/properties/categorylist"
+					render={(props) => <Drawer page={<CategoryList />} />}
+				/>
+				<Route
+					path="/properties/subcategorylist"
+					render={(props) => <Drawer page={<SubCategoryList />} />}
+				/>
+				<Route
+					path="/properties/joblist"
+					render={(props) => <Drawer page={<JobList />} />}
+				/>
+				<Route
+					path="/properties/verifydocument"
+					render={(props) => <Drawer page={<VerifyDocument />} />}
+				/>
+				<Route
+					path="/properties/requestaccess"
+					render={(props) => <Drawer page={<RequestAccess />} />}
+				/>
 
-			<Route
-				path="/inventory"
-				render={(props) => <Drawer page={<Inventory />} />}
-			/>
+				<Route
+					path="/inventory"
+					render={(props) => <Drawer page={<Inventory />} />}
+				/>
 
-			<Route
-				path="/package"
-				render={(props) => <Drawer page={<Package />} />}
-			/>
+				<Route
+					path="/package"
+					render={(props) => <Drawer page={<Package />} />}
+				/>
 
-			<Route
-				path="/profile"
-				render={(props) => <Drawer page={<Profile />} />}
-			/>
+				<Route
+					path="/profile"
+					render={(props) => <Drawer page={<Profile />} />}
+				/>
 
-			<Route path="/login" render={(props) => <Login />} />
-			<Route to="/dev" render={(props) => <Drawer />} />
-		</Switch>
+				<Route to="/dev" render={(props) => <Drawer />} />
+			</Switch>
+		</BrowserRouter>
 	);
 	return <Suspense fallback={<p>Loading ...</p>}>{routes}</Suspense>;
 }

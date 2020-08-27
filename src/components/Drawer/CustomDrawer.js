@@ -22,7 +22,6 @@ import { plainTabsStylesHook } from "@mui-treasury/styles/tabs";
 
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import { useGutterBorderedGridStyles } from "@mui-treasury/styles/grid/gutterBordered";
 
 import logout from "./images/logout-2@2x.png";
 import folder from "./images/folder@2x.png";
@@ -162,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
 	sectionMobile: {
 		display: "flex",
 		[theme.breakpoints.up("md")]: {
-			display: "none",
+			display: "flex",
 		},
 	},
 	toolbar: {
@@ -274,7 +273,6 @@ export default function MiniDrawer(props) {
 	//Section for top right side
 	const colWidth = { xs: 4 };
 	const borderColor = "grey.500";
-	const styles = useGutterBorderedGridStyles({ borderColor, height: "80%" });
 
 	const toggleIcon = open ? <CancelOutlinedIcon /> : <MenuIcon />;
 	const samadhanSubMenuListItems = samadhanSubMenu ? (

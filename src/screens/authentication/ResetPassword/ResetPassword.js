@@ -3,7 +3,8 @@ import styles from "./ResetPassword.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 import unnamed from "./images/unnamed@2x.png";
-import Logo from "./images/Logo-1@2x.png";
+import Logo2x from "./images/Logo-1@2x.png";
+import Logo from "./images/Logo.png";
 import CancelIcon from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,10 @@ export default function ForgotPassword() {
 					}}
 				/>
 				<div className={styles.logoDiv}>
-					<img src={Logo} alt="logo" />
+					<picture>
+						<source srcSet={Logo} media="(max-width: 767px)" />
+						<img src={Logo2x} alt="Some picture" />
+					</picture>
 				</div>
 				<div className={styles.div1text}>Reset Your Password</div>
 				<div className={styles.textField}>

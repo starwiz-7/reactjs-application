@@ -15,7 +15,6 @@ import edit from "./edit.png";
 
 const useStyles = makeStyles({
 	table: {
-		minWidth: 650,
 		borderRadius: 0,
 	},
 });

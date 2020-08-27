@@ -47,6 +47,15 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 //VerifyDocument
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+import back from "../../../../Assets/back.png";
+//Member Permission
+import Card1 from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+//People
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import AddIcon from "@material-ui/icons/Add";
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
 
@@ -364,9 +373,422 @@ export function Organisation() {
 }
 
 export function People() {
+	const classes = useStyles();
+	const [modal, setModal] = React.useState(false);
+	const toggleModal = () => setModal(!modal);
+	const [value, setValue] = React.useState(0);
+
+	const handleChange = (event) => {
+		setValue(event.target.value);
+	};
 	return (
-		<div>
-			<div></div>
+		<div className={styles.moduleDiv}>
+			<div className={styles.table1div}>
+				<TableContainer
+					component={Paper}
+					style={{ boxShadow: "0px 2px 3px #0000000A" }}
+				>
+					<Table aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell
+									align="left"
+									style={{
+										color: "#43425D",
+										whiteSpace: "nowrap",
+										fontSize: "15px",
+										width: "50%",
+										padding: "10px",
+									}}
+								>
+									Organisation Permissions
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							<TableRow>
+								<TableCell component="th" scope="row">
+									<span style={{ color: "#43425D" }}>
+										Members
+									</span>
+									<span
+										style={{
+											color: "#43425D",
+											marginLeft: "70%",
+										}}
+									>
+										4
+									</span>
+								</TableCell>
+							</TableRow>
+							<Divider />
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#707070",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Outside collaborators
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#707070",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Pending collaborators
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#707070",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Pending invitations
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#707070",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Failed invitations
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell
+									component="th"
+									scope="row"
+									style={{
+										color: "#707070",
+										fontFamily:
+											"Regular 13px/20px Source Sans Pro",
+									}}
+								>
+									Verify Documents
+								</TableCell>
+							</TableRow>
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+			<div className={styles.vdtable2div}>
+				<div className={styles.vdsearchBarDiv}>
+					<div className={styles.peoplesearchAndDrop}>
+						<div className={styles.vdsearchBar}>
+							<SearchBox1 />
+						</div>
+						<div className={styles.peopleDropdown}>
+							<Button
+								variant="contained"
+								style={{
+									backgroundColor: "#43425D",
+									color: "white",
+									borderRadius: "20px",
+									textTransform: "none",
+									outline: "none",
+								}}
+							>
+								Search
+							</Button>
+						</div>
+						<div className={styles.peoplemodalDiv}>
+							<SearchBox3 />
+							<Button
+								variant="contained"
+								style={{
+									backgroundColor: "#0CD241",
+									color: "white",
+									textTransform: "none",
+									outline: "none",
+								}}
+								onClick={toggleModal}
+							>
+								Invite User
+							</Button>
+						</div>
+					</div>
+				</div>
+
+				<TableContainer component={Paper}>
+					<Table className={classes.table} aria-label="simple table">
+						<TableHead style={{ backgroundColor: "#F5F6FA" }}>
+							<TableRow>
+								<TableCell style={{ color: "#A3A6B4" }}>
+									<Checkbox />
+								</TableCell>
+								<TableCell
+									align="left"
+									style={{
+										color: "#A3A6B4",
+										textAlign: "left",
+									}}
+								>
+									TEAM MEMBERS
+								</TableCell>
+								<TableCell
+									align="left"
+									style={{ color: "#A3A6B4" }}
+								></TableCell>
+								<TableCell></TableCell>
+								<TableCell></TableCell>
+								<TableCell align="right"></TableCell>
+								<TableCell></TableCell>
+								<TableCell></TableCell>
+								<TableCell></TableCell>
+								<TableCell
+									align="center"
+									style={{ color: "#A3A6B4" }}
+								>
+									2FA
+								</TableCell>
+								<TableCell
+									align="center"
+									style={{ color: "#A3A6B4" }}
+								>
+									Role
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row) => (
+								<TableRow key={row.name}>
+									<TableCell>
+										<Checkbox />
+									</TableCell>
+									<TableCell></TableCell>
+									<TableCell>
+										<div
+											style={{
+												display: "flex",
+												flexDirection: "column",
+												justifyContent: "flex-start",
+											}}
+										>
+											<span
+												style={{
+													color: "#43425D",
+													fontSize: "14px",
+												}}
+											>
+												Priyanshi Gupta
+											</span>
+											<span
+												style={{
+													color: "#6C6C6C",
+													fontSize: "14px",
+												}}
+											>
+												PriyanshiSamadhan
+											</span>
+										</div>
+									</TableCell>
+									<TableCell style={{ color: "#03C903" }}>
+										ACTIVE
+									</TableCell>
+									<TableCell>
+										<Dropdown holder="Private" />
+									</TableCell>
+									<TableCell></TableCell>
+									<TableCell style={{ whiteSpace: "nowrap" }}>
+										2FA X
+									</TableCell>
+									<TableCell style={{ whiteSpace: "nowrap" }}>
+										0 Teams
+									</TableCell>
+									<TableCell></TableCell>
+									<TableCell>Member</TableCell>
+
+									<TableCell>
+										<Dropdown holder="Private" />
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+						<Modal
+							isOpen={modal}
+							toggle={toggleModal}
+							centered={true}
+						>
+							<ModalHeader style={{ color: "#43425D" }}>
+								Change the role of priyanshiSamadhan?
+							</ModalHeader>
+							<ModalBody className={styles.vdmodalContainer}>
+								<span
+									style={{
+										color: "#43425D",
+										paddingBottom: "5%",
+										fontSize: "20px",
+									}}
+								>
+									Select a new role
+								</span>
+								<FormControl component="fieldset">
+									<RadioGroup
+										aria-label="gender"
+										name="gender1"
+										value={value}
+										onChange={handleChange}
+									>
+										<FormControlLabel
+											value="admin"
+											control={
+												<Radio
+													style={{
+														color: "#43425D",
+													}}
+												/>
+											}
+											label={
+												<div
+													style={{
+														display: "flex",
+														flexDirection: "column",
+													}}
+												>
+													<span
+														style={{
+															color: "#43425D",
+														}}
+													>
+														Admin
+													</span>
+													<span
+														style={{
+															color: "#707070",
+															fontSize: "small",
+															whiteSpace:
+																"nowrap",
+														}}
+													>
+														Has full administrative
+														access to the entire
+														organisation.
+													</span>
+												</div>
+											}
+										/>
+										<FormControlLabel
+											value="associate"
+											control={
+												<Radio
+													style={{
+														color: "#43425D",
+													}}
+												/>
+											}
+											label={
+												<div
+													style={{
+														display: "flex",
+														flexDirection: "column",
+													}}
+												>
+													<span
+														style={{
+															color: "#43425D",
+														}}
+													>
+														Associate
+													</span>
+													<span
+														style={{
+															color: "#707070",
+															fontSize: "small",
+														}}
+													>
+														Can see every member and
+														team in the
+														organisation, and create
+														a new module
+													</span>
+												</div>
+											}
+										/>
+									</RadioGroup>
+								</FormControl>
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										justifyContent: "space-between",
+										alignItems: "center",
+										marginTop: "5%",
+										width: "33%",
+									}}
+								>
+									<AddIcon style={{ color: "#43425D" }} />
+									<span
+										style={{
+											color: "#43425D",
+											fontWeight: "bold",
+											fontSize: "15px",
+										}}
+									>
+										Create more role
+									</span>
+								</div>
+							</ModalBody>
+							<ModalFooter>
+								<Button
+									variant="contained"
+									onClick={toggleModal}
+									style={{
+										backgroundColor: "#43425D",
+										color: "white",
+										textTransform: "none",
+										whiteSpace: "nowrap",
+										outline: "none",
+										marginRight: "3%",
+									}}
+								>
+									Cancel
+								</Button>
+								<Button
+									variant="contained"
+									onClick={toggleModal}
+									disabled
+									style={{
+										color: "white",
+										textTransform: "none",
+										whiteSpace: "nowrap",
+										outline: "none",
+									}}
+								>
+									Change Role
+								</Button>
+							</ModalFooter>
+						</Modal>
+					</Table>
+				</TableContainer>
+				<div className={styles.vdpaginationDiv}>
+					<Pagination
+						count={5}
+						shape="rounded"
+						color="primary"
+						variant="outlined"
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }
@@ -1418,6 +1840,27 @@ const SearchBox1 = () => {
 					fontSize: "12px",
 					borderRadius: "5px",
 					boxShadow: "0px 3px 3px #00000014",
+					minWidth: "13vw",
+					padding: "5px",
+				}}
+			/>
+		</div>
+	);
+};
+const SearchBox2 = () => {
+	const styles = useBorderedInputBaseStyles();
+	return (
+		<div>
+			<InputBase
+				classes={styles}
+				placeholder={"Search..."}
+				startAdornment={<Search />}
+				style={{
+					backgroundColor: "#FFFFFF",
+					border: "none",
+					fontSize: "12px",
+					borderRadius: "5px",
+					boxShadow: "0px 3px 3px #00000014",
 					minWidth: "11vw",
 					padding: "5px",
 				}}
@@ -1425,7 +1868,26 @@ const SearchBox1 = () => {
 		</div>
 	);
 };
-
+const SearchBox3 = () => {
+	const styles = useBorderedInputBaseStyles();
+	return (
+		<div>
+			<InputBase
+				classes={styles}
+				placeholder={"Invite by username, full name, or email address"}
+				style={{
+					backgroundColor: "#FFFFFF",
+					border: "none",
+					fontSize: "10px",
+					borderRadius: "5px",
+					boxShadow: "0px 3px 3px #00000014",
+					minWidth: "27vw",
+					padding: "5px",
+				}}
+			/>
+		</div>
+	);
+};
 export function VerifyDocument() {
 	const classes = useStyles();
 	const [modal, setModal] = React.useState(false);
@@ -1558,7 +2020,7 @@ export function VerifyDocument() {
 				<div className={styles.vdsearchBarDiv}>
 					<div className={styles.vdsearchAndDrop}>
 						<div className={styles.vdsearchBar}>
-							<SearchBox1 />
+							<SearchBox2 />
 						</div>
 						<div className={styles.vddropDownDiv}>
 							<Dropdown holder="User" />
@@ -1779,6 +2241,116 @@ export function VerifyDocument() {
 	);
 }
 
+export function MemberPermission() {
+	return (
+		<div className={styles.mpMainDiv}>
+			<div style={{ marginLeft: "1%" }}>
+				<img src={back} style={{}} />
+			</div>
+			<div className={styles.mpFirstDiv}>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "flex-start",
+					}}
+				>
+					<span style={{ color: "#3B86FF", fontSize: "20px" }}>
+						Samadhan-Technologies/Dhule/Property
+					</span>
+					<span style={{ color: "#707070", fontSize: "16px" }}>
+						priyanshiSamadhan has read access to this module
+					</span>
+				</div>
+				<div>
+					<Button
+						disabled
+						style={{
+							width: "100%",
+							textTransform: "none",
+							color: "white",
+							padding: "10px",
+						}}
+						variant="contained"
+					>
+						Remove access to this module
+					</Button>
+				</div>
+			</div>
+			<div className={styles.mpGridDiv}>
+				<Card1 style={{ maxWidth: "90%" }}>
+					<CardHeader
+						style={{
+							color: "#43425D",
+							backgroundColor: "#F5F6FA",
+							display: "flex",
+							justifyContent: "center",
+						}}
+						title="Ability to view users"
+						disableTypography={true}
+					/>
+					<CardContent
+						style={{
+							color: "#707070",
+							backgroundColor: "white",
+							display: "flex",
+							padding: "50px",
+							justifyContent: "center",
+						}}
+					>
+						Give access to view the users
+					</CardContent>
+				</Card1>
+				<Card1 style={{ maxWidth: "90%" }}>
+					<CardHeader
+						style={{
+							color: "#43425D",
+							backgroundColor: "#F5F6FA",
+							display: "flex",
+							justifyContent: "center",
+						}}
+						title="Ability to add users"
+						disableTypography={true}
+					/>
+					<CardContent
+						style={{
+							color: "#707070",
+							backgroundColor: "white",
+							display: "flex",
+							padding: "50px",
+							justifyContent: "center",
+						}}
+					>
+						Give access to add users
+					</CardContent>
+				</Card1>
+				<Card1 style={{ maxWidth: "90%" }}>
+					<CardHeader
+						style={{
+							color: "#43425D",
+							backgroundColor: "#F5F6FA",
+							display: "flex",
+							justifyContent: "center",
+						}}
+						title="Ability to modify users"
+						disableTypography={true}
+					/>
+					<CardContent
+						style={{
+							color: "#707070",
+							backgroundColor: "white",
+							padding: "50px",
+							display: "flex",
+							justifyContent: "center",
+						}}
+					>
+						Give access to modify/edit users
+					</CardContent>
+				</Card1>
+			</div>
+		</div>
+	);
+}
 export function Security() {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
@@ -1982,7 +2554,7 @@ export default function Main() {
 	};
 	return (
 		<div className={styles.main}>
-			<div className={styles.title}>
+			<div className={styles.title} style={{ marginBottom: "2%" }}>
 				<span>Dhule Organisation</span>
 			</div>
 			<div className={styles.tabsDiv}>
@@ -2008,39 +2580,45 @@ export default function Main() {
 							<AntTab label="" disabled={true} />
 							<AntTab label="" disabled={true} />
 						</AntTabs>
-						<TabPanel value={value} index={0}>
-							<Organisation />
-						</TabPanel>
-						<TabPanel value={value} index={4}>
-							<Inventory />
-						</TabPanel>
-						<TabPanel value={value} index={8}>
-							<Billing />
-						</TabPanel>
-						<TabPanel value={value} index={5}>
-							<Account />
-						</TabPanel>
-						<TabPanel value={value} index={7}>
-							<Settings />
-						</TabPanel>
-						<TabPanel value={value} index={3}>
-							<Module />
-						</TabPanel>
-						<TabPanel value={value} index={2}>
-							<Teams />
-						</TabPanel>
-						{/* <TabPanel value={value} index={1}>
-							<ManageAccess />
-						</TabPanel> */}
-						<TabPanel value={value} index={1}>
-							<VerifyDocument />
-						</TabPanel>
-						<TabPanel value={value} index={6}>
-							<Security />
-						</TabPanel>
 					</div>
 				</div>
 			</div>
+			<TabPanel value={value} index={0}>
+				<Organisation />
+			</TabPanel>
+			<TabPanel value={value} index={4}>
+				<Inventory />
+			</TabPanel>
+			<TabPanel value={value} index={8}>
+				<Billing />
+			</TabPanel>
+			<TabPanel value={value} index={5}>
+				<Account />
+			</TabPanel>
+			<TabPanel value={value} index={7}>
+				<Settings />
+			</TabPanel>
+			<TabPanel value={value} index={3}>
+				<Module />
+			</TabPanel>
+			<TabPanel value={value} index={2}>
+				<Teams />
+			</TabPanel>
+			{/* <TabPanel value={value} index={1}>
+							<ManageAccess />
+						</TabPanel> */}
+			{/* <TabPanel value={value} index={1}>
+				<VerifyDocument />
+			</TabPanel> */}
+			{/* <TabPanel value={value} index={1}>
+				<People />
+			</TabPanel> */}
+			<TabPanel value={value} index={6}>
+				<Security />
+			</TabPanel>
+			<TabPanel value={value} index={1}>
+				<MemberPermission />
+			</TabPanel>
 		</div>
 	);
 }

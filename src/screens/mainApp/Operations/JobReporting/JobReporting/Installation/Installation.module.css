@@ -142,13 +142,39 @@
     margin-bottom: 2%;
 }
 
-.trackingDiv {
+.finalDiv {
     background-color: white;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 2%;
+    padding: 0 1.5%;
+}
+
+.trackingDiv {
     margin-left: 2%;
     margin-top: 1.5%;
     padding: 0 1.5%;
-    height: 80%;
+    height: 10%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.graphdiv {
+    margin-top: 10%;
+}
+
+.square {
+    width: 50px;
+    height: 30px;
+    background: #FFCD54;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: #FFCD54 transparent transparent transparent;
+    margin-left: 15px;
 }

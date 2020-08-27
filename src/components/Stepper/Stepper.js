@@ -1,14 +1,104 @@
 import React from "react";
 import styles from "./Stepper.module.css";
-
-import { makeStyles, StylesProvider } from "@material-ui/core/styles";
+import Profile from "../../screens/mainApp/Profile/Profile";
+import Avatar from "../../components/ProfileAvatar/ProfileAvatar";
+import PropTypes from "prop-types";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
+import StepConnector from "@material-ui/core/StepConnector";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-
+import Check from "@material-ui/icons/Check";
 import AddOrganisation from "../../screens/mainApp/Organisation/AddOrganisation/AddOrganisation";
+
+const ColorlibConnector = withStyles({
+	alternativeLabel: {
+		top: 22,
+	},
+	active: {
+		"& $line": {
+			backgroundImage: "#E9E9F0",
+		},
+	},
+	completed: {
+		"& $line": {
+			backgroundImage: "#E9E9F0",
+		},
+	},
+	line: {
+		height: "2px",
+		border: 0,
+		backgroundColor: "#eaeaf0",
+		borderRadius: 1,
+	},
+})(StepConnector);
+
+const useColorlibStepIconStyles = makeStyles({
+	root: {
+		backgroundColor: "white",
+		zIndex: 1,
+		color: "#fff",
+		width: 40,
+		height: 40,
+		display: "flex",
+		borderRadius: "50%",
+		justifyContent: "center",
+		alignItems: "center",
+		border: "1px solid #3B86FF",
+		color: "#3B86FF",
+		margin: "2px",
+	},
+	active: {
+		backgroundColor: "#3B86FF",
+		color: "white",
+	},
+	completed: {
+		backgroundColor: "#3B86FF",
+		color: "white",
+	},
+});
+
+function ColorlibStepIcon(props) {
+	const classes = useColorlibStepIconStyles();
+	const { active, completed } = props;
+	const icons = {
+		1: 1,
+		2: 2,
+		3: 3,
+		4: 4,
+	};
+	return (
+		<div
+			className={clsx(classes.root, {
+				[classes.active]: active,
+				[classes.completed]: completed,
+			})}
+		>
+			{completed ? (
+				<Check className={classes.completed} />
+			) : (
+				icons[String(props.icon)]
+			)}
+		</div>
+	);
+}
+
+ColorlibStepIcon.propTypes = {
+	/**
+	 * Whether this step is active.
+	 */
+	active: PropTypes.bool,
+	/**
+	 * Mark the step as completed. Is passed to child components.
+	 */
+	completed: PropTypes.bool,
+	/**
+	 * The label displayed in the step icon.
+	 */
+	icon: PropTypes.node,
+};
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -66,12 +156,14 @@ export default function HorizontalLabelPositionBelowStepper() {
 			</div>
 			<div className={styles.container}>
 				<div className={classes.root}>
-					<Stepper activeStep={activeStep} alternativeLabel>
+					<Stepper
+						alternativeLabel
+						activeStep={activeStep}
+						connector={<ColorlibConnector />}
+					>
 						{steps.map((label) => (
-							<Step key={label} style={{ color: "#3B86FF" }}>
-								<StepLabel
-									StepIconProps={{ iconColor: "#3B86FF" }}
-								>
+							<Step key={label}>
+								<StepLabel StepIconComponent={ColorlibStepIcon}>
 									{label}
 								</StepLabel>
 							</Step>

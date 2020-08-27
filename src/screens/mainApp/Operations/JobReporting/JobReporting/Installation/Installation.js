@@ -1,5 +1,15 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import {
+	LineChart,
+	Line,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+	ResponsiveContainer,
+} from "recharts";
 import styles from "./Installation.module.css";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -35,6 +45,68 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const data = [
+	{
+		name: "Page A",
+		uv: 4000,
+		pv: 2400,
+		amt: 2400,
+	},
+	{
+		name: "Page B",
+		uv: 3000,
+		pv: 1398,
+		amt: 2210,
+	},
+	{
+		name: "Page C",
+		uv: 2000,
+		pv: 9800,
+		amt: 2290,
+	},
+	{
+		name: "Page D",
+		uv: 2780,
+		pv: 3908,
+		amt: 2000,
+	},
+	{
+		name: "Page E",
+		uv: 1890,
+		pv: 4800,
+		amt: 2181,
+	},
+	{
+		name: "Page F",
+		uv: 2390,
+		pv: 3800,
+		amt: 2500,
+	},
+	{
+		name: "Page G",
+		uv: 3490,
+		pv: 4300,
+		amt: 2100,
+	},
+];
+var tooltip;
+const CustomTooltip = ({ active, payload }) => {
+	console.log(payload);
+	if (!active || !tooltip) return null;
+	for (const bar of payload)
+		if (bar.dataKey === tooltip && payload[0] != undefined)
+			return (
+				<div>
+					<div className={styles.square}></div>
+					<div className={styles.triangle}>
+						<span style={{ color: "white", fontWeight: "bold" }}>
+							payload[0].payload.amt
+						</span>
+					</div>
+				</div>
+			);
+	return null;
+};
 export function InstallationCard(props) {
 	const classes = useStyles();
 	return (
@@ -265,35 +337,69 @@ export default function Initialisation() {
 					style={{ backgroundColor: "#3B86FF", marginRight: "5%" }}
 				/>
 			</div>
-			<div className={styles.trackingDiv}>
-				<Initial
-					color="#FFCD54"
-					info="Average time spent per property installation per hour of the day"
-				/>
-				<Initial
-					color="#F2134F"
-					info="Average installation per user per hour of the day"
-				/>
-				<Initial
-					color="#56BBFE"
-					info="Installations per hour of the day"
-				/>
-				<Initial
-					color="#0BD878"
-					info="Active user’s per hour of the day"
-				/>
-				<Initial
-					color="#C50000"
-					info="Failed property per hour of the day"
-				/>
-				<Initial
-					color="#FE0000"
-					info="Aborted property per hour of the day"
-				/>
-				<Initial
-					color="#43425D"
-					info="New property added per hour of the day"
-				/>
+			<div className={styles.finalDiv}>
+				<div className={styles.trackingDiv}>
+					<Initial
+						color="#FFCD54"
+						info="Average time spent per property installation per hour of the day"
+					/>
+					<Initial
+						color="#F2134F"
+						info="Average installation per user per hour of the day"
+					/>
+					<Initial
+						color="#56BBFE"
+						info="Installations per hour of the day"
+					/>
+					<Initial
+						color="#0BD878"
+						info="Active user’s per hour of the day"
+					/>
+					<Initial
+						color="#C50000"
+						info="Failed property per hour of the day"
+					/>
+					<Initial
+						color="#FE0000"
+						info="Aborted property per hour of the day"
+					/>
+					<Initial
+						color="#43425D"
+						info="New property added per hour of the day"
+					/>
+				</div>
+				<div className={styles.graphdiv}>
+					<LineChart
+						width={1150}
+						height={300}
+						data={data}
+						margin={{
+							top: 5,
+							bottom: 5,
+							right: 3,
+						}}
+					>
+						<CartesianGrid vertical={false} />
+						<XAxis
+							dataKey="name"
+							axisLine={false}
+							padding={{ right: 5 }}
+						/>
+						<YAxis axisLine={false} />
+						<Tooltip cursor={false} />
+						<Line
+							dataKey="pv"
+							stroke="#56BBFE"
+							activeDot={{ r: 8 }}
+						/>
+						<Line dataKey="uv" stroke="#2CD889" />
+						<Line
+							dataKey="amt"
+							stroke="#FFCD54"
+							onMouseOver={() => (tooltip = "amt")}
+						/>
+					</LineChart>
+				</div>
 			</div>
 		</div>
 	);

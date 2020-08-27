@@ -10,6 +10,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepConnector from "@material-ui/core/StepConnector";
 import Button from "@material-ui/core/Button";
+import Check from "@material-ui/icons/Check";
 
 const ColorlibConnector = withStyles({
 	alternativeLabel: {
@@ -72,7 +73,11 @@ function ColorlibStepIcon(props) {
 				[classes.completed]: completed,
 			})}
 		>
-			{icons[String(props.icon)]}
+			{completed ? (
+				<Check className={classes.completed} />
+			) : (
+				icons[String(props.icon)]
+			)}
 		</div>
 	);
 }
