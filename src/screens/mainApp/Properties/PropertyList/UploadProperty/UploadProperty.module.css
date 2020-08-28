@@ -38,7 +38,8 @@
     display: flex;
     margin: 2% 0;
     padding: 1%;
-    justify-content: space-around;
+    justify-content: flex-start;
+    margin-left: 5%;
 }
 
 .row2 {
@@ -59,4 +60,12 @@
 .buttons {
     margin: 2%;
     padding: 3%;
+}
+
+.modalContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5%;
 }

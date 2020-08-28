@@ -93,6 +93,9 @@ import AddSub from "../../screens/mainApp/Properties/SubCategory/AddSubCategory/
 import InstCJ from "../../screens/mainApp/Operations/JobCreation/Installation/CreateJob/CreateJob";
 import UWH from "../../screens/mainApp/Operations/JobReporting/JobReporting/UserWorkHistory/UWH";
 import UWHT from "../../screens/mainApp/Operations/JobReporting/JobReporting/UserWorkHistory/UWHTable/UWHTAble";
+import UserHistory from "../../screens/mainApp/Operations/UserHistory/UserHistory";
+import PV from "../../screens/mainApp/Visualise/PropertyVisualisation/PV";
+import EMD from "../../screens/mainApp/Operations/EndMyDay/EndMyDay";
 
 import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
@@ -899,6 +902,9 @@ export default function MiniDrawer(props) {
 				{/* <InstCJ /> */}
 				{/* <UWH /> */}
 				{/* <UWHT /> */}
+				{/* <UserHistory /> */}
+				{/* <PV /> */}
+				<EMD />
 			</main>
 		</div>
 	);
