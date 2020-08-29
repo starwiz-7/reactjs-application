@@ -904,7 +904,7 @@ export default function MiniDrawer(props) {
 				{/* <UWHT /> */}
 				{/* <UserHistory /> */}
 				{/* <PV /> */}
-				<EMD />
+				{/* <EMD /> */}
 			</main>
 		</div>
 	);
