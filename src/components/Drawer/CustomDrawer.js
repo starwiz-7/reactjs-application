@@ -177,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	content: {
 		flexGrow: 1,
+		outline: "none",
 	},
 	orange: {
 		color: theme.palette.getContrastText(deepOrange[500]),
