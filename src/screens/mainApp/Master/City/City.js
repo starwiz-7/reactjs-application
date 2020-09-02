@@ -281,7 +281,7 @@ export default function City() {
 								textAlign: "center",
 								whiteSpace: "nowrap",
 								outline: "none",
-								marginLeft: "2%",
+								marginLeft: "4%",
 							}}
 						>
 							Add new country
