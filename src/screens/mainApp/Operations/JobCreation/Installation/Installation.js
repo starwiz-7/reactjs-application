@@ -118,6 +118,7 @@ export default function Language() {
 								alignSelf: "right",
 								marginLeft: "48%",
 								outline: "none",
+								whiteSpace: "nowrap",
 							}}
 						>
 							Create new job
@@ -130,16 +131,14 @@ export default function Language() {
 
 				<div className={classes.root}></div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-				}}
-			/>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

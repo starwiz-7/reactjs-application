@@ -38,31 +38,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const GreenCheckbox = withStyles({
-	root: {
-		color: "green",
-		"&$checked": {
-			color: "green",
-		},
-	},
-	checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function Language() {
 	const classes = useStyles();
-	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [check, setCheck] = useState(false);
-	const handleChange = () => setCheck(!check);
 	let icon = <SearchIcon style={{ color: "#BCBCCB", alignSelf: "left" }} />;
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>
-				<span style={{ fontWeight: "light" }}>
-					Operations / Job Creation /
-				</span>
-				<span style={{ fontWeight: "light", color: "#BBBBBB" }}>
-					&nbsp;QC
-				</span>
+				<span>Operations / Job Creation /</span>
+				<span style={{ color: "#BBBBBB" }}>&nbsp;QC</span>
 			</div>
 			<div className={styles.tableDiv}>
 				<div className={styles.searchBarDiv}>
@@ -116,6 +100,7 @@ export default function Language() {
 								alignSelf: "right",
 								marginLeft: "48%",
 								outline: "none",
+								whiteSpace: "nowrap",
 							}}
 						>
 							Create new job
@@ -128,16 +113,14 @@ export default function Language() {
 
 				<div className={classes.root}></div>
 			</div>
-			<Pagination
-				count={5}
-				shape="rounded"
-				color="primary"
-				variant="outlined"
-				style={{
-					marginTop: "2%",
-					marginLeft: "78%",
-				}}
-			/>
+			<div className={styles.paginationDiv}>
+				<Pagination
+					count={5}
+					shape="rounded"
+					color="primary"
+					variant="outlined"
+				/>
+			</div>
 		</div>
 	);
 }

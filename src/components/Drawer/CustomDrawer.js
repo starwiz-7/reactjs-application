@@ -96,6 +96,9 @@ import UWHT from "../../screens/mainApp/Operations/JobReporting/JobReporting/Use
 import UserHistory from "../../screens/mainApp/Operations/UserHistory/UserHistory";
 import PV from "../../screens/mainApp/Visualise/PropertyVisualisation/PV";
 import EMD from "../../screens/mainApp/Operations/EndMyDay/EndMyDay";
+import SurveyRect from "../../screens/mainApp/Survey/SurveyBuilder/SB";
+import SR from "../../screens/mainApp/Survey/Recording/SurveyReporting/SR";
+import Audit from "../../screens/mainApp/Operations/JobCreation/Audit/Audit";
 
 import OTP from "../../screens/authentication/OTP/OTP";
 import Login from "../../screens/authentication/Login/Login";
@@ -906,6 +909,9 @@ export default function MiniDrawer(props) {
 				{/* <UserHistory /> */}
 				{/* <PV /> */}
 				{/* <EMD /> */}
+				{/* <SurveyRect /> */}
+				<Audit />
+				{/* <SR /> */}
 			</main>
 		</div>
 	);
